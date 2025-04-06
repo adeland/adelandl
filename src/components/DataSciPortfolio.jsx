@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import Navbar from './Navbar'; // Import the Navbar component
+import Footer from './Footer'; // Import the Footer component
 import '../App.css';
 
 const projects = [
@@ -65,26 +66,35 @@ const projects = [
     }
 ];
 
-const MiniDataProjects = () => {
+const DataSciPortfolio = () => {
     return (
-        <div className="miniDataProjects">
-            <nav>
-                <NavLink to="/" exact activeClassName="active">Home</NavLink>
-                <NavLink to="/miniDataProjects" activeClassName="active">Data ML Projects</NavLink>
-                <NavLink to="/contact" activeClassName="active">Contact</NavLink>
-            </nav>
-            <h1>Data ML Projects</h1>
-            <div className="projects-list">
-                {projects.map((project, index) => (
-                    <div key={index} className="project-item">
-                        <h2>{project.title}</h2>
-                        <p>{project.description}</p>
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">View Project</a>
-                    </div>
-                ))}
-            </div>
+        <div className="landing-page">
+            <Navbar />
+            <header className="landing-header">
+                <h1>Data Science & Machine Learning Projects</h1>
+                <p>A collection of my data science and machine learning work</p>
+            </header>
+            
+            <section className="projects-section">
+                <h2>Portfolio</h2>
+                <p>Explore my data science and machine learning projects below:</p>
+                <div className="projects-list">
+                    {projects.map((project, index) => (
+                        <div key={index} className="project-item">
+                            <div className="media-placeholder">
+                                <span>*DS/ML*</span>
+                            </div>
+                            <h3>{project.title}</h3>
+                            <p>{project.description}</p>
+                            <a href={project.link} target="_blank" rel="noopener noreferrer">Visit this project</a>
+                        </div>
+                    ))}
+                </div>
+            </section>
+            
+            <Footer />
         </div>
     );
 };
 
-export default MiniDataProjects;
+export default DataSciPortfolio;

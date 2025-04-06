@@ -44,12 +44,12 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-links">
+          <a href="/" className="navbar-link">Home</a>
           <button onClick={() => scrollToSection('about')} className="navbar-link">About</button>
           <button onClick={() => scrollToSection('projects')} className="navbar-link">Projects</button>
-          <button onClick={() => scrollToSection('contact')} className="navbar-link">Contact</button>
         </div>
         <div className="navbar-action">
-          <button className="get-started-btn">Get in Touch</button>
+          <button onClick={() => scrollToSection('contact')}  className="get-started-btn">Get in Touch</button>
         </div>
       </nav>
       {showBackToTop && (
