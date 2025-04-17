@@ -270,7 +270,7 @@ html {
 .projects-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 30px; /* Increased gap for better spacing */
   padding: 0 10px;
 }
 
@@ -283,6 +283,14 @@ html {
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
+  gap: 15px; /* Added gap between image and content */
+  padding: 20px; /* Added padding for internal spacing */
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Added gap between title, description, and link */
 }
 
 .project-item:hover {
@@ -303,19 +311,17 @@ html {
 .project-item h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  margin: 15px;
+  margin: 0; /* Removed margin to rely on gap */
 }
 
 .project-item p {
   font-size: 1rem;
   color: #666;
-  margin: 0 15px 15px;
+  margin: 0; /* Removed margin to rely on gap */
 }
 
 .project-item a {
-  position: relative; /* Change to relative for better mobile support */
-  display: block;
-  margin-top: auto;
+  margin-top: auto; /* Push the link to the bottom */
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   text-align: center;
