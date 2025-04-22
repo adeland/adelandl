@@ -38,7 +38,16 @@ const ProjectsSection = () => {
             <a href="https://github.com/your-username/project-3" target="_blank" rel="noopener noreferrer">Visit this project</a>
           </div>
         </div>
-        {/* ...existing project items... */}
+        <div className="project-item">
+          <div className="media-wrapper">
+            <span>*DS/ML*</span>
+          </div>
+          <div className="project-content">
+            <h3>Data Science Portfolio</h3>
+            <p>Explore a collection of my data science and machine learning projects, including assignments and interactive visualizations.</p>
+            <a href="/#/data-science-portfolio" target="_blank" rel="noopener noreferrer">Visit this portfolio</a>
+          </div>
+        </div>
       </div>
     </section>
   );
