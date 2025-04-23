@@ -41,13 +41,6 @@
   margin: 10px;
 }
 
-.navbar {
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .navbar-logo {
   display: flex;
   align-items: center;
@@ -62,10 +55,6 @@
   text-decoration: none;
 }
 
-.navbar-links {
-  margin-left: 20px;
-}
-
 /* Reset and base styles */
 * {
   margin: 0;
@@ -74,11 +63,11 @@
 }
 
 body {
-  font-family: ui-serif, LibreBaskerville, Georgia, Cambria, Times New Roman, Times, serif; /* Unified font family */
+  font-family: ui-serif, LibreBaskerville, Georgia, Cambria, Times New Roman, Times, serif;
   background-color: #f5f5f5;
   color: #1a1a1a;
   line-height: 1.6;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="1" fill="rgba(0,0,0,0.1)"/></svg>') repeat; /* Moved background here */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="1" fill="rgba(0,0,0,0.1)"/></svg>') repeat;
 }
 
 html {
@@ -90,7 +79,7 @@ html {
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 /* Navbar styles */
@@ -103,10 +92,10 @@ html {
   top: 0;
   background: transparent;
   z-index: 100;
-  transform: translateY(0); /* Ensure navbar starts in the visible position */
-  transition: transform 0.1s ease-in-out; /* Smooth transition for both appearing and disappearing */
+  transform: translateY(0);
+  transition: transform 0.1s ease-in-out;
   width: 100%;
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  flex-wrap: wrap;
 }
 
 .navbar-hidden {
@@ -121,7 +110,7 @@ html {
 
 .navbar-links {
   display: flex;
-  flex-wrap: wrap; /* Allow links to wrap on small screens */
+  flex-wrap: wrap;
 }
 
 .navbar-links a {
@@ -198,7 +187,7 @@ html {
 
 .intro-content {
   flex: 1 1 300px;
-  min-width: 0; /* Allow content to shrink if needed */
+  min-width: 0;
 }
 
 .intro-content h2 {
@@ -224,7 +213,7 @@ html {
   align-items: center;
   justify-content: center;
   font-size: 50px;
-  max-width: 100%;
+  max-width: 100%; /* Ensure consistent resizing */
 }
 
 /* About section */
@@ -270,7 +259,7 @@ html {
 .projects-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px; /* Increased gap for better spacing */
+  gap: 30px;
   padding: 0 10px;
 }
 
@@ -283,14 +272,14 @@ html {
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Added gap between image and content */
-  padding: 20px; /* Added padding for internal spacing */
+  gap: 15px;
+  padding: 20px;
 }
 
 .project-content {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Added gap between title, description, and link */
+  gap: 10px;
 }
 
 .project-item:hover {
@@ -306,22 +295,30 @@ html {
   justify-content: center;
   font-size: 24px;
   font-weight: bold;
+  max-width: 100%; /* Ensure consistent resizing */
+}
+
+/* Consistent image styling for project sections */
+.project-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .project-item h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  margin: 0; /* Removed margin to rely on gap */
+  margin: 0;
 }
 
 .project-item p {
   font-size: 1rem;
   color: #666;
-  margin: 0; /* Removed margin to rely on gap */
+  margin: 0;
 }
 
 .project-item a {
-  margin-top: auto; /* Push the link to the bottom */
+  margin-top: auto;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   text-align: center;

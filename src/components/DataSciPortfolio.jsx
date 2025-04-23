@@ -2,22 +2,20 @@ import React from 'react';
 import Navbar from './Navbar'; // Import the Navbar component
 import Footer from './Footer'; // Import the Footer component
 import '../App.css';
+import ElevatorImage from '../images/Elevator.jpg';
 
 const projects = [
     {
-        title: "Assignment 0: Dummy python script",
-        description: "This assignment is a dummy script to test if the website correctly redirects the user to the GitHub repository of the assignment.",
-        link: "https://github.com/Shangmin-Chen/shangmin-assignment-0"
-    },
-    {
         title: "Assignment 1: Data Collection and Analysis",
-        description: "This assignment requires CS 506 students to collect data elevator arrival times in CDS in the span of 4 days. Then conduct analysis on where is the most optimal location to stand based on probability of doors opening.",
-        link: "https://github.com/Shangmin-Chen/shangmin-assignment-1"
+        description: "This project requires CS 506 students to collect data elevator arrival times in CDS in the span of 4 days. Then conduct analysis on where is the most optimal location to stand based on probability of doors opening.",
+        link: "https://github.com/Shangmin-Chen/Elevator-Arrival-Time-Analysis",
+        image: ElevatorImage
     },
     {
         title: "Assignment 2: KMeans Clustering Visualization Webpage",
         description: "In this assignment, you will develop an interactive web application that demonstrates the KMeans clustering algorithm using various initialization methods. This project allows you to explore the impact of different initialization strategies on the clustering outcome.",
-        link: "https://github.com/Shangmin-Chen/shangmin-assignment-2"
+        link: "https://github.com/Shangmin-Chen/shangmin-assignment-2",
+        image: "path/to/image2.jpg" // Add image path
     },
     {
         title: "Assignment 3: SVD analysis",
@@ -82,7 +80,14 @@ const DataSciPortfolio = () => {
                     {projects.map((project, index) => (
                         <div key={index} className="project-item">
                             <div className="media-placeholder">
-                                <span>*DS/ML*</span>
+                                {project.image ? (
+                                    <img 
+                                        src={project.image} 
+                                        alt={project.title} 
+                                    />
+                                ) : (
+                                    <span>*DS/ML*</span>
+                                )}
                             </div>
                             <h3>{project.title}</h3>
                             <p>{project.description}</p>
