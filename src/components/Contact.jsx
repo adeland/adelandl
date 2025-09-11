@@ -51,7 +51,6 @@ const Contact = () => {
         throw new Error(result.message);
       }
     } catch (error) {
-      console.error('Form submission error:', error);
       setSubmitStatus('error');
       setErrorMessage(error.message || 'Failed to send message. Please try again.');
       

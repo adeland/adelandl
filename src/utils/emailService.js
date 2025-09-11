@@ -5,8 +5,10 @@ const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-// Initialize EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY);
+// Initialize EmailJS only if public key is available
+if (EMAILJS_PUBLIC_KEY) {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+}
 
 export const sendEmail = async (formData) => {
   try {
@@ -15,13 +17,12 @@ export const sendEmail = async (formData) => {
       throw new Error('EmailJS configuration is missing. Please check your environment variables.');
     }
 
-    // Prepare template parameters
+    // Prepare template parameters - match your EmailJS template exactly
     const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
       subject: formData.subject,
+      name: formData.name,
       message: formData.message,
-      to_email: 'shangminch@gmail.com', // Your email address
+      email: formData.email,
     };
 
     // Send email using EmailJS
@@ -30,11 +31,11 @@ export const sendEmail = async (formData) => {
       EMAILJS_TEMPLATE_ID,
       templateParams
     );
-
+    
     if (response.status === 200) {
       return { success: true, message: 'Email sent successfully!' };
     } else {
-      throw new Error('Failed to send email');
+      throw new Error(`Failed to send email. Status: ${response.status}`);
     }
   } catch (error) {
     console.error('Email sending error:', error);
