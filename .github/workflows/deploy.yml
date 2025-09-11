@@ -37,11 +37,10 @@ jobs:
       - name: Copy CNAME to build folder
         run: |
           if [ -f public/CNAME ]; then
-            cp public/CNAME dist/CNAME
+            cp public/CNAME build/CNAME
           elif [ -f CNAME ]; then
-            cp CNAME dist/CNAME
+            cp CNAME build/CNAME
           fi
-        # Change 'dist' to 'build' for React or 'out' for Next.js
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -49,7 +48,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'  # Change to match your build output
+          path: './build'  # React build output directory
 
   deploy:
     environment:
