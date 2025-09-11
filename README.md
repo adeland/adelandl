@@ -1,4 +1,27 @@
-# Getting Started with Create React App
+# Shangmin Chen - Portfolio Website
+
+This is a personal portfolio website built with React and deployed on GitHub Pages.
+
+## Email Contact Form Setup
+
+The contact form uses EmailJS to send emails directly from the client-side. To set up email functionality:
+
+1. Create an account at [EmailJS](https://www.emailjs.com/)
+2. Create a new service (Gmail, Outlook, etc.)
+3. Create an email template with the following variables:
+   - `{{from_name}}` - Sender's name
+   - `{{from_email}}` - Sender's email
+   - `{{subject}}` - Email subject
+   - `{{message}}` - Email message
+   - `{{to_email}}` - Your email address (shangminch@gmail.com)
+4. Create a `.env` file in the root directory with:
+   ```
+   REACT_APP_EMAILJS_SERVICE_ID=your_service_id_here
+   REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id_here
+   REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key_here
+   ```
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

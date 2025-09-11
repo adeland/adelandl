@@ -1,15 +1,56 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import DataSciPortfolio from './components/DataSciPortfolio';
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
+import Blog from './components/Blog';
+import Contact from './components/Contact';
 
 function App() {
+  useEffect(() => {
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    // RAF loop for smooth scrolling
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Make lenis available globally for navigation
+    window.lenis = lenis;
+
+    // Cleanup function
+    return () => {
+      lenis.destroy();
+      delete window.lenis;
+    };
+  }, []);
+
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/data-science-portfolio" element={<DataSciPortfolio />} />
-      </Routes>
+      <Navbar />
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Blog />
+      <Contact />
     </div>
   );
 }

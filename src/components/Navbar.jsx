@@ -1,63 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import logo from '../images/logo64.png'; // Import the logo
+import React, { useState } from 'react';
+import { scrollToSection } from '../utils/scrollUtils';
 
 const Navbar = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > 50) {
-        setIsVisible(false); // Hide navbar when scrolling down
-        setShowBackToTop(true); // Show "Back to Top" button
-      } else {
-        setIsVisible(true); // Show navbar when at the top of the page
-        setShowBackToTop(false); // Hide "Back to Top" button
-      }
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleScrollToSection = (sectionId) => {
+    scrollToSection(sectionId);
+    setIsMenuOpen(false);
   };
 
   return (
-    <>
-      <nav className={`navbar ${isVisible ? '' : 'navbar-hidden'}`}>
-        <div className="navbar-logo">
-          <a href="/" className="logo-link" style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={logo} alt="Logo" className="logo" />
-            <span>Shangmin Chen</span>
-          </a>
+    <nav className="navbar">
+      <div className="nav-container">
+        <div className="nav-logo">
+          <span>Shangmin Chen</span>
         </div>
-        <div className="navbar-links">
-          <a href="/" className="navbar-link">Home</a>
-          <button onClick={() => scrollToSection('about')} className="navbar-link">About</button>
-          <button onClick={() => scrollToSection('projects')} className="navbar-link">Projects</button>
+        
+        <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+          <button onClick={() => handleScrollToSection('about')} className="nav-link">
+            about
+          </button>
+          <button onClick={() => handleScrollToSection('experience')} className="nav-link">
+            experience
+          </button>
+          <button onClick={() => handleScrollToSection('projects')} className="nav-link">
+            projects
+          </button>
+          <button onClick={() => handleScrollToSection('blog')} className="nav-link">
+            thoughts
+          </button>
+          <button onClick={() => handleScrollToSection('contact')} className="nav-link">
+            contact
+          </button>
         </div>
-        <div className="navbar-action">
-          <button onClick={() => scrollToSection('contact')}  className="get-started-btn">Get in Touch</button>
+
+        <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </div>
-      </nav>
-      {showBackToTop && (
-        <button className="back-to-top-btn" onClick={scrollToTop}>
-          ↑ Back to Top
-        </button>
-      )}
-    </>
+      </div>
+    </nav>
   );
 };
 
