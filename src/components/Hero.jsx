@@ -10,27 +10,27 @@ const Hero = () => {
     <section className="hero">
       <div className="hero-content">
         <h1 className="hero-title">
-          hello, i'm <span className="highlight">shangmin chen</span>
+          Hello, I'm <span className="highlight">Shangmin Chen</span>
         </h1>
         <p className="hero-subtitle">
-          data scientist & software developer
+          Data Scientist & Software Developer
         </p>
         <p className="hero-description">
-          i build modern web applications and create data-driven solutions 
-          that make a real impact. let's create something meaningful together.
+          I build modern web applications and create data-driven solutions 
+          that make a real impact. Let's create something meaningful together.
         </p>
         <div className="hero-buttons">
           <button 
             className="btn btn-primary" 
             onClick={() => handleScrollToSection('projects')}
           >
-            view my work
+            View My Work
           </button>
           <button 
             className="btn btn-secondary" 
             onClick={() => handleScrollToSection('contact')}
           >
-            get in touch
+            Get In Touch
           </button>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import './App.css';
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -8,6 +9,7 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
+import BlogPost from './components/BlogPost';
 
 function App() {
   useEffect(() => {
@@ -42,16 +44,27 @@ function App() {
     };
   }, []);
 
-  return (
-    <div className="App">
-      <Navbar />
+  const HomePage = () => (
+    <>
       <Hero />
       <About />
       <Experience />
       <Projects />
       <Blog />
       <Contact />
-    </div>
+    </>
+  );
+
+  return (
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -3,32 +3,25 @@ import React from 'react';
 const Experience = () => {
   const experiences = [
     {
-      title: "Software Developer",
-      company: "Company Name",
-      period: "2023 - Present",
-      description: "Developed and maintained web applications using modern technologies. Collaborated with cross-functional teams to deliver high-quality software solutions.",
-      technologies: ["React", "Node.js", "Python", "AWS"]
+      title: "Software Engineer",
+      company: "BU Spark!",
+      period: "September 2024 - December 2024",
+      description: "Developed full-stack food waste platform using Django, JavaScript, and SQLite, connecting 500+ students and reducing campus waste by 10%. Built RESTful API with sub-100ms query times and deployed via CI/CD pipelines on Heroku. Implemented Auth0 authentication and Django security middleware, ensuring zero security incidents. Accelerated release by 1 week using Agile methodology in team of 5, contributing to 7 iterations.",
+      technologies: ["Django", "JavaScript", "SQLite", "RESTful API", "Auth0", "Heroku", "CI/CD"]
     },
     {
-      title: "Data Science Intern",
-      company: "Tech Company",
-      period: "2022 - 2023",
-      description: "Analyzed large datasets and built machine learning models to extract actionable insights. Created data visualizations and reports for stakeholders.",
-      technologies: ["Python", "Pandas", "Scikit-learn", "Tableau"]
-    },
-    {
-      title: "Web Development Intern",
-      company: "Startup Inc",
-      period: "2021 - 2022",
-      description: "Built responsive web applications and contributed to the development of user-facing features. Gained experience in agile development practices.",
-      technologies: ["JavaScript", "React", "CSS", "Git"]
+      title: "IT Consultant",
+      company: "Boston University Engineering IT",
+      period: "January 2024 - July 2025",
+      description: "Automated software deployment for 100+ devices using Microsoft Deployment Toolkit and created custom USB deployment solution for Windows 11, reducing deployment time by 40%. Managed 200+ user accounts and permissions via NAS, conducting access audits and boosting system uptime by 15%. Enhanced endpoint security with CrowdStrike for 50+ devices, resolving 20+ tickets/week with 100% incident resolution rate.",
+      technologies: ["Microsoft Deployment Toolkit", "Windows 11", "NAS", "CrowdStrike", "System Administration"]
     }
   ];
 
   return (
     <section id="experience" className="section">
       <div className="container">
-        <h2 className="section-title">experience</h2>
+        <h2 className="section-title">Experience</h2>
         <div className="experience-timeline">
           {experiences.map((exp, index) => (
             <div key={index} className="experience-item">

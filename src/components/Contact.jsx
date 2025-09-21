@@ -67,27 +67,27 @@ const Contact = () => {
   return (
     <section id="contact" className="section">
       <div className="container">
-        <h2 className="section-title">contact</h2>
+        <h2 className="section-title">Contact</h2>
         <div className="contact-content">
           <div className="contact-info">
-            <h3>get in touch</h3>
+            <h3>Get In Touch</h3>
             <p>
-              i'm always interested in new opportunities and exciting projects. 
-              feel free to reach out if you'd like to collaborate or just say hello!
+              I'm always interested in new opportunities and exciting projects. 
+              Feel free to reach out if you'd like to collaborate or just say hello!
             </p>
             <div className="contact-details">
               <div className="contact-item">
-                <strong>email:</strong>
+                <strong>Email:</strong>
                 <a href="mailto:shangminch@gmail.com">shangminch@gmail.com</a>
               </div>
               <div className="contact-item">
-                <strong>linkedin:</strong>
+                <strong>LinkedIn:</strong>
                 <a href="https://linkedin.com/in/shangmin-chen" target="_blank" rel="noopener noreferrer">
                   linkedin.com/in/shangmin-chen
                 </a>
               </div>
               <div className="contact-item">
-                <strong>github:</strong>
+                <strong>GitHub:</strong>
                 <a href="https://github.com/Shangmin-Chen" target="_blank" rel="noopener noreferrer">
                   github.com/Shangmin-Chen
                 </a>
@@ -145,12 +145,12 @@ const Contact = () => {
             </div>
             
             <button type="submit" className="submit-btn" disabled={isSubmitting}>
-              {isSubmitting ? 'sending...' : 'send message'}
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
             
             {submitStatus === 'success' && (
               <div className="success-message">
-                thank you! your message has been sent successfully.
+                Thank you! Your message has been sent successfully.
               </div>
             )}
             
