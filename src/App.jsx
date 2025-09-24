@@ -7,6 +7,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
+import CompetitiveProgramming from './components/CompetitiveProgramming';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
@@ -50,6 +51,7 @@ function App() {
       <About />
       <Experience />
       <Projects />
+      <CompetitiveProgramming />
       <Blog />
       <Contact />
     </>

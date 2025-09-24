@@ -40,19 +40,22 @@ const Navbar = () => {
         
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <button onClick={() => handleScrollToSection('about')} className="nav-link">
-            about
+            About
           </button>
           <button onClick={() => handleScrollToSection('experience')} className="nav-link">
-            experience
+            Experience
           </button>
           <button onClick={() => handleScrollToSection('projects')} className="nav-link">
-            projects
+            Projects
+          </button>
+          <button onClick={() => handleScrollToSection('competitive-programming')} className="nav-link">
+            Competitive Programming
           </button>
           <button onClick={() => handleScrollToSection('blog')} className="nav-link">
-            thoughts
+            Thoughts
           </button>
           <button onClick={() => handleScrollToSection('contact')} className="nav-link">
-            contact
+            Contact Me
           </button>
         </div>
 

@@ -95,7 +95,6 @@ body {
   transition: all 0.3s ease;
   font-weight: 300;
   letter-spacing: 0.3px;
-  text-transform: lowercase;
 }
 
 .nav-link:hover {
@@ -249,6 +248,10 @@ body {
   color: #666;
   line-height: 1.8;
   font-weight: 300;
+}
+
+.about-actions {
+  margin: 2rem 0;
 }
 
 .skills {
@@ -617,6 +620,297 @@ body {
   border-color: #1a1a1a;
 }
 
+/* Competitive Programming Section */
+.cp-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cp-description {
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  color: #666;
+  line-height: 1.8;
+  font-weight: 300;
+  text-align: left;
+}
+
+.submissions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.submission-card {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2rem;
+  transition: none;
+}
+
+.submission-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.submission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.problem-info {
+  flex: 1;
+}
+
+.problem-name {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.2px;
+  line-height: 1.4;
+}
+
+.problem-link {
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.problem-link:hover {
+  border-bottom-color: #1a1a1a;
+}
+
+.problem-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.problem-rating {
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 0;
+}
+
+.contest-id {
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+.verdict {
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submission-details {
+  margin-bottom: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.detail-label {
+  color: #888;
+  font-weight: 300;
+}
+
+.detail-value {
+  color: #666;
+  font-weight: 300;
+}
+
+.problem-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: transparent;
+  color: #888;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid #ddd;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+}
+
+.cp-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.cp-note {
+  color: #666;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.cp-link {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 400;
+  border-bottom: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.cp-link:hover {
+  border-bottom-color: #1a1a1a;
+}
+
+.cp-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+.submissions-section h3,
+.contests-section h3 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  letter-spacing: -0.2px;
+}
+
+/* Rating Graph Styles */
+.rating-graph {
+  margin-bottom: 2rem;
+}
+
+.rating-graph h3 {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.1px;
+}
+
+.graph-container {
+  position: relative;
+  height: 140px;
+  margin: 1rem 0;
+  background: transparent;
+}
+
+/* Custom tooltip styles */
+.custom-tooltip {
+  background: #1a1a1a;
+  border-radius: 2px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip-label {
+  color: #fafafa;
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin: 0 0 0.25rem 0;
+}
+
+.tooltip-rating {
+  color: #fafafa;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Contest Cards */
+.contests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contest-card {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
+}
+
+.contest-header {
+  margin-bottom: 1rem;
+}
+
+.contest-name {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.1px;
+}
+
+.contest-link {
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.contest-link:hover {
+  border-bottom-color: #1a1a1a;
+}
+
+.contest-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #888;
+  font-weight: 300;
+}
+
+.rating-change {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.old-rating {
+  color: #888;
+}
+
+.arrow {
+  color: #666;
+}
+
+.new-rating {
+  font-weight: 400;
+}
+
+.rating-delta {
+  color: #666;
+  font-size: 0.8rem;
+}
+
 /* Blog Post Page Styles */
 .blog-post-container {
   min-height: 100vh;
@@ -769,8 +1063,14 @@ body {
   }
 
   .projects-grid,
-  .blog-grid {
+  .blog-grid,
+  .submissions-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cp-sections {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .hero-buttons {
@@ -818,7 +1118,9 @@ body {
 
   .experience-item,
   .project-card,
-  .blog-card {
+  .blog-card,
+  .submission-card,
+  .contest-card {
     padding-bottom: 1.5rem;
   }
 

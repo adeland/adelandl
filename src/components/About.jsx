@@ -1,6 +1,11 @@
 import React from 'react';
+import { scrollToSection } from '../utils/scrollUtils';
 
 const About = () => {
+  const handleScrollToSection = (sectionId) => {
+    scrollToSection(sectionId);
+  };
+
   return (
     <section id="about" className="section">
       <div className="container">
@@ -14,6 +19,19 @@ const About = () => {
               Full-stack developer with a passion for ML/AI integration. Always exploring new ways 
               to solve problems through elegant code and thoughtful design.
             </p>
+            <p>
+              I also enjoy competitive programming and solving algorithmic challenges on platforms like Codeforces. 
+              It's a great way to sharpen problem-solving skills and think algorithmically.
+            </p>
+            <div className="about-actions">
+              <button 
+                className="btn btn-secondary" 
+                onClick={() => handleScrollToSection('competitive-programming')}
+              >
+                View My Submissions
+              </button>
+            </div>
+            
             <div className="skills">
               <h3>Skills</h3>
               <div className="skills-grid">
