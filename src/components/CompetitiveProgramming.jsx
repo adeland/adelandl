@@ -314,7 +314,7 @@ const CompetitiveProgramming = () => {
           
           <div className="cp-footer">
             <p className="cp-note">
-              View more submissions on my{' '}
+              View more on my{' '}
               <a 
                 href="https://codeforces.com/profile/Znoheart" 
                 target="_blank" 
