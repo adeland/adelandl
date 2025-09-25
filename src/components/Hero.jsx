@@ -14,7 +14,7 @@ const Hero = () => {
           Hello, I'm <span className="highlight">Shangmin Chen</span>
         </h1>
         <p className="hero-subtitle">
-          Software Engineer
+          Computer Science Student at Boston University
         </p>
         <p className="hero-description">
           I build beautiful applications with ML and AI when I see a need or problem worth solving.
