@@ -1,0 +1,213 @@
+/* Competitive Programming Component Styles */
+
+.cp-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cp-description {
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-weight: 300;
+  text-align: left;
+}
+
+.submissions-section h3,
+.contests-section h3 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  letter-spacing: -0.2px;
+}
+
+.submission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.problem-info {
+  flex: 1;
+}
+
+.problem-name {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.2px;
+  line-height: 1.4;
+}
+
+.problem-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.problem-link:hover {
+  border-bottom-color: var(--text-primary);
+}
+
+.problem-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contest-id {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+.submission-details {
+  margin-bottom: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.detail-label {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.detail-value {
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.cp-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.cp-note {
+  color: var(--text-secondary);
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.cp-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 400;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.cp-link:hover {
+  border-bottom-color: var(--text-primary);
+}
+
+/* Rating Graph Styles */
+.rating-graph {
+  margin-bottom: 2rem;
+}
+
+.rating-graph h3 {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.1px;
+}
+
+.graph-container {
+  position: relative;
+  height: 140px;
+  margin: 1rem 0;
+  background: transparent;
+}
+
+/* Custom tooltip styles */
+.custom-tooltip {
+  background: var(--text-primary);
+  border-radius: 2px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip-label {
+  color: var(--bg-primary);
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin: 0 0 0.25rem 0;
+}
+
+.tooltip-rating {
+  color: var(--bg-primary);
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Contest Cards */
+.contest-header {
+  margin-bottom: 1rem;
+}
+
+.contest-name {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.1px;
+}
+
+.contest-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.contest-link:hover {
+  border-bottom-color: var(--text-primary);
+}
+
+.contest-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.rating-change {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.old-rating {
+  color: var(--text-muted);
+}
+
+.arrow {
+  color: var(--text-secondary);
+}
+
+.new-rating {
+  font-weight: 400;
+}
+
+.rating-delta {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}

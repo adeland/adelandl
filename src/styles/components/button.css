@@ -1,0 +1,63 @@
+/* Button Component Styles */
+
+.btn {
+  padding: 12px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 0.3px;
+  text-transform: lowercase;
+}
+
+.btn-primary {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--text-secondary);
+  border-color: var(--text-secondary);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.submit-btn {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 0.8rem 2rem;
+  border: 1px solid var(--text-primary);
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  letter-spacing: 0.3px;
+  text-transform: lowercase;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--text-secondary);
+  border-color: var(--text-secondary);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

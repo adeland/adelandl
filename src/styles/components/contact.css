@@ -1,0 +1,43 @@
+/* Contact Component Styles */
+
+.contact-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 300;
+  letter-spacing: -0.2px;
+}
+
+.contact-info p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-item strong {
+  color: var(--text-primary);
+  font-weight: 300;
+}
+
+.contact-item a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.contact-item a:hover {
+  color: var(--text-primary);
+}

@@ -1,0 +1,27 @@
+/* Main CSS Index - Imports all modular styles */
+
+/* Base Styles */
+@import './base/reset.css';
+@import './base/variables.css';
+@import './base/typography.css';
+
+/* Layout Styles */
+@import './layouts/container.css';
+@import './layouts/grid.css';
+
+/* Component Styles */
+@import './components/button.css';
+@import './components/card.css';
+@import './components/tag.css';
+@import './components/form.css';
+@import './components/navbar.css';
+@import './components/theme-toggle.css';
+@import './components/about.css';
+@import './components/experience.css';
+@import './components/projects.css';
+@import './components/blog.css';
+@import './components/contact.css';
+@import './components/competitive-programming.css';
+
+/* Utility Styles */
+@import './utils/responsive.css';

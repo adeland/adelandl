@@ -1,0 +1,65 @@
+/* Card Component Styles */
+
+.project-card {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: none;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 2rem;
+}
+
+.project-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.blog-card {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: none;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 2rem;
+}
+
+.blog-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.submission-card {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 2rem;
+  transition: none;
+}
+
+.submission-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.contest-card {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 1.5rem;
+}
+
+.experience-item {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 3rem;
+  border-left: 1px solid var(--border-color);
+  padding-left: 2rem;
+}

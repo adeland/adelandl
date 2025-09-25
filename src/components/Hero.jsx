@@ -1,5 +1,6 @@
 import React from 'react';
 import { scrollToSection } from '../utils/scrollUtils';
+import Button from './ui/Button';
 
 const Hero = () => {
   const handleScrollToSection = (sectionId) => {
@@ -19,18 +20,18 @@ const Hero = () => {
           I build beautiful applications with ML and AI when I see a need or problem worth solving.
         </p>
         <div className="hero-buttons">
-          <button 
-            className="btn btn-primary" 
+          <Button 
+            variant="primary" 
             onClick={() => handleScrollToSection('projects')}
           >
             View My Work
-          </button>
-          <button 
-            className="btn btn-secondary" 
+          </Button>
+          <Button 
+            variant="secondary" 
             onClick={() => handleScrollToSection('contact')}
           >
             Get In Touch
-          </button>
+          </Button>
         </div>
       </div>
     </section>

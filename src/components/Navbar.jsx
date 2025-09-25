@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { scrollToSection } from '../utils/scrollUtils';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const handleScrollToSection = (sectionId) => {
     // If we're on a blog page, navigate to home first, then scroll
@@ -59,10 +61,19 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+        <div className="nav-controls">
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
+            <span className={`toggle-icon ${isDarkMode ? 'moon' : 'sun'}`}>
+              {isDarkMode ? '🌙' : '☀️'}
+            </span>
+            <div className={`toggle-slider ${isDarkMode ? 'active' : ''}`}></div>
+          </button>
+          
+          <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
         </div>
       </div>
     </nav>

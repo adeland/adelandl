@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { sendEmail } from '../utils/emailService';
+import FormField from './ui/FormField';
+import Button from './ui/Button';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -96,57 +98,46 @@ const Contact = () => {
           </div>
           
           <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
+            <FormField
+              label="Name"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
             
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
+            <FormField
+              label="Email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
             
-            <div className="form-group">
-              <label htmlFor="subject">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-              />
-            </div>
+            <FormField
+              label="Subject"
+              type="text"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+            />
             
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows="5"
-                required
-              ></textarea>
-            </div>
+            <FormField
+              label="Message"
+              type="textarea"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={5}
+              required
+            />
             
-            <button type="submit" className="submit-btn" disabled={isSubmitting}>
+            <Button type="submit" variant="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send Message'}
-            </button>
+            </Button>
             
             {submitStatus === 'success' && (
               <div className="success-message">

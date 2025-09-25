@@ -1,5 +1,8 @@
 import React from 'react';
 import { scrollToSection } from '../utils/scrollUtils';
+import { skills } from '../data/skills';
+import Tag from './ui/Tag';
+import Button from './ui/Button';
 
 const About = () => {
   const handleScrollToSection = (sectionId) => {
@@ -24,25 +27,20 @@ const About = () => {
               It's a great way to sharpen problem-solving skills and think algorithmically.
             </p>
             <div className="about-actions">
-              <button 
-                className="btn btn-secondary" 
+              <Button 
+                variant="secondary" 
                 onClick={() => handleScrollToSection('competitive-programming')}
               >
                 View My Submissions
-              </button>
+              </Button>
             </div>
             
             <div className="skills">
               <h3>Skills</h3>
               <div className="skills-grid">
-                <span className="skill-tag">React</span>
-                <span className="skill-tag">JavaScript</span>
-                <span className="skill-tag">Python</span>
-                <span className="skill-tag">Node.js</span>
-                <span className="skill-tag">Machine Learning</span>
-                <span className="skill-tag">AI Integration</span>
-                <span className="skill-tag">Full-Stack Development</span>
-                <span className="skill-tag">Git</span>
+                {skills.map((skill, index) => (
+                  <Tag key={index} variant="skill">{skill}</Tag>
+                ))}
               </div>
             </div>
           </div>
