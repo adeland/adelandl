@@ -1,201 +1,222 @@
 export const blogPosts = [
   {
     id: 1,
-    title: "The Future of Full-Stack Development",
-    excerpt: "Exploring the evolving landscape of full-stack development, from microservices architecture to the rise of edge computing and how it's reshaping how we build applications.",
-    date: "2024-12-19",
-    readTime: "6 min read",
-    category: "Development",
-    slug: "future-fullstack-development"
-  },
-  {
-    id: 2,
-    title: "Building Scalable React Applications",
-    excerpt: "Best practices for structuring React applications that can grow with your team and requirements. Learn about component architecture, state management, and performance optimization.",
-    date: "2024-12-18",
-    readTime: "8 min read",
-    category: "React",
-    slug: "scalable-react-applications"
-  },
-  {
-    id: 3,
-    title: "My Journey into Blockchain Development",
-    excerpt: "From smart contracts to decentralized applications, sharing my experience learning Solidity and building on Ethereum. The challenges, breakthroughs, and lessons learned.",
-    date: "2024-12-17",
-    readTime: "7 min read",
-    category: "Blockchain",
-    slug: "blockchain-development-journey"
-  },
-  {
-    id: 4,
-    title: "Data Science in the Modern World",
-    excerpt: "How data science is transforming industries and what it means for the future of technology. From machine learning pipelines to real-time analytics and beyond.",
-    date: "2024-12-16",
-    readTime: "5 min read",
-    category: "Data Science",
-    slug: "data-science-modern-world"
-  },
-  {
-    id: 5,
-    title: "Career Advice for New Developers",
-    excerpt: "Practical tips for landing your first tech job, building a strong portfolio, and navigating the early stages of a software development career.",
-    date: "2024-12-15",
-    readTime: "4 min read",
-    category: "Career",
-    slug: "career-advice-new-developers"
+    title: "Complete Guide: Host Your Personal Website for Free with Namecheap and GitHub Pages",
+    excerpt: "A step-by-step tutorial for university students on how to get a free domain through GitHub Education and host your personal website using GitHub Pages. Includes all the links and resources you need.",
+    date: "2024-12-20",
+    readTime: "10 min read",
+    category: "Tutorial",
+    slug: "free-website-namecheap-github-pages"
   }
 ];
 
 export const blogPostContent = {
-  'future-fullstack-development': {
+  'free-website-namecheap-github-pages': {
     id: 1,
-    title: "The Future of Full-Stack Development",
-    date: "2024-12-19",
-    readTime: "6 min read",
-    category: "Development",
-    slug: "future-fullstack-development",
+    title: "Complete Guide: Host Your Personal Website for Free with Namecheap and GitHub Pages",
+    date: "2024-12-20",
+    readTime: "10 min read",
+    category: "Tutorial",
+    slug: "free-website-namecheap-github-pages",
     content: `
-      <p>The landscape of full-stack development is evolving rapidly, and as someone who's been building applications across the entire stack, I've witnessed some fascinating shifts that are reshaping how we approach software development.</p>
+      <p>As a university student, having your own personal website with a custom domain is one of the best ways to showcase your projects, build your portfolio, and establish your online presence – all for free! This tutorial will walk you through exactly how to get a free domain from Namecheap through the GitHub Education program and host it on GitHub Pages.</p>
 
-      <h2>The Rise of Edge Computing</h2>
-      <p>One of the most significant changes I've observed is the shift toward edge computing. Traditional full-stack applications relied heavily on centralized servers, but we're now seeing a move toward distributed architectures that bring computation closer to users.</p>
+      <h2>Why University Students Should Do This</h2>
+      <p>Having your own website with a custom domain (like <code>yourname.com</code>) is incredibly valuable for university students. It helps you:</p>
+      <ul>
+        <li>Build your professional portfolio</li>
+        <li>Showcase your projects and coursework</li>
+        <li>Learn industry-standard tools (Git, GitHub, domain management)</li>
+        <li>Stand out to potential employers and graduate programs</li>
+        <li>Create something tangible you can share with friends and family</li>
+      </ul>
 
-      <h3>Microservices Architecture</h3>
-      <p>Microservices have become the de facto standard for building scalable applications. In my experience with projects like the audio transcription platform, breaking down monolithic applications into smaller, focused services has dramatically improved maintainability and deployment flexibility.</p>
+      <h2>Prerequisites</h2>
+      <p>Before we begin, make sure you have:</p>
+      <ul>
+        <li>A GitHub account (create one free at <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">github.com/signup</a>)</li>
+        <li>A valid university email address (ending in .edu or your university's domain)</li>
+        <li>Basic familiarity with Git (we'll cover the essentials)</li>
+        <li>Basic HTML/CSS knowledge (or you can use a static site generator like Jekyll, Hugo, or even React)</li>
+      </ul>
 
-      <h2>Modern Development Practices</h2>
-      <p>The tools and practices we use today are fundamentally different from just a few years ago. Containerization with Docker, CI/CD pipelines, and infrastructure as code have become essential skills for any full-stack developer.</p>
+      <h2>Step 1: Apply for GitHub Student Developer Pack</h2>
+      <p>The GitHub Student Developer Pack gives you free access to tons of developer tools, including a free Namecheap domain. Here's how to get it:</p>
+      
+      <ol>
+        <li>Visit the <a href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer">GitHub Education Student Developer Pack page</a></li>
+        <li>Click "Get your pack" or "Get benefits"</li>
+        <li>Sign in with your GitHub account</li>
+        <li>Fill out the application form:
+          <ul>
+            <li>Select "Student" as your status</li>
+            <li>Enter your university email address</li>
+            <li>Upload proof of enrollment (student ID, enrollment letter, or transcript)</li>
+            <li>Explain how you plan to use GitHub (e.g., "Learning web development and building projects")</li>
+          </ul>
+        </li>
+        <li>Submit your application</li>
+      </ol>
 
-      <h3>Database Evolution</h3>
-      <p>From traditional SQL databases to NoSQL solutions and now to distributed databases, the way we handle data has evolved significantly. Understanding when to use PostgreSQL vs MongoDB vs Redis has become crucial for building efficient applications.</p>
+      <p><strong>Note:</strong> Verification usually takes 1-3 business days. You'll receive an email once your application is approved.</p>
 
-      <h2>Looking Ahead</h2>
-      <p>As we move forward, I believe we'll see even more integration between frontend and backend technologies, with frameworks like Next.js blurring the lines between client and server-side development.</p>
-    `
-  },
-  'scalable-react-applications': {
-    id: 2,
-    title: "Building Scalable React Applications",
-    date: "2024-12-18",
-    readTime: "8 min read",
-    category: "React",
-    slug: "scalable-react-applications",
-    content: `
-      <p>Building React applications that can scale with your team and requirements is both an art and a science. Through my experience developing various React projects, I've learned valuable lessons about architecture, performance, and maintainability.</p>
+      <p>Once approved, you'll have access to the <a href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer">GitHub Education benefits page</a> where you can claim various offers, including the Namecheap domain.</p>
 
-      <h2>Component Architecture</h2>
-      <p>The foundation of any scalable React application lies in its component architecture. I've found that following a consistent folder structure and component hierarchy makes a world of difference as projects grow.</p>
+      <h2>Step 2: Claim Your Free Namecheap Domain</h2>
+      <p>After your GitHub Education application is approved:</p>
+      
+      <ol>
+        <li>Go back to your <a href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer">GitHub Education benefits page</a></li>
+        <li>Find the "Namecheap" offer in the list of benefits</li>
+        <li>Click "Get access" or the Namecheap link</li>
+        <li>You'll be redirected to Namecheap with a special education discount code</li>
+        <li>Create a Namecheap account if you don't have one (free to sign up at <a href="https://www.namecheap.com/myaccount/signup/" target="_blank" rel="noopener noreferrer">namecheap.com</a>)</li>
+        <li>Search for your desired domain name</li>
+        <li>Add it to your cart and apply the education discount code (this makes the domain free for the first year)</li>
+        <li>Complete the checkout process</li>
+      </ol>
 
-      <h3>State Management Strategies</h3>
-      <p>Choosing the right state management solution can make or break your application's scalability. While React's built-in state management works well for smaller applications, larger projects often benefit from solutions like Redux Toolkit or Zustand.</p>
+      <p><strong>Pro Tip:</strong> Keep your domain name professional and simple. Common choices include:
+      <ul>
+        <li><code>firstnamelastname.com</code></li>
+        <li><code>yourname.dev</code></li>
+        <li><code>yourname.io</code></li>
+      </ul>
+      </p>
 
-      <h2>Performance Optimization</h2>
-      <p>Performance becomes critical as applications scale. Techniques like code splitting, lazy loading, and memoization have been essential in keeping my applications fast and responsive.</p>
+      <p>For more information about the Namecheap student offer, check the <a href="https://www.namecheap.com/github-students/" target="_blank" rel="noopener noreferrer">Namecheap GitHub Student page</a>.</p>
 
-      <h3>Bundle Size Optimization</h3>
-      <p>One of the biggest challenges in scaling React applications is managing bundle size. Using tools like Webpack Bundle Analyzer and implementing tree shaking can significantly reduce your application's footprint.</p>
+      <h2>Step 3: Create a GitHub Repository</h2>
+      <p>Now let's set up your website repository on GitHub:</p>
+      
+      <ol>
+        <li>Go to <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">github.com/new</a> to create a new repository</li>
+        <li>Name your repository <code>yourusername.github.io</code> (replace "yourusername" with your actual GitHub username)
+          <ul>
+            <li>For example, if your username is <code>johndoe</code>, name it <code>johndoe.github.io</code></li>
+            <li>This special naming convention is what makes GitHub Pages work!</li>
+          </ul>
+        </li>
+        <li>Make the repository public (required for free GitHub Pages)</li>
+        <li>Check "Add a README file"</li>
+        <li>Click "Create repository"</li>
+      </ol>
 
-      <h2>Testing Strategies</h2>
-      <p>A robust testing strategy is crucial for maintaining code quality as applications grow. I've found that a combination of unit tests, integration tests, and end-to-end tests provides the best coverage.</p>
+      <h2>Step 4: Set Up GitHub Pages</h2>
+      <p>Now let's enable GitHub Pages and add your website content:</p>
+      
+      <ol>
+        <li>In your repository, go to <strong>Settings</strong> (top right of the repository page)</li>
+        <li>Scroll down to the <strong>Pages</strong> section in the left sidebar</li>
+        <li>Under "Source", select <strong>Deploy from a branch</strong></li>
+        <li>Choose the <code>main</code> branch (or <code>master</code> if that's your default branch)</li>
+        <li>Select <code>/ (root)</code> as the folder</li>
+        <li>Click <strong>Save</strong></li>
+      </ol>
 
-      <h2>Best Practices</h2>
-      <p>Some key practices I've learned include keeping components small and focused, using custom hooks for reusable logic, and implementing proper error boundaries for graceful error handling.</p>
-    `
-  },
-  'blockchain-development-journey': {
-    id: 3,
-    title: "My Journey into Blockchain Development",
-    date: "2024-12-17",
-    readTime: "7 min read",
-    category: "Blockchain",
-    slug: "blockchain-development-journey",
-    content: `
-      <p>My foray into blockchain development began with curiosity about decentralized applications and has evolved into a deep understanding of smart contracts, Web3, and the broader ecosystem. It's been a challenging but incredibly rewarding journey.</p>
+      <p>GitHub will now automatically build and deploy your site! It will be available at <code>https://yourusername.github.io</code> within a few minutes.</p>
 
-      <h2>Getting Started with Solidity</h2>
-      <p>Learning Solidity was like learning a new programming paradigm. Coming from traditional web development, the concepts of immutable code, gas optimization, and decentralized execution were initially foreign but fascinating.</p>
+      <h3>Adding Your Website Content</h3>
+      <p>You can add your website files in several ways:</p>
+      
+      <p><strong>Option A: Using GitHub's Web Interface</strong></p>
+      <ol>
+        <li>In your repository, click "Add file" → "Create new file"</li>
+        <li>Name it <code>index.html</code></li>
+        <li>Add your HTML content (you can start with a simple template)</li>
+        <li>Click "Commit new file"</li>
+      </ol>
 
-      <h3>Smart Contract Development</h3>
-      <p>Building my first smart contracts taught me the importance of security and gas efficiency. Every line of code costs money to execute, which fundamentally changes how you approach programming.</p>
+      <p><strong>Option B: Using Git (Recommended)</strong></p>
+      <ol>
+        <li>Clone your repository locally: <code>git clone https://github.com/yourusername/yourusername.github.io.git</code></li>
+        <li>Create your HTML/CSS/JS files</li>
+        <li>Add and commit: <code>git add .</code> then <code>git commit -m "Initial website"</code></li>
+        <li>Push to GitHub: <code>git push origin main</code></li>
+      </ol>
 
-      <h2>The Decentralized ML Marketplace Project</h2>
-      <p>One of my most ambitious projects was building a decentralized ML model marketplace. This project combined smart contracts with IPFS storage and zero-knowledge proofs, teaching me about the complexity of building truly decentralized applications.</p>
+      <p>For detailed GitHub Pages documentation, check the <a href="https://docs.github.com/en/pages" target="_blank" rel="noopener noreferrer">official GitHub Pages docs</a>.</p>
 
-      <h3>Challenges Faced</h3>
-      <p>The biggest challenges included understanding gas optimization, implementing secure voting mechanisms, and integrating with external services while maintaining decentralization principles.</p>
+      <h2>Step 5: Connect Your Custom Domain to GitHub Pages</h2>
+      <p>Now for the exciting part – connecting your Namecheap domain to your GitHub Pages site!</p>
 
-      <h2>Web3 Integration</h2>
-      <p>Integrating Web3 functionality into traditional web applications requires a different mindset. Users need to connect their wallets, sign transactions, and understand gas fees – all new concepts for most users.</p>
+      <h3>5.1: Configure GitHub Pages for Custom Domain</h3>
+      <ol>
+        <li>In your GitHub repository, go to <strong>Settings</strong> → <strong>Pages</strong></li>
+        <li>Under "Custom domain", enter your domain name (e.g., <code>yourname.com</code>)</li>
+        <li>Click <strong>Save</strong></li>
+        <li>GitHub will create a <code>CNAME</code> file in your repository (you can see it in your repo files)</li>
+      </ol>
 
-      <h2>Lessons Learned</h2>
-      <p>Blockchain development has taught me the importance of thorough testing, security audits, and user education. The immutable nature of smart contracts means bugs can be costly, making proper development practices even more critical.</p>
+      <h3>5.2: Configure DNS Settings in Namecheap</h3>
+      <p>Now you need to point your domain to GitHub Pages:</p>
+      
+      <ol>
+        <li>Log into your <a href="https://www.namecheap.com/myaccount/login/" target="_blank" rel="noopener noreferrer">Namecheap account</a></li>
+        <li>Go to <strong>Domain List</strong> and click <strong>Manage</strong> next to your domain</li>
+        <li>Go to the <strong>Advanced DNS</strong> tab</li>
+        <li>Add these DNS records:
+          <ul>
+            <li><strong>Type:</strong> A Record | <strong>Host:</strong> @ | <strong>Value:</strong> 185.199.108.153 | <strong>TTL:</strong> Automatic</li>
+            <li><strong>Type:</strong> A Record | <strong>Host:</strong> @ | <strong>Value:</strong> 185.199.109.153 | <strong>TTL:</strong> Automatic</li>
+            <li><strong>Type:</strong> A Record | <strong>Host:</strong> @ | <strong>Value:</strong> 185.199.110.153 | <strong>TTL:</strong> Automatic</li>
+            <li><strong>Type:</strong> A Record | <strong>Host:</strong> @ | <strong>Value:</strong> 185.199.111.153 | <strong>TTL:</strong> Automatic</li>
+            <li><strong>Type:</strong> CNAME Record | <strong>Host:</strong> www | <strong>Value:</strong> yourusername.github.io | <strong>TTL:</strong> Automatic</li>
+          </ul>
+        </li>
+        <li>Click the checkmark to save each record</li>
+      </ol>
 
-      <h2>Future of Blockchain Development</h2>
-      <p>I believe we're still in the early stages of blockchain development. As the technology matures, we'll see better developer tools, improved user experiences, and more practical applications beyond cryptocurrency.</p>
-    `
-  },
-  'data-science-modern-world': {
-    id: 4,
-    title: "Data Science in the Modern World",
-    date: "2024-12-16",
-    readTime: "5 min read",
-    category: "Data Science",
-    slug: "data-science-modern-world",
-    content: `
-      <p>Data science has become the backbone of modern decision-making across industries. From my experience working on projects like the crime analytics platform, I've seen firsthand how data can transform our understanding of complex problems.</p>
+      <p><strong>Note:</strong> Replace <code>yourusername</code> with your actual GitHub username in the CNAME record.</p>
 
-      <h2>The Power of Time-Series Analysis</h2>
-      <p>Working with 500K+ Boston crime records taught me the importance of time-series analysis. Using tools like Prophet for forecasting and DBSCAN for clustering revealed patterns that weren't immediately obvious in raw data.</p>
+      <p>For more detailed DNS configuration help, check <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site" target="_blank" rel="noopener noreferrer">GitHub's custom domain documentation</a>.</p>
 
-      <h3>Machine Learning Pipelines</h3>
-      <p>Building robust machine learning pipelines requires careful consideration of data preprocessing, feature engineering, and model validation. The crime analytics project demonstrated how proper pipeline design can handle large datasets efficiently.</p>
+      <h3>5.3: Enable HTTPS (Recommended)</h3>
+      <ol>
+        <li>Wait for DNS propagation (can take up to 48 hours, but usually 15-30 minutes)</li>
+        <li>Once your domain is connected, go back to your repository <strong>Settings</strong> → <strong>Pages</strong></li>
+        <li>Check <strong>Enforce HTTPS</strong> (this may take a few minutes to become available)</li>
+        <li>This ensures your site is secure and uses HTTPS!</li>
+      </ol>
 
-      <h2>Data Visualization</h2>
-      <p>Creating meaningful visualizations is crucial for making data insights accessible. Using tools like Plotly and Folium, I was able to create interactive maps and charts that made complex crime patterns understandable to non-technical stakeholders.</p>
+      <h2>Step 6: Verify Everything Works</h2>
+      <p>Once DNS has propagated (check with a tool like <a href="https://dnschecker.org/" target="_blank" rel="noopener noreferrer">dnschecker.org</a>):</p>
+      
+      <ul>
+        <li>Visit your custom domain: <code>https://yourname.com</code></li>
+        <li>Verify HTTPS is working (you should see a lock icon in your browser)</li>
+        <li>Test both <code>yourname.com</code> and <code>www.yourname.com</code></li>
+      </ul>
 
-      <h3>Geospatial Analysis</h3>
-      <p>Working with GeoPandas opened my eyes to the power of geospatial analysis. Understanding spatial relationships in data can reveal insights that traditional analysis methods might miss.</p>
+      <h2>Additional Resources</h2>
+      <ul>
+        <li><a href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer">GitHub Student Developer Pack</a> – Claim all your free student benefits</li>
+        <li><a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages Official Site</a> – Learn more about GitHub Pages</li>
+        <li><a href="https://docs.github.com/en/pages" target="_blank" rel="noopener noreferrer">GitHub Pages Documentation</a> – Comprehensive guide</li>
+        <li><a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-to-configure-a-records-for-your-domain/" target="_blank" rel="noopener noreferrer">Namecheap A Record Setup Guide</a> – Detailed DNS configuration</li>
+        <li><a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> – Popular static site generator that works great with GitHub Pages</li>
+      </ul>
 
-      <h2>Real-World Applications</h2>
-      <p>Data science isn't just about algorithms and models – it's about solving real problems. The crime analytics platform showed me how data science can contribute to public safety and urban planning.</p>
+      <h2>Troubleshooting</h2>
+      <p><strong>My domain isn't working yet:</strong> DNS changes can take up to 48 hours to propagate globally. Be patient and check back later.</p>
+      
+      <p><strong>HTTPS isn't available:</strong> Make sure your DNS is fully propagated first. Sometimes it takes a few hours after connecting your domain for HTTPS to become available.</p>
+      
+      <p><strong>GitHub Education application rejected:</strong> Make sure you uploaded clear proof of enrollment. You can reapply if needed.</p>
 
-      <h2>Future Trends</h2>
-      <p>As we move forward, I expect to see more integration between data science and real-time systems, with streaming analytics becoming increasingly important for decision-making.</p>
-    `
-  },
-  'career-advice-new-developers': {
-    id: 5,
-    title: "Career Advice for New Developers",
-    date: "2024-12-15",
-    readTime: "4 min read",
-    category: "Career",
-    slug: "career-advice-new-developers",
-    content: `
-      <p>Starting a career in software development can feel overwhelming, but with the right approach and mindset, it's an incredibly rewarding journey. Based on my experiences from internships to full-time positions, here are some practical tips for new developers.</p>
+      <h2>Next Steps</h2>
+      <p>Congratulations! You now have your own custom domain and free hosting. Here's what you can do next:</p>
+      <ul>
+        <li>Build a personal portfolio showcasing your projects</li>
+        <li>Start a blog about your coding journey</li>
+        <li>Create a resume website</li>
+        <li>Experiment with different web technologies and frameworks</li>
+        <li>Share your site with friends, family, and potential employers!</li>
+      </ul>
 
-      <h2>Building Your Portfolio</h2>
-      <p>Your portfolio is your first impression. Focus on quality over quantity – a few well-executed projects that demonstrate your skills are better than many incomplete ones. Include projects that show different aspects of your abilities.</p>
+      <p>Remember, your domain is free for the first year through the GitHub Education program. When it's time to renew, you can continue with Namecheap at their regular student rates, or transfer it elsewhere if you prefer.</p>
 
-      <h3>Document Your Process</h3>
-      <p>Don't just show the final product; document your thought process, challenges faced, and solutions implemented. This gives potential employers insight into how you approach problems.</p>
-
-      <h2>Continuous Learning</h2>
-      <p>The tech industry evolves rapidly, and staying current is crucial. Set aside time each week for learning new technologies, reading industry blogs, and experimenting with new tools.</p>
-
-      <h3>Open Source Contributions</h3>
-      <p>Contributing to open source projects is an excellent way to improve your skills, build your network, and demonstrate your abilities to potential employers.</p>
-
-      <h2>Networking and Community</h2>
-      <p>Building relationships in the tech community is invaluable. Attend meetups, join online communities, and don't be afraid to reach out to developers you admire.</p>
-
-      <h2>Interview Preparation</h2>
-      <p>Technical interviews can be challenging, but preparation is key. Practice coding problems, review fundamental concepts, and be ready to explain your projects in detail.</p>
-
-      <h2>Finding Your First Role</h2>
-      <p>Don't limit yourself to traditional job boards. Many opportunities come through networking, internships, and direct outreach to companies you're interested in.</p>
-
-      <h2>Final Thoughts</h2>
-      <p>Remember that everyone starts somewhere. Focus on learning, building, and growing, and the opportunities will follow.</p>
+      <p>Happy building! ��</p>
     `
   }
 };
