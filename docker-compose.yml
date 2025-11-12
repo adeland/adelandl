@@ -5,9 +5,9 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - REACT_APP_EMAILJS_SERVICE_ID=${REACT_APP_EMAILJS_SERVICE_ID}
-        - REACT_APP_EMAILJS_TEMPLATE_ID=${REACT_APP_EMAILJS_TEMPLATE_ID}
-        - REACT_APP_EMAILJS_PUBLIC_KEY=${REACT_APP_EMAILJS_PUBLIC_KEY}
+        - REACT_APP_EMAILJS_SERVICE_ID
+        - REACT_APP_EMAILJS_TEMPLATE_ID
+        - REACT_APP_EMAILJS_PUBLIC_KEY
     container_name: shangmin-portfolio
     ports:
       - "3000:3000"
