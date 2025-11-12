@@ -1,20 +1,20 @@
-version: '3.8'
-
 services:
+  # Portfolio Website
   web:
     build:
       context: .
       dockerfile: Dockerfile
-      # Uncomment and set these if you need to pass build-time environment variables
       args:
         - REACT_APP_EMAILJS_SERVICE_ID=${REACT_APP_EMAILJS_SERVICE_ID}
         - REACT_APP_EMAILJS_TEMPLATE_ID=${REACT_APP_EMAILJS_TEMPLATE_ID}
         - REACT_APP_EMAILJS_PUBLIC_KEY=${REACT_APP_EMAILJS_PUBLIC_KEY}
-    ports:
-      - "3000:80"
     container_name: shangmin-portfolio
-    restart: unless-stopped
-    # Uncomment if you want to mount a .env file
+    ports:
+      - "3000:3000"
     env_file:
       - .env
+    restart: unless-stopped
 
+networks:
+  default:
+    name: shangmin-me
