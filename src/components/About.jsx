@@ -23,13 +23,13 @@ const About = () => {
               to solve problems through elegant code and thoughtful design.
             </p>
             <p>
-              I also enjoy competitive programming and solving algorithmic challenges on platforms like Codeforces. 
+              I also enjoy solving problems on Codeforces and participating in algorithmic contests. 
               It's a great way to sharpen problem-solving skills and think algorithmically.
             </p>
             <div className="about-actions">
               <Button 
                 variant="secondary" 
-                onClick={() => handleScrollToSection('competitive-programming')}
+                onClick={() => handleScrollToSection('codeforces')}
               >
                 View My Submissions
               </Button>

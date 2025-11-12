@@ -50,8 +50,8 @@ const Navbar = () => {
           <button onClick={() => handleScrollToSection('projects')} className="nav-link">
             Projects
           </button>
-          <button onClick={() => handleScrollToSection('competitive-programming')} className="nav-link">
-            Competitive Programming
+          <button onClick={() => handleScrollToSection('codeforces')} className="nav-link">
+            Codeforces
           </button>
           <button onClick={() => handleScrollToSection('blog')} className="nav-link">
             Thoughts

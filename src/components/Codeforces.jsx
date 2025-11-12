@@ -5,14 +5,14 @@ import RatingGraph from './charts/RatingGraph';
 import Card from './ui/Card';
 import Tag from './ui/Tag';
 
-const CompetitiveProgramming = () => {
+const Codeforces = () => {
   const { submissions, contests, loading, error } = useCodeforcesData();
 
   if (loading) {
     return (
-      <section id="competitive-programming" className="section">
+      <section id="codeforces" className="section">
         <div className="container">
-          <h2 className="section-title">competitive programming</h2>
+          <h2 className="section-title">Codeforces</h2>
           <div style={{ textAlign: 'center', padding: '2rem' }}>
             <p style={{ color: '#666' }}>Loading submissions...</p>
           </div>
@@ -23,9 +23,9 @@ const CompetitiveProgramming = () => {
 
   if (error) {
     return (
-      <section id="competitive-programming" className="section">
+      <section id="codeforces" className="section">
         <div className="container">
-          <h2 className="section-title">Competitive programming</h2>
+          <h2 className="section-title">Codeforces</h2>
           <div style={{ textAlign: 'center', padding: '2rem' }}>
             <p style={{ color: '#dc3545' }}>Error loading submissions: {error}</p>
           </div>
@@ -35,16 +35,16 @@ const CompetitiveProgramming = () => {
   }
 
   return (
-    <section id="competitive-programming" className="section">
+    <section id="codeforces" className="section">
       <div className="container">
-        <h2 className="section-title">Competitive Programming</h2>
-        <div className="cp-content">
-          <p className="cp-description">
-            I enjoy solving algorithmic problems and participating in competitive programming contests. 
+        <h2 className="section-title">Codeforces</h2>
+        <div className="cf-content">
+          <p className="cf-description">
+            I enjoy solving algorithmic problems and participating in Codeforces contests. 
             Here are my past two submissions and contest history from Codeforces.
           </p>
           
-          <div className="cp-sections">
+          <div className="cf-sections">
             <div className="submissions-section">
               <h3>Recent Submissions</h3>
               <div className="submissions-grid">
@@ -160,14 +160,14 @@ const CompetitiveProgramming = () => {
             </div>
           </div>
           
-          <div className="cp-footer">
-            <p className="cp-note">
+          <div className="cf-footer">
+            <p className="cf-note">
               View more on my{' '}
               <a 
                 href="https://codeforces.com/profile/Znoheart" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="cp-link"
+                className="cf-link"
               >
                 Codeforces profile
               </a>
@@ -179,4 +179,5 @@ const CompetitiveProgramming = () => {
   );
 };
 
-export default CompetitiveProgramming;
+export default Codeforces;
+

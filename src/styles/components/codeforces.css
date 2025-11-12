@@ -1,11 +1,11 @@
-/* Competitive Programming Component Styles */
+/* Codeforces Component Styles */
 
-.cp-content {
+.cf-content {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.cp-description {
+.cf-description {
   font-size: 1rem;
   margin-bottom: 3rem;
   color: var(--text-secondary);
@@ -88,20 +88,20 @@
   font-weight: 300;
 }
 
-.cp-footer {
+.cf-footer {
   text-align: center;
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border-light);
 }
 
-.cp-note {
+.cf-note {
   color: var(--text-secondary);
   font-weight: 300;
   font-size: 0.9rem;
 }
 
-.cp-link {
+.cf-link {
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 400;
@@ -109,7 +109,7 @@
   transition: all 0.3s ease;
 }
 
-.cp-link:hover {
+.cf-link:hover {
   border-bottom-color: var(--text-primary);
 }
 
@@ -211,3 +211,4 @@
   color: var(--text-secondary);
   font-size: 0.8rem;
 }
+
