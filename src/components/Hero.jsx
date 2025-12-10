@@ -1,5 +1,6 @@
 import React from 'react';
 import { scrollToSection } from '../utils/scrollUtils';
+import { heroData } from '../data/heroData';
 import Button from './ui/Button';
 
 const Hero = () => {
@@ -11,27 +12,24 @@ const Hero = () => {
     <section className="hero">
       <div className="hero-content">
         <h1 className="hero-title">
-          Hello, I'm <span className="highlight">Shangmin Chen</span>
+          {heroData.greeting} <span className="highlight">{heroData.name}</span>
         </h1>
         <p className="hero-subtitle">
-          Computer Science Student at Boston University
+          {heroData.subtitle}
         </p>
         <p className="hero-description">
-          I build beautiful applications with ML and AI when I see a need or problem worth solving.
+          {heroData.description}
         </p>
         <div className="hero-buttons">
-          <Button 
-            variant="primary" 
-            onClick={() => handleScrollToSection('projects')}
-          >
-            View My Work
-          </Button>
-          <Button 
-            variant="secondary" 
-            onClick={() => handleScrollToSection('contact')}
-          >
-            Get In Touch
-          </Button>
+          {heroData.buttons.map((button, index) => (
+            <Button 
+              key={index}
+              variant={button.variant} 
+              onClick={() => handleScrollToSection(button.action)}
+            >
+              {button.text}
+            </Button>
+          ))}
         </div>
       </div>
     </section>

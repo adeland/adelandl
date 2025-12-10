@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { scrollToSection } from '../utils/scrollUtils';
 import { useTheme } from '../contexts/ThemeContext';
+import { navbarData } from '../data/navbarData';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,28 +38,19 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-container">
         <div className="nav-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
-          <span>Shangmin Chen</span>
+          <span>{navbarData.logo}</span>
         </div>
         
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <button onClick={() => handleScrollToSection('about')} className="nav-link">
-            About
-          </button>
-          <button onClick={() => handleScrollToSection('experience')} className="nav-link">
-            Experience
-          </button>
-          <button onClick={() => handleScrollToSection('projects')} className="nav-link">
-            Projects
-          </button>
-          <button onClick={() => handleScrollToSection('codeforces')} className="nav-link">
-            Codeforces
-          </button>
-          <button onClick={() => handleScrollToSection('blog')} className="nav-link">
-            Thoughts
-          </button>
-          <button onClick={() => handleScrollToSection('contact')} className="nav-link">
-            Contact Me
-          </button>
+          {navbarData.navLinks.map((link, index) => (
+            <button 
+              key={index}
+              onClick={() => handleScrollToSection(link.sectionId)} 
+              className="nav-link"
+            >
+              {link.label}
+            </button>
+          ))}
         </div>
 
         <div className="nav-controls">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { sendEmail } from '../utils/emailService';
+import { contactData } from '../data/contactData';
 import FormField from './ui/FormField';
 import Button from './ui/Button';
 
@@ -31,13 +32,13 @@ const Contact = () => {
     try {
       // Validate form data
       if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
-        throw new Error('Please fill in all fields');
+        throw new Error(contactData.messages.validation.emptyFields);
       }
 
       // Validate email format
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
-        throw new Error('Please enter a valid email address');
+        throw new Error(contactData.messages.validation.invalidEmail);
       }
 
       // Send email
@@ -54,7 +55,7 @@ const Contact = () => {
       }
     } catch (error) {
       setSubmitStatus('error');
-      setErrorMessage(error.message || 'Failed to send message. Please try again.');
+      setErrorMessage(error.message || contactData.messages.error);
       
       // Reset error status after 5 seconds
       setTimeout(() => {
@@ -72,76 +73,45 @@ const Contact = () => {
         <h2 className="section-title">Contact Me</h2>
         <div className="contact-content">
           <div className="contact-info">
-            <h3>Get In Touch</h3>
-            <p>
-              I'm always interested in new opportunities and exciting projects. 
-              Feel free to reach out if you'd like to collaborate or just say hello!
-            </p>
+            <h3>{contactData.title}</h3>
+            <p>{contactData.description}</p>
             <div className="contact-details">
-              <div className="contact-item">
-                <strong>Email:</strong>
-                <a href="mailto:shangminch@gmail.com">shangminch@gmail.com</a>
-              </div>
-              <div className="contact-item">
-                <strong>LinkedIn:</strong>
-                <a href="https://linkedin.com/in/shangmin-chen" target="_blank" rel="noopener noreferrer">
-                  linkedin.com/in/shangmin-chen
-                </a>
-              </div>
-              <div className="contact-item">
-                <strong>GitHub:</strong>
-                <a href="https://github.com/Shangmin-Chen" target="_blank" rel="noopener noreferrer">
-                  github.com/Shangmin-Chen
-                </a>
-              </div>
+              {contactData.contactDetails.map((detail, index) => (
+                <div key={index} className="contact-item">
+                  <strong>{detail.label}:</strong>
+                  <a 
+                    href={detail.href} 
+                    target={detail.external ? "_blank" : undefined}
+                    rel={detail.external ? "noopener noreferrer" : undefined}
+                  >
+                    {detail.value}
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
           
           <form className="contact-form" onSubmit={handleSubmit}>
-            <FormField
-              label="Name"
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            
-            <FormField
-              label="Email"
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            
-            <FormField
-              label="Subject"
-              type="text"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-            />
-            
-            <FormField
-              label="Message"
-              type="textarea"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={5}
-              required
-            />
+            {contactData.formFields.map((field, index) => (
+              <FormField
+                key={index}
+                label={field.label}
+                type={field.type}
+                name={field.name}
+                value={formData[field.name]}
+                onChange={handleChange}
+                rows={field.rows}
+                required
+              />
+            ))}
             
             <Button type="submit" variant="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? contactData.submitButton.submitting : contactData.submitButton.default}
             </Button>
             
             {submitStatus === 'success' && (
               <div className="success-message">
-                Thank you! Your message has been sent successfully.
+                {contactData.messages.success}
               </div>
             )}
             

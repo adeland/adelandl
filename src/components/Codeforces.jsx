@@ -1,6 +1,7 @@
 import React from 'react';
 import useCodeforcesData from '../hooks/useCodeforcesData';
 import { formatTime, formatMemory, getVerdictColor, getDifficultyColor, getRatingColor } from '../utils/codeforcesUtils';
+import { codeforcesData } from '../data/codeforcesData';
 import RatingGraph from './charts/RatingGraph';
 import Card from './ui/Card';
 import Tag from './ui/Tag';
@@ -14,7 +15,7 @@ const Codeforces = () => {
         <div className="container">
           <h2 className="section-title">Codeforces</h2>
           <div style={{ textAlign: 'center', padding: '2rem' }}>
-            <p style={{ color: '#666' }}>Loading submissions...</p>
+            <p style={{ color: '#666' }}>{codeforcesData.messages.loading}</p>
           </div>
         </div>
       </section>
@@ -27,7 +28,7 @@ const Codeforces = () => {
         <div className="container">
           <h2 className="section-title">Codeforces</h2>
           <div style={{ textAlign: 'center', padding: '2rem' }}>
-            <p style={{ color: '#dc3545' }}>Error loading submissions: {error}</p>
+            <p style={{ color: '#dc3545' }}>{codeforcesData.messages.error} {error}</p>
           </div>
         </div>
       </section>
@@ -40,13 +41,12 @@ const Codeforces = () => {
         <h2 className="section-title">Codeforces</h2>
         <div className="cf-content">
           <p className="cf-description">
-            I enjoy solving algorithmic problems and participating in Codeforces contests. 
-            Here are my past two submissions and contest history from Codeforces.
+            {codeforcesData.description}
           </p>
           
           <div className="cf-sections">
             <div className="submissions-section">
-              <h3>Recent Submissions</h3>
+              <h3>{codeforcesData.sections.submissions}</h3>
               <div className="submissions-grid">
                 {submissions.map((submission) => (
                   <Card key={submission.id} variant="submission">
@@ -70,7 +70,7 @@ const Codeforces = () => {
                             {submission.problem.rating || submission.problem.points}
                           </Tag>
                           <span className="contest-id">
-                            Contest {submission.contestId}
+                            {codeforcesData.labels.contest} {submission.contestId}
                           </span>
                         </div>
                       </div>
@@ -84,23 +84,23 @@ const Codeforces = () => {
                     
                     <div className="submission-details">
                       <div className="detail-row">
-                        <span className="detail-label">Language:</span>
+                        <span className="detail-label">{codeforcesData.labels.language}</span>
                         <span className="detail-value">{submission.programmingLanguage}</span>
                       </div>
                       <div className="detail-row">
-                        <span className="detail-label">Time:</span>
+                        <span className="detail-label">{codeforcesData.labels.time}</span>
                         <span className="detail-value">{submission.timeConsumedMillis} ms</span>
                       </div>
                       <div className="detail-row">
-                        <span className="detail-label">Memory:</span>
+                        <span className="detail-label">{codeforcesData.labels.memory}</span>
                         <span className="detail-value">{formatMemory(submission.memoryConsumedBytes)}</span>
                       </div>
                       <div className="detail-row">
-                        <span className="detail-label">Tests Passed:</span>
+                        <span className="detail-label">{codeforcesData.labels.testsPassed}</span>
                         <span className="detail-value">{submission.passedTestCount}</span>
                       </div>
                       <div className="detail-row">
-                        <span className="detail-label">Submitted:</span>
+                        <span className="detail-label">{codeforcesData.labels.submitted}</span>
                         <span className="detail-value">{formatTime(submission.creationTimeSeconds)}</span>
                       </div>
                     </div>
@@ -116,7 +116,7 @@ const Codeforces = () => {
             </div>
 
             <div className="contests-section">
-              <h3>Contest History</h3>
+              <h3>{codeforcesData.sections.contests}</h3>
               <RatingGraph contests={contests} />
               <div className="contests-list">
                 {contests.slice(0, 3).map((contest) => (
@@ -137,7 +137,7 @@ const Codeforces = () => {
                           {formatTime(contest.ratingUpdateTimeSeconds)}
                         </span>
                         <span className="contest-rank">
-                          Rank: {contest.rank}
+                          {codeforcesData.labels.rank} {contest.rank}
                         </span>
                       </div>
                     </div>
@@ -162,14 +162,14 @@ const Codeforces = () => {
           
           <div className="cf-footer">
             <p className="cf-note">
-              View more on my{' '}
+              {codeforcesData.profile.footerText}{' '}
               <a 
-                href="https://codeforces.com/profile/Znoheart" 
+                href={codeforcesData.profile.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="cf-link"
               >
-                Codeforces profile
+                {codeforcesData.profile.linkText}
               </a>
             </p>
           </div>
