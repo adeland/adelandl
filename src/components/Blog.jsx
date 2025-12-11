@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { blogPosts } from '../data/blogPosts';
+import { posts } from '../data/posts';
 import Card from './ui/Card';
 
 const Blog = () => {
@@ -18,8 +18,8 @@ const Blog = () => {
       <div className="container">
         <h2 className="section-title">Thoughts</h2>
         <div className="blog-grid">
-          {blogPosts.map((post) => (
-            <Card key={post.id} variant="blog">
+          {posts.map((post, index) => (
+            <Card key={post.slug || index} variant="blog">
               <h3 className="blog-title">{post.title}</h3>
               <div className="blog-meta">
                 <span>{formatDate(post.date)}</span>

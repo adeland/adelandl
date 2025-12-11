@@ -1,11 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { blogPostContent } from '../data/blogPosts';
+import { MDXProvider } from '@mdx-js/react';
+import { postsBySlug } from '../data/posts';
+import { MDXComponents } from './mdx/MDXComponents';
 import Button from './ui/Button';
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const post = blogPostContent[slug];
+  const post = postsBySlug[slug];
 
   if (!post) {
     return (
@@ -30,6 +32,8 @@ const BlogPost = () => {
     });
   };
 
+  const PostContent = post.Component;
+
   return (
     <div className="blog-post-container">
       <div className="container">
@@ -45,10 +49,11 @@ const BlogPost = () => {
             </div>
           </header>
           
-          <div 
-            className="blog-post-content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <div className="blog-post-content">
+            <MDXProvider components={MDXComponents}>
+              <PostContent />
+            </MDXProvider>
+          </div>
           
           <footer className="blog-post-footer">
             <Button variant="secondary" onClick={() => window.location.href = '/'}>← Back to Home</Button>
