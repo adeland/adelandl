@@ -12,11 +12,11 @@ const useCodeforcesData = () => {
         setLoading(true);
         
         // Fetch submissions
-        const submissionsResponse = await fetch('https://codeforces.com/api/user.status?handle=Znoheart&from=1&count=2');
+        const submissionsResponse = await fetch('https://codeforces.com/api/user.status?handle=simonlovestocode&from=1&count=2');
         const submissionsData = await submissionsResponse.json();
         
         // Fetch contest history
-        const contestsResponse = await fetch('https://codeforces.com/api/user.rating?handle=Znoheart');
+        const contestsResponse = await fetch('https://codeforces.com/api/user.rating?handle=simonlovestocode');
         const contestsData = await contestsResponse.json();
         
         if (submissionsData.status === 'OK') {

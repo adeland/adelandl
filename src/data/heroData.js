@@ -1,6 +1,6 @@
 export const heroData = {
   greeting: "Hello, I'm",
-  name: "Shangmin Chen",
+  name: "Simon Chen",
   subtitle: "Computer Science Student at Boston University",
   description: "I build beautiful applications with ML and AI when I see a need or problem worth solving.",
   buttons: [

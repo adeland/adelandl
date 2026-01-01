@@ -1,4 +1,4 @@
-# Shangmin Chen - Portfolio Website
+# Simon Chen - Portfolio Website
 
 A modern, responsive portfolio website built with React, featuring smooth animations, contact form integration, and automated deployment to GitHub Pages.
 
@@ -285,5 +285,5 @@ This is a personal portfolio website, but suggestions and improvements are welco
 
 ---
 
-**Built with ❤️ by Shangmin Chen**
+**Built with ❤️ by Simon Chen**
 

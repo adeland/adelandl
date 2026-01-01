@@ -1,5 +1,5 @@
 export const navbarData = {
-  logo: "Shangmin Chen",
+  logo: "Simon Chen",
   navLinks: [
     {
       label: "About",

@@ -1,61 +1,36 @@
-import React from 'react';
+// src/components/mdx/MDXComponents.jsx
+import { CodeBlock } from './CodeBlock';
+import { MetricsTable } from './MetricsTable';
 
-// Custom MDX components that map to styled HTML elements
-// These will be used by MDXProvider to style markdown content
-
-export const MDXComponents = {
-  // Headings
-  h2: (props) => <h2 {...props} />,
-  h3: (props) => <h3 {...props} />,
-  h4: (props) => <h4 {...props} />,
+const MDXComponents = {
+  // Your existing components...
   
-  // Links
-  a: (props) => (
-    <a {...props} target={props.href?.startsWith('http') ? '_blank' : undefined} rel={props.href?.startsWith('http') ? 'noopener noreferrer' : undefined} />
-  ),
+  // Add these:
+  CodeBlock,
+  MetricsTable,
   
-  // Code blocks
-  code: (props) => {
-    // Check if it's an inline code or code block
-    const isInline = !props.className;
-    if (isInline) {
-      return <code {...props} />;
+  // You might also want to override default code blocks
+  code: ({ className, children, ...props }) => {
+    const match = /language-(\w+)/.exec(className || '');
+    const language = match ? match[1] : '';
+    
+    // If it's a code block (has language), use CodeBlock
+    if (language) {
+      return (
+        <CodeBlock language={language} {...props}>
+          {children}
+        </CodeBlock>
+      );
     }
-    return <code {...props} />;
+    
+    // Otherwise, use inline code styling
+    return <code className={className} {...props}>{children}</code>;
   },
   
-  pre: (props) => <pre {...props} />,
-  
-  // Lists
-  ul: (props) => <ul {...props} />,
-  ol: (props) => <ol {...props} />,
-  li: (props) => <li {...props} />,
-  
-  // Paragraphs
-  p: (props) => <p {...props} />,
-  
-  // Strong/emphasis
-  strong: (props) => <strong {...props} />,
-  em: (props) => <em {...props} />,
-  
-  // Tables (from remark-gfm)
-  table: (props) => <table {...props} />,
-  thead: (props) => <thead {...props} />,
-  tbody: (props) => <tbody {...props} />,
-  tr: (props) => <tr {...props} />,
-  th: (props) => <th {...props} />,
-  td: (props) => <td {...props} />,
-  
-  // Details/summary (from remark-gfm)
-  details: (props) => <details {...props} />,
-  summary: (props) => <summary {...props} />,
-  
-  // Blockquote
-  blockquote: (props) => <blockquote {...props} />,
-  
-  // Horizontal rule
-  hr: (props) => <hr {...props} />,
-  
-  // Div (for custom components like tldr-box, warning-box, etc.)
-  div: (props) => <div {...props} />,
+  // Override pre to work with CodeBlock
+  pre: ({ children }) => {
+    return <>{children}</>;
+  }
 };
+
+export { MDXComponents };

@@ -25,3 +25,6 @@
 
 /* Utility Styles */
 @import './utils/responsive.css';
+
+/* Mdx Styles */
+@import './components/mdx.css';

@@ -5,7 +5,7 @@ export const codeforcesData = {
     contests: "Contest History"
   },
   profile: {
-    url: "https://codeforces.com/profile/Znoheart",
+    url: "https://codeforces.com/profile/simonlovestocode",
     linkText: "Codeforces profile",
     footerText: "View more on my"
   },

@@ -1,4 +1,4 @@
-# Shangmin Chen - Portfolio Website
+# Simon Chen - Portfolio Website
 
 A modern, responsive portfolio website built with React, featuring smooth animations, contact form integration, and containerized deployment with Docker.
 
@@ -176,4 +176,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Built with ❤️ by Shangmin Chen**
+**Built with ❤️ by Simon Chen**
