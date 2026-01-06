@@ -16,7 +16,7 @@ const Blog = () => {
   return (
     <section id="blog" className="section">
       <div className="container">
-        <h2 className="section-title">Thoughts</h2>
+        <h2 className="section-title">Blogs</h2>
         <div className="blog-grid">
           {posts.map((post, index) => (
             <Card key={post.slug || index} variant="blog">

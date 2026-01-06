@@ -18,7 +18,7 @@ export const navbarData = {
       sectionId: "codeforces"
     },
     {
-      label: "Thoughts",
+      label: "Blogs",
       sectionId: "blog"
     },
     {
