@@ -1,5 +1,5 @@
 ---
-title: "Whisperrr: Audio Transcription Platform"
+title: "Whisperrr: Multi-Language Audio Transcription Platform"
 date: "2025-12-14"
 excerpt: "A deep dive into building Whisperrr, a full-stack audio transcription platform powered by Faster Whisper, featuring instant results, multi-language support, and production-ready architecture."
 readTime: "15 min read"
@@ -7,13 +7,22 @@ category: "AI"
 slug: "whisperrr"
 ---
 
-{/* TODO: Add your personal story here - why you built this project, what inspired you, challenges you faced, etc. */}
+## Background
 
----
+This project started when my brother came across a challenge when trying to transcribe an audio file for his high school assignment. The assignment needed him to interview our mom, who isn't a fluent english speaker, and the interview was conducted in chinese.
+
+Soon my brother came to me with an headache as he is having trouble transcribing Chinese audio into english, and every service online either does not have multi-language support, or is behind a pay wall.
+
+So naturally as an awesome big brother, I did some research and was able to transcribe the audio with openai's tool [whisper](https://github.com/openai/whisper).
+
+The cli tool worked, and the problem was solved, but it was really slow. The transcription time with whisper was around the same time as the audio file length.
+
+Then comes Whisperrr, a full stack audio transcription platform that is 4x the speed of openai whipser, built with **spring boot**, **react**, and **faster-whisper**.
+
 
 ## Project Overview
 
-**Whisperrr** is a production-ready, full-stack audio transcription platform that transforms audio content into accurate, searchable text using state-of-the-art AI technology. Built with modern technologies including Spring Boot, FastAPI, and React TypeScript, Whisperrr leverages **Faster Whisper** (faster-whisper) to provide high-quality speech-to-text conversion that's up to **4x faster than OpenAI's Whisper** with significantly less memory usage.
+**Whisperrr** is a production-ready, full-stack audio transcription platform that transforms audio content into accurate, searchable text using state-of-the-art AI technology. Built with modern technologies including Spring Boot, FastAPI, and React TypeScript, Whisperrr leverages [Faster-Whisper](https://github.com/SYSTRAN/faster-whisper) to provide high-quality speech-to-text conversion that's up to **4x faster than OpenAI's Whisper** with significantly less memory usage.
 
 ### The Problem It Solves
 
@@ -24,15 +33,6 @@ Traditional transcription services often require:
 - Long wait times for results
 
 Whisperrr eliminates these complexities by providing **instant transcription results** with a stateless architecture that requires no database, no job queuing, and no polling. Simply upload a file and get results immediately.
-
-### Key Value Proposition
-
-- ⚡ **Instant Results**: No polling, no waiting - get transcription results immediately
-- 🚀 **4x Faster**: Powered by Faster Whisper with CTranslate2 optimization
-- 🌍 **99+ Languages**: Automatic language detection across 99+ languages
-- 📊 **Segment-Level Timestamps**: Precise time alignment for video editing and subtitles
-- 🏗️ **Stateless Architecture**: No database required - simplified deployment
-- 🎯 **Production Ready**: Comprehensive error handling, monitoring, and security
 
 ---
 
@@ -133,12 +133,6 @@ graph TB
 
 Unlike traditional transcription services that require job queuing and polling, Whisperrr provides **instant results**. The stateless architecture processes files directly and returns transcription results immediately upon completion.
 
-**Benefits:**
-- No polling required
-- Immediate user feedback
-- Simplified state management
-- Reduced complexity
-
 ### Multi-Language Support
 
 Whisperrr supports **99+ languages** with automatic language detection. The system can detect the language automatically or accept manual language specification for improved accuracy.
@@ -193,22 +187,6 @@ Users can choose from multiple Whisper model sizes based on their needs for spee
 | `large` | 1550 MB | ~1x realtime | Highest | Maximum accuracy |
 | `large-v2` | 1550 MB | ~1x realtime | Highest | Latest large model |
 | `large-v3` | 1550 MB | ~1x realtime | Highest | Latest large model |
-
-### Stateless Architecture Benefits
-
-The stateless design eliminates the need for:
-- Database setup and migrations
-- Connection pooling overhead
-- Transaction management
-- Persistent storage
-
-**Benefits:**
-- ✅ Instant results without polling
-- ✅ Simplified deployment (no database required)
-- ✅ Reduced resource requirements
-- ✅ Enhanced reliability (no database failures)
-- ✅ Lower latency (direct communication)
-- ✅ Easier horizontal scaling
 
 ---
 
@@ -372,11 +350,7 @@ The decision to separate frontend, backend proxy, and AI processing into distinc
 - Easier maintenance and updates
 
 **2. Stateless Design:**
-Choosing a stateless architecture simplified deployment significantly:
-- No database migrations
-- No connection management
-- Easier containerization
-- Reduced operational complexity
+Choosing a stateless architecture simplified deployment significantly by eliminating database requirements, connection management overhead, and persistent storage needs. This is detailed in the Stateless Architecture Design section above.
 
 **3. Faster Whisper Over OpenAI Whisper:**
 Selecting Faster Whisper provided:
@@ -387,23 +361,7 @@ Selecting Faster Whisper provided:
 
 ### Optimization Strategies
 
-**1. Connection Pooling:**
-Implemented Apache HttpClient5 with connection pooling:
-- Reduced connection overhead by 90%
-- Improved polling latency by 70%
-- Better resource utilization
-
-**2. Model Caching:**
-Singleton pattern for WhisperService:
-- Avoids repeated model loading
-- Efficient memory usage
-- Thread-safe operations
-
-**3. Async Processing:**
-ThreadPoolExecutor for concurrent transcriptions:
-- Handles multiple requests simultaneously
-- Non-blocking request handling
-- Proper resource management
+The key optimization strategies implemented include connection pooling (detailed in Performance Metrics section), model caching, and async processing (both detailed in the Faster Whisper Implementation section above).
 
 ### Production-Ready Features
 
@@ -674,6 +632,4 @@ The project showcases expertise in:
 - **Live Demo**: [Link to demo]
 - **Documentation**: [Link to docs]
 
----
 
-**Built with ❤️ for simplicity and instant results**

@@ -1,19 +1,21 @@
 ---
-title: "CrimeMapper-Boston: A Production-Grade Crime Forecasting System"
-date: "01-07-2026"
+title: "Crime Mapper Boston: Crime Forecasting System"
+date: "01-24-2026"
 excerpt: "Building a comprehensive machine learning system for crime prediction using Facebook Prophet, featuring district-based forecasting, spatial hotspot analysis, and production-grade evaluation metrics."
-readTime: "20 min read"
-category: "Data Science"
+readTime: "15 min read"
+category: "Project"
 slug: "crime-mapper-boston"
-tags: ["machine-learning", "time-series", "prophet", "data-science", "python", "streamlit", "geospatial-analysis"]
-featured: true
 ---
 
-How can we predict where crimes will happen to help cities allocate police resources better? That's the question behind **CrimeMapper-Boston**, a machine learning system that forecasts crime counts for each police district in Boston and finds crime hotspots.
+## Background
 
-The system analyzes **174,421 crime records** from **14 police districts** over **824 days**, using Facebook's Prophet forecasting model to predict future crime patterns.
+This project was a collaborated project between [Simon Chen](https://github.com/Shangmin-Chen), [Kelvin Kuang](https://github.com/kkuang0), [Kelvin Yeung](https://github.com/kelvinyg), and [Daniel Ooi](https://github.com/dooi1) for a graduate level data science course at Boston University.
 
----
+**Crime Mapper Boston** aims to solve the question of predicting where crimes will happen to help cities allocate police resources better. 
+
+The project uses a machine learning system that forecasts crime counts for each police district in Boston and finds crime hotspots.
+
+The system analyzes **204,356 crime records** from **14 police districts** over **824 days**, using Facebook's Prophet forecasting model to predict future crime patterns.
 
 ## What Problem Does This Solve?
 
@@ -24,8 +26,6 @@ Predicting crime is hard because:
 - We need predictions that are accurate enough to make real decisions
 
 Our solution creates a separate forecasting model for each district, compares predictions against simple baselines, and identifies geographic hotspots where specific crimes cluster together.
-
----
 
 ## How It Works
 
@@ -81,8 +81,6 @@ For specific crime types (like shoplifting), we use **DBSCAN clustering** to fin
 
 For example, shoplifting clusters heavily around shopping areas like Newbury Street, which makes sense. This helps target interventions to the right places.
 
----
-
 ## Results
 
 ### Overall Performance
@@ -131,8 +129,6 @@ When we say "14.3% improvement," here's what that means:
 
 So Prophet's predictions are 59% more accurate than just guessing yesterday's number will repeat.
 
----
-
 ## Technical Highlights
 
 ### Production-Grade Practices
@@ -179,8 +175,6 @@ baseline_mae = mean_absolute_error(actual_values, [last_value] * len(actual_valu
 improvement = (baseline_mae - mae) / baseline_mae * 100
 ```
 
----
-
 ## Visualizations
 
 ### Forecast Charts
@@ -218,8 +212,6 @@ The model breaks down patterns into components:
 ![Time Series Components](/images/time-series.png)
 
 *Decomposition showing trend, weekly patterns, and yearly seasonality*
-
----
 
 ## Real-World Impact
 
@@ -263,8 +255,6 @@ Hotspot analysis helps focus resources:
 - Makefile automation
 - Model persistence with Joblib
 
----
-
 ## Lessons Learned
 
 1. **Baseline comparisons are essential**: Without comparing to simple methods, you can't tell if your complex model actually helps.
@@ -277,8 +267,6 @@ Hotspot analysis helps focus resources:
 
 5. **Spatial + temporal = better**: Combining time-series forecasting with geographic clustering gives a more complete picture.
 
----
-
 ## Future Improvements
 
 **Potential Enhancements:**
@@ -287,8 +275,6 @@ Hotspot analysis helps focus resources:
 - More advanced models (deep learning, ensembles)
 - Better visualizations (interactive maps, animations)
 - API endpoints for programmatic access
-
----
 
 ## Conclusion
 
@@ -306,8 +292,6 @@ As cities embrace data-driven public safety, systems like this provide the found
 
 ---
 
-**Project Repository**: <a href="https://github.com/Shangmin-Chen/Crime-Analytics-Forecasting-Platform" target="_blank" rel="noopener noreferrer">Github</a>
-
-**Data Source**: <a href="https://data.boston.gov/dataset/crime-incident-reports-august-2015-to-date-source-new-system/resource/b973d8cb-eeb2-4e7e-99da-c92938efc9c0" target="_blank" rel="noopener noreferrer">Boston.gov Crime Data</a>
-
+**Project Repository**: [GitHub](https://github.com/yourusername/CrimeMapper-Boston)  
+**Data Source**: [Boston.gov CKAN Data API](https://data.boston.gov/api/3/action/datastore_search)  
 **Technologies**: Python, Prophet, Streamlit, GeoPandas, DBSCAN
