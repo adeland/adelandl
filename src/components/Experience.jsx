@@ -14,7 +14,7 @@ const Experience = () => {
               <div className="experience-header">
                 <h3 className="experience-title">{exp.title}</h3>
                 <div className="experience-meta">
-                  <span className="company">{exp.company}</span>
+                  <span className="company">{exp.company}{exp.location ? ` • ${exp.location}` : ''}</span>
                   <span className="period">{exp.period}</span>
                 </div>
               </div>
