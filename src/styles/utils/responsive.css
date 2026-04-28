@@ -1,30 +1,7 @@
 /* Responsive Design */
 
 @media (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    left: -100%;
-    top: 80px;
-    flex-direction: column;
-    background-color: var(--bg-primary);
-    width: 100%;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-    padding: 2rem 0;
-  }
-
-  .nav-menu.active {
-    left: 0;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .nav-controls {
-    gap: 0.5rem;
-  }
+  /* Mobile nav layout lives in components/navbar.css (slide-down + backdrop). */
 
   .theme-toggle {
     padding: 0.3rem;
@@ -53,11 +30,11 @@
   }
 
   .hero {
-    padding: 0 20px;
+    padding: 88px 24px 40px;
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(2.25rem, 10vw, 3rem);
   }
 
   .hero-subtitle {
@@ -98,7 +75,7 @@
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
   .blog-post-title {
@@ -115,12 +92,8 @@
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-
   .container {
-    padding: 0 15px;
+    padding: 0 16px;
   }
 
   .nav-container {
@@ -128,7 +101,11 @@
   }
 
   .hero {
-    padding: 0 15px;
+    padding: 80px 16px 32px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 12vw, 2.75rem);
   }
 
   .experience-item,

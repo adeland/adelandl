@@ -1,19 +1,20 @@
 export const heroData = {
-  greeting: "Hello, I'm",
-  name: "Simon Chen",
-  subtitle: "Computer Science Student at Boston University",
-  description: "I love building software, here you can check out some of my projects and learn more about me.",
+  headlineLines: ['Software', 'engineer'],
+  headlineBeforeEm: '& ',
+  headlineEm: 'builder.',
+  lede:
+    'Studying CS at Boston University. I write code that ships, train models that converge, and occasionally place at competitive programming contests.',
+  metaLines: ['Boston, MA', "BUCS '26", "Available Spring '26"],
   buttons: [
     {
-      text: "View My Projects",
-      variant: "primary",
-      action: "projects"
+      text: 'View projects',
+      variant: 'primary',
+      action: 'projects',
     },
     {
-      text: "Get In Touch",
-      variant: "secondary",
-      action: "contact"
-    }
-  ]
+      text: "Let's Chat",
+      variant: 'secondary',
+      action: 'contact',
+    },
+  ],
 };
-

@@ -155,15 +155,16 @@
 
 /* Code block styles */
 .blog-post-content pre {
-  background-color: var(--bg-tertiary);
+  background-color: var(--code-bg);
   padding: 1rem;
   border-radius: 4px;
+  border: 1px solid var(--border-color);
   overflow-x: auto;
   margin: 1.5rem 0;
 }
 
 .blog-post-content code {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 0.9em;
 }
 

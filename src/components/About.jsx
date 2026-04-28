@@ -13,26 +13,45 @@ const About = () => {
   return (
     <section id="about" className="section">
       <div className="container">
-        <h2 className="section-title">About Me</h2>
-        <div className="about-content">
-          <div className="about-text">
+        <div className="section-head">
+          <div className="mono-label num">§ 01</div>
+          <h2>
+            About <em>—</em>
+          </h2>
+        </div>
+        <div className="about-grid">
+          <div className="mono-label">Note</div>
+          <div className="body">
             {aboutData.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
-            <div className="about-actions">
-              <Button 
-                variant="secondary" 
-                onClick={() => handleScrollToSection(aboutData.buttonAction)}
+            <p>
+              {aboutData.codeforcesSentence.split('Codeforces')[0]}
+              <a
+                href="https://codeforces.com/profile/simonlovestocode"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {aboutData.buttonText}
+                Codeforces
+              </a>
+              {aboutData.codeforcesSentence.split('Codeforces').slice(1).join('Codeforces')}
+            </p>
+            <p>{aboutData.closing}</p>
+            <div className="about-cta">
+              <Button
+                variant="secondary"
+                onClick={() => handleScrollToSection(aboutData.submissionsAction)}
+              >
+                {aboutData.submissionsCta}
               </Button>
             </div>
-            
             <div className="skills">
               <h3>{aboutData.skillsTitle}</h3>
               <div className="skills-grid">
                 {skills.map((skill, index) => (
-                  <Tag key={index} variant="skill">{skill}</Tag>
+                  <Tag key={index} variant="skill">
+                    {skill}
+                  </Tag>
                 ))}
               </div>
             </div>

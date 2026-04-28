@@ -22,7 +22,7 @@ export const navbarData = {
       sectionId: "blog"
     },
     {
-      label: "Contact Me",
+      label: "Let's chat",
       sectionId: "contact"
     }
   ]

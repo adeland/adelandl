@@ -1,40 +1,80 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
-import Card from './ui/Card';
-import Tag from './ui/Tag';
 
-const Projects = () => {
-  return (
-    <section id="projects" className="section">
-      <div className="container">
-        <h2 className="section-title">Projects</h2>
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <Card key={index} variant="default">
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-              <div className="project-links">
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                  GitHub
-                </a>
-                {project.demo && (
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
-                    Live Demo
-                  </a>
-                )}
-                {project.blog && (
-                  <Link to={`/blog/${project.blog}`} className="project-link">
-                    Read More
-                  </Link>
-                )}
+const Projects = () => (
+  <section id="projects" className="section">
+    <div className="container">
+      <div className="section-head">
+        <div className="mono-label num">§ 03</div>
+        <h2>
+          Work <em>— recent</em>
+        </h2>
+      </div>
+      <div className="work-grid">
+        <div className="mono-label">
+          Projects
+          <br />
+          2024 — 2026
+        </div>
+        <div className="work-list">
+          {projects.map((project) => (
+            <article key={project.github} className="work-item">
+              <div>
+                <h3 className="title">
+                  {project.titleParts.before}
+                  <em>{project.titleParts.em}</em>
+                  {project.titleParts.after}
+                </h3>
+                <span className="title-plain">{project.title}</span>
+                <p className="desc">{project.description}</p>
+                <div className="tags">
+                  {project.tags.map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
               </div>
-            </Card>
+              <div className="right">
+                <dl>
+                  <dt>Year</dt>
+                  <dd>{project.meta.year}</dd>
+                  <dt>Role</dt>
+                  <dd>{project.meta.role}</dd>
+                  <dt>Status</dt>
+                  <dd>{project.meta.status}</dd>
+                </dl>
+                <div className="read-row">
+                  {project.blog && (
+                    <Link className="read" to={`/blog/${project.blog}`}>
+                      Case study →
+                    </Link>
+                  )}
+                  <a
+                    className="read"
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub →
+                  </a>
+                  {project.demo && (
+                    <a
+                      className="read"
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live →
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Projects;

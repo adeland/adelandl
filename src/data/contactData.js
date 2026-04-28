@@ -1,5 +1,5 @@
 export const contactData = {
-  title: "Get In Touch",
+  title: "Reach out",
   description: "I'm always interested in new opportunities and exciting projects. Feel free to reach out if you'd like to collaborate or just say hello!",
   contactDetails: [
     {

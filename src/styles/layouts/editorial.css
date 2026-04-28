@@ -1,0 +1,349 @@
+/* Editorial blocks (simon_v2-style) — uses theme tokens */
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  margin-bottom: 6vh;
+  align-items: baseline;
+}
+
+.section-head .num {
+  color: var(--text-muted);
+}
+
+.section-head h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.section-head h2 em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+  .section-head {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* About grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+}
+
+.about-grid .body {
+  max-width: 60ch;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.about-grid .body p {
+  margin-bottom: 1em;
+}
+
+.about-grid .body a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--text-muted);
+  transition: border-color 0.2s;
+}
+
+.about-grid .body a:hover {
+  border-color: var(--accent-color);
+}
+
+.about-grid .about-cta {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-grid .body {
+    font-size: 1.1rem;
+  }
+}
+
+/* Experience TOC */
+.exp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.exp-row {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid var(--border-color);
+  align-items: baseline;
+  transition: padding-left 0.3s ease;
+}
+
+.exp-row:hover {
+  padding-left: 16px;
+}
+
+.exp-row:hover .role em {
+  color: var(--accent-color);
+}
+
+.exp-row .role {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.exp-row .role em {
+  font-style: italic;
+  color: var(--text-secondary);
+  font-weight: 300;
+  transition: color 0.3s;
+}
+
+.exp-row .where {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: right;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 600px) {
+  .exp-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 20px 0;
+  }
+  .exp-row:hover {
+    padding-left: 0;
+  }
+  .exp-row .where {
+    text-align: left;
+  }
+}
+
+/* Work / projects editorial */
+.work-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+}
+
+.work-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding: 6vh 0;
+  border-top: 1px solid var(--border-color);
+  align-items: start;
+}
+
+.work-item:last-child {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.work-item .title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0 0 0.35em;
+  color: var(--text-primary);
+}
+
+.work-item .title em {
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+.work-item .title-plain {
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: var(--font-serif);
+  color: var(--text-muted);
+  letter-spacing: -0.01em;
+  margin-top: 0.35rem;
+}
+
+.work-item .desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-bottom: 1.5em;
+}
+
+.work-item .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.work-item .tags span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.work-item .right {
+  border-left: 1px solid var(--border-color);
+  padding-left: 32px;
+}
+
+.work-item .right dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 24px;
+  font-size: 0.9rem;
+  margin: 0 0 1.5em;
+}
+
+.work-item .right dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding-top: 3px;
+}
+
+.work-item .right dd {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.work-item .read {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: none;
+  border-bottom: 1px solid var(--text-primary);
+  padding: 0 0 4px;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.work-item .read:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.work-item .read-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+  .work-item {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 5vh 0;
+  }
+  .work-item .right {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+  }
+}
+
+/* Hero v2 meta — sits in top-right of .hero-content on desktop; in-flow on small screens */
+.hero-meta {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  z-index: 2;
+  max-width: min(24ch, 48vw);
+}
+
+.hero-meta div {
+  margin-bottom: 0.4em;
+}
+
+.hero-title-v2 {
+  font-size: clamp(3.5rem, 13vw, 11rem);
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  margin: 0 0 0.4em;
+  color: var(--text-primary);
+}
+
+.hero-title-v2 em.accent {
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  color: var(--accent-color);
+}
+
+.hero-lede-v2 {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  max-width: 38ch;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-top: 1.5em;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .hero-meta {
+    position: static;
+    text-align: left;
+    max-width: none;
+    margin: 0 0 1.25rem;
+    z-index: auto;
+  }
+
+  .hero-title-v2 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+}
+
+@media (min-width: 769px) {
+  .hero-content {
+    padding-right: clamp(8rem, 18vw, 13rem);
+  }
+}

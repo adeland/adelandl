@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+const THEME_COLOR_LIGHT = '#f5f1ea';
+const THEME_COLOR_DARK = '#22211d';
+
 const ThemeContext = createContext();
 
 export const useTheme = () => {
@@ -17,13 +20,13 @@ export const ThemeProvider = ({ children }) => {
     if (savedTheme) {
       return savedTheme === 'dark';
     }
-    
+
     // If no saved preference, check system preference
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
   const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
+    setIsDarkMode((prev) => !prev);
   };
 
   const setTheme = (theme) => {
@@ -33,7 +36,7 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     // Save theme preference to localStorage
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    
+
     // Apply theme class to document
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
@@ -41,6 +44,16 @@ export const ThemeProvider = ({ children }) => {
     } else {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
+    }
+
+    const svgIcon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+    if (svgIcon) {
+    svgIcon.href = isDarkMode ? '/favicon-dark.svg' : '/favicon-light.svg';
+    }
+
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.setAttribute('content', isDarkMode ? THEME_COLOR_DARK : THEME_COLOR_LIGHT);
     }
   }, [isDarkMode]);
 
@@ -63,12 +76,8 @@ export const ThemeProvider = ({ children }) => {
     isDarkMode,
     toggleTheme,
     setTheme,
-    theme: isDarkMode ? 'dark' : 'light'
+    theme: isDarkMode ? 'dark' : 'light',
   };
 
-  return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };

@@ -9,7 +9,7 @@
  */
 export const scrollToSection = (sectionId, options = {}) => {
   const defaultOptions = {
-    offset: -70, // Account for fixed navbar height
+    offset: -81, // ~--nav-height at 18px root (4.5rem)
     duration: 1.5,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
   };

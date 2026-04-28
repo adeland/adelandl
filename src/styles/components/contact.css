@@ -1,5 +1,19 @@
 /* Contact Component Styles */
 
+.section-title.farewell {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 300;
+  font-variation-settings: "opsz" 120, "SOFT" 100;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  margin-bottom: 3rem;
+}
+
+.section-title.farewell em {
+  font-style: italic;
+  color: var(--accent-color);
+}
+
 .contact-info h3 {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
