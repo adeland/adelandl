@@ -6,7 +6,5 @@ export const aboutData = {
     'Outside of class I build full-stack things — from audio transcription and crime analytics to campus food-waste tooling — and grind Codeforces when I should probably be sleeping.',
   closing:
     "I'm always interested in new opportunities; reach out if you'd like to collaborate.",
-  submissionsCta: 'View Codeforces activity',
-  submissionsAction: 'codeforces',
   skillsTitle: 'Skills',
 };

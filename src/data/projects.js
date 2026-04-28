@@ -1,10 +1,10 @@
 export const projects = [
   {
     title: 'Audio Transcription Platform',
-    titleParts: { before: '', em: 'Whisperrr', after: '' },
+    titleParts: { before: '', em: 'Whisperrr', after: ' — multi-language audio transcription platform' },
     description:
       'A full-stack microservices platform for multi-language audio transcription, featuring real-time processing and 4x faster performance than OpenAI Whisper.',
-    tags: ['FastAPI', 'Whisper', 'React', 'Docker'],
+    tags: ['Spring-Boot', 'FastAPI', 'React', 'Docker'],
     meta: { year: '2025', role: 'Solo', status: 'Live' },
     github: 'https://github.com/Shangmin-Chen/Whisperrr',
     demo: 'https://whisperrr.shangmin.me',

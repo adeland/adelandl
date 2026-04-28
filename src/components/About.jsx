@@ -1,22 +1,16 @@
 import React from 'react';
-import { scrollToSection } from '../utils/scrollUtils';
 import { aboutData } from '../data/aboutData';
 import { skills } from '../data/skills';
 import Tag from './ui/Tag';
-import Button from './ui/Button';
 
 const About = () => {
-  const handleScrollToSection = (sectionId) => {
-    scrollToSection(sectionId);
-  };
-
   return (
     <section id="about" className="section">
       <div className="container">
         <div className="section-head">
           <div className="mono-label num">§ 01</div>
           <h2>
-            About <em>—</em>
+            About <em>— me</em>
           </h2>
         </div>
         <div className="about-grid">
@@ -37,14 +31,6 @@ const About = () => {
               {aboutData.codeforcesSentence.split('Codeforces').slice(1).join('Codeforces')}
             </p>
             <p>{aboutData.closing}</p>
-            <div className="about-cta">
-              <Button
-                variant="secondary"
-                onClick={() => handleScrollToSection(aboutData.submissionsAction)}
-              >
-                {aboutData.submissionsCta}
-              </Button>
-            </div>
             <div className="skills">
               <h3>{aboutData.skillsTitle}</h3>
               <div className="skills-grid">

@@ -1,17 +1,24 @@
 export const codeforcesData = {
-  description: "I enjoy solving algorithmic problems and participating in Codeforces contests. Here are my past two submissions and contest history from Codeforces.",
+  stats: {
+    currentRating: 'Current rating',
+    peak: 'Peak',
+    contests: 'Contests'
+  },
+  ledgerRail: {
+    line1: 'Rating',
+    line2: 'history'
+  },
   sections: {
     submissions: "Recent Submissions",
     contests: "Contest History"
   },
   profile: {
     url: "https://codeforces.com/profile/simonlovestocode",
-    linkText: "Codeforces profile",
-    footerText: "View more on my"
+    handle: "simonlovestocode"
   },
   messages: {
-    loading: "Loading submissions...",
-    error: "Error loading submissions:"
+    loading: "Loading profile and submissions…",
+    error: "Could not load Codeforces data:"
   },
   labels: {
     language: "Language:",

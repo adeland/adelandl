@@ -1,8 +1,8 @@
 export const experiences = [
   {
     mono: '2026 →',
-    title: 'Software Engineering Intern',
-    roleEm: 'Full-stack',
+    title: 'SWE Intern',
+    roleEm: 'Vite · Rails · Redis · PostgreSQL · AWS',
     where: 'GIGAbase · Shanghai',
     company: 'GIGAbase',
     location: 'Shanghai, China',
@@ -13,7 +13,7 @@ export const experiences = [
   {
     mono: '2025 →',
     title: 'Software Engineer',
-    roleEm: 'Next.js · Supabase · PostgreSQL',
+    roleEm: 'Next.js · Supabase',
     where: 'Ezesports · NYC',
     company: 'Ezesports',
     location: 'New York, NY',
@@ -33,7 +33,7 @@ export const experiences = [
   {
     mono: '2024',
     title: 'Software Developer',
-    roleEm: 'Spark! · Campus platforms',
+    roleEm: 'Django · Javascript · Google Cloud',
     where: 'Boston University',
     company: 'Boston University Spark!',
     location: 'Boston, MA',
@@ -54,7 +54,7 @@ export const experiences = [
   {
     mono: '2024 — 25',
     title: 'IT Consultant',
-    roleEm: 'Deployment · Endpoint operations',
+    roleEm: 'System Administration · Help Desk',
     where: 'BU Engineering IT',
     company: 'Boston University Engineering IT',
     location: 'Boston, MA',

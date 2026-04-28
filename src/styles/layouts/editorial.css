@@ -71,10 +71,6 @@
   border-color: var(--accent-color);
 }
 
-.about-grid .about-cta {
-  margin-top: 1.5rem;
-}
-
 @media (max-width: 600px) {
   .about-grid {
     grid-template-columns: 1fr;
@@ -295,7 +291,7 @@
   right: 0;
   text-align: right;
   z-index: 2;
-  max-width: min(24ch, 48vw);
+  max-width: min(28h, 52vw);
 }
 
 .hero-meta div {

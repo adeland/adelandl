@@ -1,17 +1,103 @@
-/* Codeforces Component Styles */
+/* Codeforces Component Styles — matches v2 .stats + about-grid rail */
 
-.cf-content {
-  max-width: 1200px;
-  margin: 0 auto;
+.cf-ledger {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  align-items: start;
 }
 
-.cf-description {
-  font-size: 1rem;
-  margin-bottom: 3rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
+.cf-ledger-body {
+  min-width: 0;
+}
+
+.cf-rail-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.cf-profile-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+  width: fit-content;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cf-profile-link:hover {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+@media (max-width: 600px) {
+  .cf-ledger {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Ledger stats row (simon_v2 stats-summary) */
+.cf-stats-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+  padding-bottom: clamp(2rem, 4vh, 2.5rem);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cf-stats-summary--loading .cf-stats-label {
+  color: var(--text-muted);
+}
+
+.cf-stats-num {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
   font-weight: 300;
-  text-align: left;
+  font-variation-settings: "opsz" 120, "SOFT" 80;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  margin-bottom: 0.3em;
+  color: var(--text-primary);
+}
+
+.cf-stats-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+}
+
+.cf-loading-msg {
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 300;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.cf-error-msg {
+  text-align: center;
+  color: var(--error-color);
+  font-weight: 300;
+  margin: 0;
+  padding: 2rem 1rem;
+}
+
+@media (max-width: 600px) {
+  .cf-stats-summary {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
 }
 
 .submissions-section h3,
@@ -86,31 +172,6 @@
 .detail-value {
   color: var(--text-secondary);
   font-weight: 300;
-}
-
-.cf-footer {
-  text-align: center;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-light);
-}
-
-.cf-note {
-  color: var(--text-secondary);
-  font-weight: 300;
-  font-size: 0.9rem;
-}
-
-.cf-link {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-weight: 400;
-  border-bottom: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-}
-
-.cf-link:hover {
-  border-bottom-color: var(--text-primary);
 }
 
 /* Rating Graph Styles */

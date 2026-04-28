@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 
+const HANDLE = 'simonlovestocode';
+
 const useCodeforcesData = () => {
   const [submissions, setSubmissions] = useState([]);
   const [contests, setContests] = useState([]);
+  const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -10,28 +13,42 @@ const useCodeforcesData = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        
-        // Fetch submissions
-        const submissionsResponse = await fetch('https://codeforces.com/api/user.status?handle=simonlovestocode&from=1&count=2');
-        const submissionsData = await submissionsResponse.json();
-        
-        // Fetch contest history
-        const contestsResponse = await fetch('https://codeforces.com/api/user.rating?handle=simonlovestocode');
-        const contestsData = await contestsResponse.json();
-        
+        setError(null);
+
+        const [submissionsRes, contestsRes, infoRes] = await Promise.all([
+          fetch(
+            `https://codeforces.com/api/user.status?handle=${HANDLE}&from=1&count=2`
+          ),
+          fetch(`https://codeforces.com/api/user.rating?handle=${HANDLE}`),
+          fetch(`https://codeforces.com/api/user.info?handles=${HANDLE}`)
+        ]);
+
+        const submissionsData = await submissionsRes.json();
+        const contestsData = await contestsRes.json();
+        const infoData = await infoRes.json();
+
+        let err = null;
+
         if (submissionsData.status === 'OK') {
           setSubmissions(submissionsData.result);
         } else {
-          setError('Failed to fetch submissions');
+          err = 'Failed to fetch submissions';
         }
-        
+
         if (contestsData.status === 'OK') {
-          // Sort contests in descending order (newest first)
-          const sortedContests = contestsData.result.sort((a, b) => b.ratingUpdateTimeSeconds - a.ratingUpdateTimeSeconds);
+          const sortedContests = [...contestsData.result].sort(
+            (a, b) => b.ratingUpdateTimeSeconds - a.ratingUpdateTimeSeconds
+          );
           setContests(sortedContests);
         } else {
-          setError('Failed to fetch contest history');
+          err = err || 'Failed to fetch contest history';
         }
+
+        if (infoData.status === 'OK' && infoData.result?.[0]) {
+          setUserInfo(infoData.result[0]);
+        }
+
+        setError(err);
       } catch (err) {
         setError('Error fetching data: ' + err.message);
       } finally {
@@ -45,6 +62,7 @@ const useCodeforcesData = () => {
   return {
     submissions,
     contests,
+    userInfo,
     loading,
     error
   };
