@@ -27,7 +27,7 @@ Visit the live website: [https://simon-chen.com](https://simon-chen.com)
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/shangmin-chen/simon-chen.com
+   git clone https://github.com/shangmin-chen/simon-chen-website
    cd Shangmin-Chen.github.io
    ```
 
