@@ -6,7 +6,7 @@ A modern, responsive portfolio website built with React, featuring smooth animat
 
 ## 🚀 Live Demo
 
-Visit the live website: [https://shangmin.me](https://shangmin.me)
+Visit the live website: [https://simon-chen.com](https://simon-chen.com)
 
 ## 🛠️ Tech Stack
 
@@ -27,7 +27,7 @@ Visit the live website: [https://shangmin.me](https://shangmin.me)
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/shangmin-chen/Shangmin-Chen.github.io.git
+   git clone https://github.com/shangmin-chen/simon-chen.com
    cd Shangmin-Chen.github.io
    ```
 

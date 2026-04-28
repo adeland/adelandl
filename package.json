@@ -1,8 +1,8 @@
 {
-  "name": "shangmin_website",
+  "name": "simon-chen.com",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shangmin.me",
+  "homepage": "https://simon-chen.com",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@mdx-js/react": "^3.1.1",
