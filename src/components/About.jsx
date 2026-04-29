@@ -19,6 +19,7 @@ const About = () => {
             {aboutData.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
+            <p>{aboutData.projectsSentence}</p>
             <p>
               {aboutData.codeforcesSentence.split('Codeforces')[0]}
               <a

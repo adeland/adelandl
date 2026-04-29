@@ -3,7 +3,7 @@ export const heroData = {
   headlineBeforeEm: '& ',
   headlineEm: 'builder.',
   lede:
-    'Studying CS at Boston University. I write code that ships, train models that converge, and occasionally place at competitive programming contests.',
+    'Studying CS at Boston University. I write code that ships, play with the latest AI agents, and occasionally place at competitive programming contests.',
   metaLines: ['Based in NYC, NY', "Boston University CS '26", "Available Spring '26"],
   buttons: [
     {
