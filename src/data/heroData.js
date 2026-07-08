@@ -1,10 +1,17 @@
+// Landing hero. The headline renders as: headlineLines (each on its own line),
+// then headlineBeforeEm + an accented headlineEm. Edit everything below.
 export const heroData = {
-  headlineLines: ['Software'],
-  headlineBeforeEm: 'with a ',
-  headlineEm: 'Passion.',
+  headlineLines: ['Your'],
+  headlineBeforeEm: '',
+  headlineEm: 'Name.',
   lede:
-    "CS new grad from BU. I love shipping code, reading, working out, and hanging out with friends!",
-  metaLines: ['Based in NYC, NY', 'Boston University New Grad', 'Open to opportunities'],
+    'A one-line introduction — who you are and what you do. Replace this with your own words.',
+  metaLines: ['Based in [Your City]', '[Your role or school]', 'Open to opportunities'],
+  // Short exchange-style city code for the live clock line, e.g. 'NYC'.
+  // Set to '' to hide the clock.
+  clockCity: '[CITY]',
+  // Your initials, dealt as the hero's hole-card monogram. Set to null to hide.
+  initials: ['Y', 'N'],
   buttons: [
     {
       text: 'View Projects',

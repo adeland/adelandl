@@ -1,0 +1,95 @@
+/* Footer — the colophon. The ticker tape above supplies the gold hairline. */
+
+.site-footer {
+  padding: 3.25rem 0 2.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.footer-mark {
+  width: 26px;
+  height: 26px;
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0 0 0.4rem;
+}
+
+.footer-signoff {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.footer-head {
+  color: var(--gold);
+  margin: 0 0 1rem;
+}
+
+.footer-link {
+  display: block;
+  margin: 0 0 0.55rem;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+.footer-link:hover {
+  color: var(--gold);
+}
+.footer-link:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+.footer-base {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-muted);
+}
+
+.footer-pips {
+  display: inline-flex;
+  gap: 1.1rem;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.footer-pips i {
+  font-style: normal;
+}
+.footer-pips .ink {
+  color: var(--text-secondary);
+}
+.footer-pips .red {
+  color: var(--accent-color);
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

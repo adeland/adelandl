@@ -1,0 +1,21 @@
+/* Cursor tilt — outer owns perspective, inner plane rotates. */
+
+.tilt {
+  perspective: 640px;
+}
+
+.tilt-inner {
+  transform-style: preserve-3d;
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+}
+
+.tilt--fill {
+  position: absolute;
+  inset: 0;
+}
+.tilt--fill .tilt-inner {
+  position: absolute;
+  inset: 0;
+}

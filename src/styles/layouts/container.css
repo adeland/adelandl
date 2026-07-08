@@ -12,14 +12,16 @@
   }
 }
 
+/* Sections are translucent so the cosmos parallax shows through;
+   the body carries the base page color. */
 .section {
   padding: 100px 0;
-  background-color: var(--bg-primary);
+  background-color: transparent;
   position: relative;
 }
 
 .section:nth-child(even) {
-  background-color: var(--bg-secondary);
+  background-color: var(--stripe-bg);
 }
 
 .section::before {
@@ -38,7 +40,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--bg-primary);
+  background: transparent;
   color: var(--text-primary);
   text-align: left;
   padding: 88px 24px 48px;
@@ -68,33 +70,9 @@
 
 /* Contact Layout */
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 640px;
 }
 
-/* Blog Post Layout */
-.blog-post-container {
-  min-height: 100vh;
-  background-color: var(--bg-primary);
-  padding-top: 100px; /* Account for fixed navbar */
-}
-
-.blog-post {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
-
-.blog-post-header {
-  margin-bottom: 3rem;
-  text-align: left;
-}
-
-.blog-post-footer {
-  border-top: 1px solid var(--border-light);
-  padding-top: 2rem;
-  margin-top: 3rem;
+.contact-cta {
+  margin-top: 2.5rem;
 }

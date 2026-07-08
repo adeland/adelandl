@@ -1,0 +1,46 @@
+/* Field notes — short marginalia columns. */
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .notes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .notes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.note {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.4rem;
+}
+
+.note-tag {
+  color: var(--gold);
+  margin: 0 0 0.8rem;
+}
+
+.note-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem;
+  color: var(--text-primary);
+}
+
+.note-body {
+  margin: 0 0 1rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 38ch;
+}

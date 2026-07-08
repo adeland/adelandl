@@ -3,6 +3,11 @@
 @media (max-width: 768px) {
   /* Mobile nav layout lives in components/navbar.css (slide-down + backdrop). */
 
+  /* Tighter section rhythm on small screens */
+  .section {
+    padding: 72px 0;
+  }
+
   .theme-toggle {
     padding: 0.3rem;
   }
@@ -33,36 +38,8 @@
     padding: 88px 24px 40px;
   }
 
-  .hero-title {
-    font-size: clamp(2.25rem, 10vw, 3rem);
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
-  .hero-description {
-    font-size: 0.9rem;
-  }
-
   .section-title {
     font-size: 1.8rem;
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .projects-grid,
-  .blog-grid,
-  .submissions-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cf-sections {
-    grid-template-columns: 1fr;
-    gap: 2rem;
   }
 
   .hero-buttons {
@@ -77,21 +54,13 @@
   .container {
     padding: 0 24px;
   }
-
-  .blog-post-title {
-    font-size: 2rem;
-  }
-
-  .blog-post-content h2 {
-    font-size: 1.5rem;
-  }
-
-  .blog-post-content h3 {
-    font-size: 1.2rem;
-  }
 }
 
 @media (max-width: 480px) {
+  .section {
+    padding: 64px 0;
+  }
+
   .container {
     padding: 0 16px;
   }
@@ -102,30 +71,6 @@
 
   .hero {
     padding: 80px 16px 32px;
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 12vw, 2.75rem);
-  }
-
-  .experience-item,
-  .project-card,
-  .blog-card,
-  .submission-card,
-  .contest-card {
-    padding-bottom: 1.5rem;
-  }
-
-  .blog-post-title {
-    font-size: 1.8rem;
-  }
-
-  .blog-post-content h2 {
-    font-size: 1.3rem;
-  }
-
-  .blog-post-content h3 {
-    font-size: 1.1rem;
   }
 
   .nav-controls {

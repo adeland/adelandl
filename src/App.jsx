@@ -1,51 +1,56 @@
 import './styles/index.css';
-import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
+import Cosmos from './components/Cosmos';
+import CursorDot from './components/CursorDot';
 import Navbar from './components/Navbar';
+import ScrollProgress from './components/ScrollProgress';
 import Hero from './components/Hero';
 import About from './components/About';
-import Now from './components/Now';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
-import Blog from './components/Blog';
-import Gallery from './components/Gallery';
+import FieldNotes from './components/FieldNotes';
 import Contact from './components/Contact';
+import TickerTape from './components/TickerTape';
+import Footer from './components/Footer';
+import CommandPalette from './components/CommandPalette';
 import { useScrollReveal } from './hooks/useScrollReveal';
-
-import GalleryPage from './components/GalleryPage';
-
-const BlogPost = lazy(() => import('./components/BlogPost'));
 
 function App() {
   useScrollReveal();
+  const [paletteOpen, setPaletteOpen] = useState(false);
 
-  const HomePage = () => (
-    <>
-      <Hero />
-      <About />
-      <Now />
-      <Experience />
-      <Projects />
-      <Blog />
-      <Gallery />
-      <Contact />
-    </>
-  );
+  // ⌘K / ctrl+K toggles the command palette from anywhere.
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setPaletteOpen((o) => !o);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   return (
     <ThemeProvider>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/gallery/:albumId" element={<GalleryPage />} />
-          </Routes>
-        </div>
-      </Router>
+      <Cosmos />
+      <CursorDot />
+      <div className="App">
+        <Navbar onOpenPalette={() => setPaletteOpen(true)} />
+        <ScrollProgress />
+        <main>
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <FieldNotes />
+          <Contact />
+        </main>
+        <TickerTape />
+        <Footer />
+        <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
+      </div>
     </ThemeProvider>
   );
 }

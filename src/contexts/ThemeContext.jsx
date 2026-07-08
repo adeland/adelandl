@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const THEME_COLOR_LIGHT = '#f5f1ea';
-const THEME_COLOR_DARK = '#22211d';
+const THEME_COLOR_LIGHT = '#f7f2ec';
+const THEME_COLOR_DARK = '#1e1719';
 
 const ThemeContext = createContext();
 
@@ -29,10 +29,6 @@ export const ThemeProvider = ({ children }) => {
     setIsDarkMode((prev) => !prev);
   };
 
-  const setTheme = (theme) => {
-    setIsDarkMode(theme === 'dark');
-  };
-
   useEffect(() => {
     // Save theme preference to localStorage
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
@@ -44,11 +40,6 @@ export const ThemeProvider = ({ children }) => {
     } else {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
-    }
-
-    const svgIcon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
-    if (svgIcon) {
-    svgIcon.href = isDarkMode ? '/favicon-dark.svg' : '/favicon-light.svg';
     }
 
     const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -75,7 +66,6 @@ export const ThemeProvider = ({ children }) => {
   const value = {
     isDarkMode,
     toggleTheme,
-    setTheme,
     theme: isDarkMode ? 'dark' : 'light',
   };
 

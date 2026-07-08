@@ -79,7 +79,12 @@
 
 .nav-link:hover {
   color: var(--text-primary);
-  border-bottom-color: var(--border-color);
+  border-bottom-color: var(--gold);
+}
+
+.nav-link.is-active {
+  color: var(--text-primary);
+  border-bottom-color: var(--gold);
 }
 
 .nav-link:focus-visible {
@@ -91,6 +96,46 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
+}
+
+/* ⌘K chip — opens the command palette */
+.nav-cmdk {
+  margin: 0;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.nav-cmdk:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.nav-cmdk:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Hairline gold reading-progress under the navbar */
+.scroll-progress {
+  position: fixed;
+  top: calc(var(--nav-height, 4.5rem) - 1px);
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 1001;
+  pointer-events: none;
+}
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--gold);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
 }
 
 /* Hamburger — real button, animates to X */

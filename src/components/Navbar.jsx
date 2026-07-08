@@ -1,14 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { scrollToSection } from '../utils/scrollUtils';
+import { scrollToSection, scrollToTop } from '../utils/scrollUtils';
 import { useTheme } from '../contexts/ThemeContext';
 import { navbarData } from '../data/navbarData';
 
-const Navbar = () => {
+const Navbar = ({ onOpenPalette }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState('');
   const { isDarkMode, toggleTheme } = useTheme();
+
+  // Track which section the reader is in; its nav link carries a gold mark.
+  useEffect(() => {
+    const ids = navbarData.navLinks.map((link) => link.sectionId);
+    let raf = 0;
+    const compute = () => {
+      raf = 0;
+      const marker = window.scrollY + window.innerHeight * 0.35;
+      let current = '';
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= marker) current = id;
+      }
+      setActiveSection((prev) => (prev === current ? prev : current));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(compute);
+    };
+    compute();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
@@ -39,26 +64,13 @@ const Navbar = () => {
 
   const handleScrollToSection = (sectionId) => {
     setIsMenuOpen(false);
-
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        scrollToSection(sectionId);
-      }, 350);
-    } else {
-      setTimeout(() => {
-        scrollToSection(sectionId);
-      }, 300);
-    }
+    // Let the mobile menu's close animation start before scrolling.
+    setTimeout(() => scrollToSection(sectionId), isMenuOpen ? 300 : 0);
   };
 
   const handleLogoClick = () => {
-    if (location.pathname !== '/') {
-      navigate('/');
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
     setIsMenuOpen(false);
+    scrollToTop();
   };
 
   return (
@@ -69,7 +81,7 @@ const Navbar = () => {
             type="button"
             className="nav-logo"
             onClick={handleLogoClick}
-            aria-label="Simon Chen — home"
+            aria-label={`${navbarData.logo} — home`}
           >
             {navbarData.logo}
           </button>
@@ -83,7 +95,9 @@ const Navbar = () => {
                 key={link.sectionId}
                 type="button"
                 onClick={() => handleScrollToSection(link.sectionId)}
-                className="nav-link"
+                className={`nav-link${
+                  activeSection === link.sectionId ? ' is-active' : ''
+                }`}
               >
                 {link.label}
               </button>
@@ -91,6 +105,16 @@ const Navbar = () => {
           </div>
 
           <div className="nav-controls">
+            {onOpenPalette && (
+              <button
+                type="button"
+                className="nav-cmdk"
+                onClick={onOpenPalette}
+                aria-label="Open command palette"
+              >
+                ⌘K
+              </button>
+            )}
             <button
               type="button"
               className="theme-toggle"

@@ -1,0 +1,27 @@
+/* Session stats — big serif figures under About. */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem 2.5rem;
+  margin-top: 4.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--gold-line);
+}
+
+.stat-value {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--text-muted);
+}

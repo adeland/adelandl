@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { scrollToSection } from '../utils/scrollUtils';
 import { heroData } from '../data/heroData';
 import Button from './ui/Button';
+import HeroClock from './HeroClock';
+import HeroMonogram from './HeroMonogram';
 
 const Hero = () => {
   const handleScrollToSection = (sectionId) => {
@@ -17,47 +18,38 @@ const Hero = () => {
             {heroData.metaLines.map((line) => (
               <div key={line}>{line}</div>
             ))}
+            <HeroClock city={heroData.clockCity} />
           </div>
         )}
         <h1 className="hero-title-v2">
-          {heroData.headlineLines.map((line) => (
-            <React.Fragment key={line}>
-              {line}
-              <br />
-            </React.Fragment>
+          {heroData.headlineLines.map((line, i) => (
+            <span key={line} className="line-mask" style={{ '--line-i': i }}>
+              <span className="line-reveal">{line}</span>
+            </span>
           ))}
-          {heroData.headlineBeforeEm}
-          <em className="accent">{heroData.headlineEm}</em>
+          <span
+            className="line-mask"
+            style={{ '--line-i': heroData.headlineLines.length }}
+          >
+            <span className="line-reveal">
+              {heroData.headlineBeforeEm}
+              <em className="accent">{heroData.headlineEm}</em>
+            </span>
+          </span>
         </h1>
-        <div className="hero-lower-grid">
-          <div className="hero-desc-col">
-            <p className="hero-lede-v2">{heroData.lede}</p>
-            <div className="hero-buttons">
-              {heroData.buttons.map((button) => (
-                <Button
-                  key={button.action}
-                  variant={button.variant}
-                  onClick={() => handleScrollToSection(button.action)}
-                >
-                  {button.text}
-                </Button>
-              ))}
-            </div>
-          </div>
-
-          <div className="hero-avatar-col">
-            <div className="hero-avatar-frame">
-              <img
-                src="https://images.simon-chen.com/shanghai/shanghai_08-full.jpg"
-                alt="Simon Chen"
-                className="hero-avatar-img"
-              />
-              <Link to="/gallery/shanghai-study-abroad" className="hero-avatar-caption-link">
-                Shanghai Study Abroad
-              </Link>
-            </div>
-          </div>
+        <p className="hero-lede-v2">{heroData.lede}</p>
+        <div className="hero-buttons">
+          {heroData.buttons.map((button) => (
+            <Button
+              key={button.action}
+              variant={button.variant}
+              onClick={() => handleScrollToSection(button.action)}
+            >
+              {button.text}
+            </Button>
+          ))}
         </div>
+        <HeroMonogram initials={heroData.initials} />
       </div>
     </section>
   );

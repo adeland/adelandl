@@ -1,0 +1,106 @@
+/* ⌘K command palette. */
+
+.palette-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 15, 17, 0.45);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 2000;
+}
+
+.palette {
+  max-width: 540px;
+  margin: 16vh auto 0;
+  background: var(--bg-primary);
+  border: 1px solid var(--gold-line);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: palette-pop 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes palette-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.palette-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.palette-glyph {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+.palette-input {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  caret-color: var(--gold);
+}
+.palette-input::placeholder {
+  color: var(--text-muted);
+}
+
+.palette-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.palette-row.sel {
+  background: var(--hover-bg);
+  color: var(--text-primary);
+  border-left-color: var(--gold);
+}
+.palette-row.muted {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.palette-kbd {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.palette-foot {
+  display: flex;
+  gap: 18px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.6rem;
+}
+
+@media (max-width: 600px) {
+  .palette {
+    margin: 10vh 16px 0;
+  }
+}

@@ -1,0 +1,47 @@
+/* Ticker tape — ambient mono strip above the footer. */
+
+.ticker {
+  /* The last section's own bottom padding already separates content;
+     this only adds a modest breath before the tape. */
+  margin-top: clamp(3rem, 8vh, 6rem);
+  border-top: 1px solid var(--gold-line);
+  border-bottom: 1px solid var(--gold-line);
+  padding: 0.6rem 0;
+  overflow: hidden;
+}
+
+.ticker-reel {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker-roll 36s linear infinite;
+  will-change: transform;
+}
+
+.ticker:hover .ticker-reel {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ticker-sep {
+  color: var(--gold);
+  font-size: 0.5rem;
+  margin: 0 1.4rem;
+}
+
+@keyframes ticker-roll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

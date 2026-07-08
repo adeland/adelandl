@@ -1,29 +1,36 @@
 import React from 'react';
 
-const Button = ({ 
-  children, 
-  variant = 'primary', 
-  size = 'medium',
+const VARIANT_CLASSES = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+};
+
+const Button = ({
+  children,
+  variant = 'primary',
   className = '',
   disabled = false,
   onClick,
+  as,
+  href,
   type = 'button',
-  ...props 
+  ...props
 }) => {
-  const baseClasses = 'btn';
-  const variantClasses = {
-    primary: 'btn-primary',
-    secondary: 'btn-secondary',
-    submit: 'submit-btn'
-  };
-  
-  const sizeClasses = {
-    small: 'btn-sm',
-    medium: '',
-    large: 'btn-lg'
-  };
+  const buttonClass = `btn ${VARIANT_CLASSES[variant] || ''} ${className}`
+    .replace(/\s+/g, ' ')
+    .trim();
 
-  const buttonClass = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
+  // Render as an anchor when `as="a"` or an href is supplied (e.g. mailto links),
+  // otherwise a native button. Keeps one styled primitive for both use cases.
+  const Element = as || (href ? 'a' : 'button');
+
+  if (Element === 'a') {
+    return (
+      <a className={buttonClass} href={href} onClick={onClick} {...props}>
+        {children}
+      </a>
+    );
+  }
 
   return (
     <button

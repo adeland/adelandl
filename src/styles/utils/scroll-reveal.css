@@ -19,36 +19,48 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.hero-title-v2 {
-  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 0.05s;
+/* Headline lines rise out of clipping masks, one after another */
+.line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.line-reveal {
+  display: inline-block;
+  transform: translateY(112%);
+  animation: line-rise 0.95s var(--ease-out) both;
+  animation-delay: calc(0.08s + var(--line-i, 0) * 0.11s);
+}
+
+@keyframes line-rise {
+  to {
+    transform: translateY(0);
+  }
 }
 
 .hero-lede-v2 {
-  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 0.22s;
+  animation: hero-rise 0.9s var(--ease-out) both;
+  animation-delay: 0.34s;
 }
 
 .hero-buttons {
-  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 0.38s;
+  animation: hero-rise 0.9s var(--ease-out) both;
+  animation-delay: 0.5s;
 }
 
 .hero-meta {
   animation: hero-rise 0.7s ease both;
-  animation-delay: 0.55s;
+  animation-delay: 0.62s;
 }
 
-/* "life." breathes gently after it enters */
+/* The accent breathes gently after it enters */
 @keyframes accent-breathe {
   0%, 100% { font-variation-settings: "opsz" 144, "SOFT" 50; }
   50%       { font-variation-settings: "opsz" 144, "SOFT" 100; }
 }
 
 .hero-title-v2 em.accent {
-  animation:
-    hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both 0.05s,
-    accent-breathe 7s ease-in-out infinite 1.6s;
+  animation: accent-breathe 7s ease-in-out infinite 1.8s;
 }
 
 /* ------------------------------------------------------------------ */
@@ -70,7 +82,7 @@
   }
 
   /* Hero entrance animations */
-  .hero-title-v2,
+  .line-reveal,
   .hero-lede-v2,
   .hero-buttons,
   .hero-meta {

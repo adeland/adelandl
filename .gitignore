@@ -5,27 +5,12 @@
 /.pnp
 .pnp.js
 
-# testing
-/coverage
-
-# production
-/build
+# build output
+/dist
 
 # local tooling
-/.wrangler
 /.claude
-
-# resized gallery images staged for R2 upload
-/gallery-dist
-
-# design-sync (claude.ai/design) — staged scripts, build output, machine state
-/.ds-sync
-/ds-bundle
-/.design-sync/.cache
-/.design-sync/learnings
-/.design-sync/node_modules
-/.design-sync/styles.bundled.css
-/.design-sync/.styles.tmp.css
+/.vercel
 
 # misc
 .DS_Store
@@ -34,11 +19,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-.dev.vars
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# images (to be put onto R2)
-/gallery

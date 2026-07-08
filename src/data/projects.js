@@ -1,24 +1,34 @@
+// Each entry is one card in the hand. Ranks and suits are dealt automatically
+// (A♠, K♦, Q♣, J♥ …) unless you pin them with `card: { rank: 'A', suit: '♠' }`.
+// Leave `github`/`demo` empty ('') to hide those links.
 export const projects = [
   {
-    title: "Persephone",
-    titleParts: { before: '', em: "Persephone", after: ' — Kalshi trading bot' },
+    title: '[Project One]',
+    tagline: 'short tagline',
     description:
-      'An algorithmic trading bot built for Kalshi event markets in collaboration with a quant trader and a YC founding engineer. Designed custom infrastructure and model layers, focusing on the statistical modeling layer. Scaled $2k to $20k with over $200k in traded volume within two weeks.',
-    tags: ['Python', 'Kalshi-API', 'Quant-Trading', 'Statistical-Modeling'],
-    meta: { year: '2026', role: 'Model Eng', status: 'In development' },
+      '[Describe the project in a couple of sentences: what it does, your role, and any notable outcome.]',
+    tags: ['Tech One', 'Tech Two', 'Tech Three'],
+    meta: { year: '2025', role: 'Solo', status: 'In development' },
     github: '',
     demo: '',
-    blog: '',
   },
   {
-    title: "Hermes' Letters",
-    titleParts: { before: '', em: "Hermes' Letters", after: ' — invite only letter sending platform' },
+    title: '[Project Two]',
+    tagline: 'short tagline',
     description:
-      'An invite-only, long-form letter platform for friends. Letters are unsealed via an interactive wax-seal gesture and permanently deleted after opening. Saving an unsealed letter establishes a connection in a private phonebook to enable direct, secure mail delivery between connected users.',
-    tags: ['Next.js', 'React', 'Supabase', 'Postgres', 'Drizzle-ORM', 'Tailwind-CSS'],
-    meta: { year: '2026', role: 'Solo', status: 'Live (Invite-only)' },
+      '[A second project — the system you designed, the market you traded, the tool you shipped.]',
+    tags: ['Tech One', 'Tech Two'],
+    meta: { year: '2024', role: 'Team', status: 'Live' },
     github: '',
-    demo: 'https://hermesletters.vercel.app',
-    blog: '',
+    demo: '',
+  },
+  {
+    title: '[Project Three]',
+    tagline: 'short tagline',
+    description: '[A third project — earlier work still worth showing.]',
+    tags: ['Tech One', 'Tech Two'],
+    meta: { year: '2024', role: 'Solo', status: 'Shipped' },
+    github: '',
+    demo: '',
   },
 ];

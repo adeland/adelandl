@@ -1,39 +1,36 @@
-/* Main CSS Index - Imports all modular styles */
+/* Main CSS Index — imports all modular styles */
 
-/* Base Styles */
+/* Base */
 @import './base/reset.css';
 @import './base/variables.css';
 @import './base/typography.css';
 
-/* Layout Styles */
+/* Layout */
 @import './layouts/container.css';
 @import './layouts/editorial.css';
-@import './layouts/grid.css';
 
-/* Component Styles */
+/* Components */
+@import './components/cosmos.css';
+@import './components/tilt.css';
+@import './components/cursor-dot.css';
 @import './components/button.css';
-@import './components/card.css';
-@import './components/tag.css';
-@import './components/form.css';
+@import './components/live-tag.css';
 @import './components/navbar.css';
 @import './components/theme-toggle.css';
 @import './components/about.css';
-@import './components/hero-avatar.css';
-@import './components/experience.css';
-@import './components/projects.css';
-@import './components/blog.css';
+@import './components/hero-monogram.css';
+@import './components/skill-range.css';
+@import './components/experience-ring.css';
+@import './components/experience-book.css';
+@import './components/project-hand.css';
+@import './components/session-stats.css';
+@import './components/field-notes.css';
 @import './components/contact.css';
-@import './components/codeforces.css';
+@import './components/table-card.css';
+@import './components/command-palette.css';
+@import './components/ticker.css';
+@import './components/footer.css';
 
-/* Utility Styles */
+/* Utilities */
 @import './utils/responsive.css';
 @import './utils/scroll-reveal.css';
-
-/* Component Styles (continued) */
-@import './components/now.css';
-@import './components/github.css';
-@import './components/goodreads.css';
-@import './components/gallery.css';
-
-/* Mdx Styles */
-@import './components/mdx.css';

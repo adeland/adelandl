@@ -1,77 +1,86 @@
 /* CSS Custom Properties (Variables) */
+/* Palette: "Pomegranate & Ivory" — warm ivory light theme, aubergine-charcoal
+   dark theme, garnet/rose accent. All palette values live here; nothing else
+   in the codebase hardcodes a palette color. Edit here to reskin the site. */
 
 :root {
   /* Layout */
   --nav-height: 4.5rem;
+
+  /* Motion — the house easing; use for all entrances and settles */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Typography */
   --font-serif: 'Fraunces', 'Times New Roman', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Light theme (default / :root.light) */
-  --bg-primary: #f5f1ea;
-  --bg-secondary: #ede8df;
-  --bg-tertiary: #e8e2d8;
-  --text-primary: #1a1a1a;
-  --text-secondary: #4a4a4a;
-  --text-muted: #6f6655; /* darkened from #9a9080 → ≥4.5:1 on #f5f1ea */
-  --text-tertiary: #6b6158; /* darkened from #7a7268 → 5.37:1 on #f5f1ea (WCAG AA) */
-  --border-color: #d8d0c0;
-  --border-light: #e5dfd4;
-  --accent-color: #c8442a;
-  --hover-bg: rgba(26, 26, 26, 0.06);
-  --navbar-bg: rgba(245, 241, 234, 0.88);
-  --code-bg: #ebe6dc;
-  --code-header-bg: #e3ddd2;
-  --card-bg: #ede8df;
-  --accent-bg: rgba(200, 68, 42, 0.12);
-  --stripe-bg: rgba(26, 26, 26, 0.04);
-  --success-color: #2d6a4f;
-  --error-color: #a83220;
+  --bg-primary: #f7f2ec;
+  --bg-secondary: #efe8df;
+  --bg-tertiary: #e8dfd3;
+  --text-primary: #2b1d22;
+  --text-secondary: #574349;
+  --text-muted: #756269; /* ≥4.5:1 on #f7f2ec (WCAG AA) */
+  --text-tertiary: #6e5c61; /* ≥4.5:1 on #f7f2ec (WCAG AA) */
+  --border-color: #e0d6cb;
+  --border-light: #eae2d7;
+  --accent-color: #7c2d3a; /* garnet / pomegranate */
+  --hover-bg: rgba(43, 29, 34, 0.06);
+  --navbar-bg: rgba(247, 242, 236, 0.88);
+  --card-bg: #efe8df;
+  --accent-bg: rgba(124, 45, 58, 0.1);
+  --stripe-bg: rgba(43, 29, 34, 0.04);
+
+  /* Gilt accent (regal) */
+  --gold: #b0894f;
+  --gold-soft: #cbb287;
+  --gold-line: rgba(176, 137, 79, 0.4);
 }
 
 /* Light Theme Variables */
 :root.light {
-  --bg-primary: #f5f1ea;
-  --bg-secondary: #ede8df;
-  --bg-tertiary: #e8e2d8;
-  --text-primary: #1a1a1a;
-  --text-secondary: #4a4a4a;
-  --text-muted: #6f6655; /* darkened from #9a9080 → ≥4.5:1 on #f5f1ea */
-  --text-tertiary: #6b6158; /* darkened from #7a7268 → 5.37:1 on #f5f1ea (WCAG AA) */
-  --border-color: #d8d0c0;
-  --border-light: #e5dfd4;
-  --accent-color: #c8442a;
-  --hover-bg: rgba(26, 26, 26, 0.06);
-  --navbar-bg: rgba(245, 241, 234, 0.88);
-  --code-bg: #ebe6dc;
-  --code-header-bg: #e3ddd2;
-  --card-bg: #ede8df;
-  --accent-bg: rgba(200, 68, 42, 0.12);
-  --stripe-bg: rgba(26, 26, 26, 0.04);
-  --success-color: #2d6a4f;
-  --error-color: #a83220;
+  --bg-primary: #f7f2ec;
+  --bg-secondary: #efe8df;
+  --bg-tertiary: #e8dfd3;
+  --text-primary: #2b1d22;
+  --text-secondary: #574349;
+  --text-muted: #756269;
+  --text-tertiary: #6e5c61;
+  --border-color: #e0d6cb;
+  --border-light: #eae2d7;
+  --accent-color: #7c2d3a;
+  --hover-bg: rgba(43, 29, 34, 0.06);
+  --navbar-bg: rgba(247, 242, 236, 0.88);
+  --card-bg: #efe8df;
+  --accent-bg: rgba(124, 45, 58, 0.1);
+  --stripe-bg: rgba(43, 29, 34, 0.04);
+
+  /* Gilt accent (regal) */
+  --gold: #b0894f;
+  --gold-soft: #cbb287;
+  --gold-line: rgba(176, 137, 79, 0.4);
 }
 
-/* Dark — lifted warm dark, not near-black */
+/* Dark — deep aubergine-charcoal with a soft rose accent (not near-black) */
 :root.dark {
-  --bg-primary: #22211d;
-  --bg-secondary: #2a2824;
-  --bg-tertiary: #32302b;
-  --text-primary: #ede6d6;
-  --text-secondary: #b8afa0;
-  --text-muted: #9e9789; /* lightened from #8a8278 → ≥4.5:1 on #22211d */
-  --text-tertiary: #90867d; /* lightened from #6a6258 → 4.52:1 on #22211d (WCAG AA) */
-  --border-color: #3d3a34;
-  --border-light: #34322e;
-  --accent-color: #e87555;
-  --hover-bg: rgba(237, 230, 214, 0.08);
-  --navbar-bg: rgba(34, 33, 29, 0.88);
-  --code-bg: #2f2d28;
-  --code-header-bg: #3a3832;
-  --card-bg: #2a2824;
-  --accent-bg: rgba(232, 117, 85, 0.15);
-  --stripe-bg: rgba(237, 230, 214, 0.04);
-  --success-color: #6bcf97;
-  --error-color: #e87555;
+  --bg-primary: #1e1719;
+  --bg-secondary: #261e21;
+  --bg-tertiary: #2f262a;
+  --text-primary: #ece1de;
+  --text-secondary: #c0aeb1;
+  --text-muted: #9c8b8f; /* ≥4.5:1 on #1e1719 (WCAG AA) */
+  --text-tertiary: #8f7e82; /* ≥4.5:1 on #1e1719 (WCAG AA) */
+  --border-color: #3a2f33;
+  --border-light: #2f2529;
+  --accent-color: #ce7e88; /* soft rose — legible on dark */
+  --hover-bg: rgba(236, 225, 222, 0.08);
+  --navbar-bg: rgba(30, 23, 25, 0.88);
+  --card-bg: #261e21;
+  --accent-bg: rgba(206, 126, 136, 0.15);
+  --stripe-bg: rgba(236, 225, 222, 0.04);
+
+  /* Gilt accent (regal) — brighter gold for legibility on dark */
+  --gold: #c8a15e;
+  --gold-soft: #d8bd8a;
+  --gold-line: rgba(200, 161, 94, 0.42);
 }

@@ -1,49 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { experiences } from '../data/experiences';
+import ExperienceRing from './ExperienceRing';
+import ExperienceBook from './ExperienceBook';
+
+const RING_QUERY = '(min-width: 860px)';
+
+// The dial needs width to breathe; below 860px the order-book ladder takes over.
+const useWideEnough = () => {
+  const [wide, setWide] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(RING_QUERY).matches
+  );
+  useEffect(() => {
+    const mql = window.matchMedia(RING_QUERY);
+    const onChange = (e) => setWide(e.matches);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
+  return wide;
+};
 
 const Experience = () => {
+  const wide = useWideEnough();
+
   return (
     <section id="experience" className="section">
       <div className="container">
         <div className="section-head reveal">
-          <div className="mono-label num">§ 03</div>
+          <div className="mono-label num">§ 02</div>
           <h2>
             Experience <em>- Curated</em>
           </h2>
         </div>
-        <ul className="exp-list">
-          {experiences.map((exp, index) => {
-            const rowKey = `${exp.mono}-${exp.title}-${exp.company}`;
-            return (
-              <li key={rowKey} className="exp-row reveal" style={{ '--delay': `${index * 60}ms` }}>
-                <div className="exp-header">
-                  <span className="mono-label">{exp.mono}</span>
-                  <span className="exp-middle">
-                    <span className="role">
-                      {exp.title} <em>· {exp.roleEm}</em>
-                    </span>
-                  </span>
-                  <span className="where">{exp.where}</span>
-                </div>
-                <div className="exp-detail">
-                  <p className="exp-period">{exp.period}</p>
-                  <p className="exp-desc">{exp.description}</p>
-                  {exp.technologies?.length > 0 && (
-                    <div className="exp-tags">
-                      {exp.technologies.map((t) => (
-                        <span key={t}>{t}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        {wide ? (
+          <ExperienceRing experiences={experiences} />
+        ) : (
+          <ExperienceBook experiences={experiences} />
+        )}
       </div>
     </section>
   );
 };
 
 export default Experience;
-

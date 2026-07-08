@@ -1,0 +1,24 @@
+/* Gold cursor companion — trails the pointer, grows over interactives. */
+
+.cursor-dot {
+  position: fixed;
+  top: -3.5px;
+  left: -3.5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 1500;
+  mix-blend-mode: multiply;
+}
+html.dark .cursor-dot {
+  mix-blend-mode: screen;
+}
+
+@media (pointer: coarse) {
+  .cursor-dot {
+    display: none;
+  }
+}

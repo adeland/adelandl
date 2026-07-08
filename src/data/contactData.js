@@ -1,66 +1,25 @@
+// Contact section. The "Email me" button and the Email row both use `email`
+// (with optional `emailSubject` prefilled). Add/remove `links` as you like.
 export const contactData = {
-  title: "Reach out",
-  description: "I'm always interested in new opportunities and exciting projects. Feel free to reach out if you'd like to collaborate or just say hello!",
-  contactDetails: [
+  title: 'Reach out',
+  description:
+    "I'm always interested in new opportunities and interesting projects. Feel free to reach out if you'd like to collaborate or just say hello.",
+  email: 'you@example.com',
+  emailSubject: "Hello from your site",
+  location: '[City, Country]',
+  // Drop your résumé at public/resume.pdf and set this to '/resume.pdf' to
+  // enable the ⌘K "Download résumé" command. Empty hides it.
+  resumeUrl: '',
+  links: [
     {
-      label: "Email",
-      value: "shangminch@gmail.com",
-      href: "mailto:shangminch@gmail.com",
-      external: false
+      label: 'LinkedIn',
+      value: 'linkedin.com/in/your-handle',
+      href: 'https://linkedin.com/in/your-handle',
     },
     {
-      label: "LinkedIn",
-      value: "linkedin.com/in/shangmin-chen",
-      href: "https://linkedin.com/in/shangmin-chen",
-      external: true
+      label: 'GitHub',
+      value: 'github.com/your-handle',
+      href: 'https://github.com/your-handle',
     },
-    {
-      label: "GitHub",
-      value: "github.com/Shangmin-Chen",
-      href: "https://github.com/Shangmin-Chen",
-      external: true
-    },
-    {
-      label: "Instagram",
-      value: "instagram.com/the.simonchen",
-      href: "https://www.instagram.com/the.simonchen/",
-      external: true
-    }
   ],
-  formFields: [
-    {
-      label: "Name",
-      type: "text",
-      name: "name"
-    },
-    {
-      label: "Email",
-      type: "email",
-      name: "email"
-    },
-    {
-      label: "Subject",
-      type: "text",
-      name: "subject"
-    },
-    {
-      label: "Message",
-      type: "textarea",
-      name: "message",
-      rows: 5
-    }
-  ],
-  submitButton: {
-    default: "Send Message",
-    submitting: "Sending..."
-  },
-  messages: {
-    success: "Thank you! Your message has been sent successfully.",
-    error: "Failed to send message. Please try again.",
-    validation: {
-      emptyFields: "Please fill in all fields",
-      invalidEmail: "Please enter a valid email address"
-    }
-  }
 };
-

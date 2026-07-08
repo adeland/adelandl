@@ -1,7 +1,7 @@
 import React from 'react';
 import { aboutData } from '../data/aboutData';
-import { skills } from '../data/skills';
-import Tag from './ui/Tag';
+import SkillRange from './SkillRange';
+import SessionStats from './SessionStats';
 import { scrollToSection } from '../utils/scrollUtils';
 
 const About = () => {
@@ -20,32 +20,29 @@ const About = () => {
             {aboutData.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
-            <p>
-              I build cool apps, explore my{' '}
-              <a
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('projects');
-                }}
-              >
-                projects section
-              </a>{' '}
-              to see my work!
-            </p>
+            {aboutData.projectsLink && (
+              <p>
+                {aboutData.projectsLink.before}
+                <a
+                  href="#projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('projects');
+                  }}
+                >
+                  {aboutData.projectsLink.linkText}
+                </a>
+                {aboutData.projectsLink.after}
+              </p>
+            )}
             <p>{aboutData.closing}</p>
             <div className="skills">
               <h3>{aboutData.skillsTitle}</h3>
-              <div className="skills-grid">
-                {skills.map((skill, index) => (
-                  <Tag key={index} variant="skill">
-                    {skill}
-                  </Tag>
-                ))}
-              </div>
+              <SkillRange />
             </div>
           </div>
         </div>
+        <SessionStats />
       </div>
     </section>
   );

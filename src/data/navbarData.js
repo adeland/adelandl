@@ -1,34 +1,25 @@
 export const navbarData = {
-  logo: "Simon Chen",
+  logo: 'Your Name',
   navLinks: [
     {
-      label: "About",
-      sectionId: "about"
+      label: 'About',
+      sectionId: 'about',
     },
     {
-      label: "Now",
-      sectionId: "now"
+      label: 'Experience',
+      sectionId: 'experience',
     },
     {
-      label: "Experience",
-      sectionId: "experience"
+      label: 'Projects',
+      sectionId: 'projects',
     },
     {
-      label: "Projects",
-      sectionId: "projects"
-    },
-    {
-      label: "Writing",
-      sectionId: "blog"
-    },
-    {
-      label: "Gallery",
-      sectionId: "gallery"
+      label: 'Notes',
+      sectionId: 'notes',
     },
     {
       label: "Let's Chat",
-      sectionId: "contact"
-    }
-  ]
+      sectionId: 'contact',
+    },
+  ],
 };
-

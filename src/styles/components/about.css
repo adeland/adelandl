@@ -1,23 +1,5 @@
 /* About Component Styles */
 
-.about-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.about-text p {
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  font-weight: 300;
-}
-
-.about-actions {
-  margin: 2rem 0;
-}
-
 .skills {
   margin-top: 3rem;
 }

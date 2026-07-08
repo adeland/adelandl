@@ -1,0 +1,94 @@
+/* Skill range — the 13×13 GTO chart in the About section. */
+
+.skill-range {
+  max-width: 340px;
+}
+
+.range-board {
+  position: relative;
+}
+
+.range-grid {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 2px;
+}
+
+.range-cell {
+  aspect-ratio: 1;
+  background: var(--bg-tertiary);
+  border-radius: 1.5px;
+  cursor: crosshair;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.range-cell.raise {
+  background: var(--accent-color);
+}
+.range-cell.call {
+  background: var(--gold);
+}
+.range-cell:hover,
+.range-cell.hot {
+  transform: scale(1.4);
+  outline: 1.5px solid var(--text-primary);
+  outline-offset: 1px;
+  position: relative;
+  z-index: 2;
+}
+.range-cell.pulse {
+  transform: scale(1.4);
+  outline: 1px solid var(--gold);
+  outline-offset: 1px;
+}
+
+/* Combo readout pinned to the hovered cell */
+.range-tip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 9px));
+  background: var(--bg-primary);
+  border: 1px solid var(--gold);
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--text-primary);
+  pointer-events: none;
+  z-index: 3;
+}
+.range-tip.below {
+  transform: translate(-50%, 9px);
+}
+
+.range-label {
+  color: var(--accent-color);
+  margin: 12px 0 0;
+  min-height: 1.1em;
+}
+
+.range-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+}
+
+.range-key {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 1.5px;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+.range-key.raise {
+  background: var(--accent-color);
+}
+.range-key.call {
+  background: var(--gold);
+}
+.range-key.fold {
+  background: var(--bg-tertiary);
+}

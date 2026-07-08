@@ -1,0 +1,204 @@
+/* Project hand — projects dealt as playing cards beside a reading pane. */
+
+.hand-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) 1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  padding: 1rem 0 0.5rem;
+}
+
+.hand-felt {
+  position: relative;
+  height: 264px;
+}
+
+/* Cards start face-down in the stack; when the felt scrolls into view
+   (.revealed via the scroll-reveal hook) each card fans out in turn. */
+.hand-card {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  width: 148px;
+  height: 212px;
+  margin: 0;
+  padding: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  cursor: pointer;
+  transform-origin: 50% 118%;
+  transform: translateX(-50%) rotate(0deg) translateY(12px);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease, border-color 0.35s ease;
+  transition-delay: var(--deal-delay, 0ms);
+}
+.hand-felt.revealed .hand-card {
+  opacity: 1;
+  transform: translateX(-50%) rotate(var(--fan));
+}
+.hand-felt.revealed .hand-card.on {
+  transform: translateX(-50%) rotate(calc(var(--fan) * 0.5)) translateY(-16px);
+  transition-delay: 0ms;
+}
+.hand-card:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+.hand-rank {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--text-primary);
+}
+.hand-card.red .hand-rank {
+  color: var(--accent-color);
+}
+.hand-rank i {
+  display: block;
+  font-style: normal;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+.hand-rank.mirror {
+  top: auto;
+  left: auto;
+  bottom: 10px;
+  right: 12px;
+  transform: rotate(180deg);
+}
+
+.hand-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.hand-meta {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+
+/* Reading pane */
+.hand-detail {
+  min-height: 260px;
+  padding: 0.5rem 0;
+  animation: exp-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hand-detail-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+  color: var(--text-primary);
+}
+.hand-detail-title em {
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 0.65em;
+}
+
+.hand-detail-desc {
+  margin: 0 0 1.25rem;
+  max-width: 46ch;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.hand-detail-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 24px;
+  font-size: 0.9rem;
+  margin: 0 0 1.25rem;
+}
+.hand-detail-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding-top: 3px;
+}
+.hand-detail-meta dd {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.hand-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+.hand-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--text-primary);
+  padding: 0 0 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.hand-link:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.hand-links + .exp-detail-tags {
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 859px) {
+  .hand-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .hand-felt {
+    height: 186px;
+  }
+  .hand-card {
+    width: 104px;
+    height: 150px;
+    top: 18px;
+  }
+  .hand-rank {
+    font-size: 1rem;
+  }
+  .hand-title {
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
+  .hand-meta {
+    bottom: 26px;
+  }
+  .hand-detail {
+    min-height: 0;
+  }
+}

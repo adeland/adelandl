@@ -1,0 +1,210 @@
+/* Experience dial — a ring of slots, one per role. Hover/focus to read one. */
+
+.exp-dial-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 340px) 1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  padding: 1.5rem 0 0.5rem;
+}
+
+.exp-dial {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: crosshair; /* chart crosshair — the pointer tracks the cursor */
+}
+
+/* Hairline gold guides framing the slot ring */
+.exp-guide {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.75;
+  opacity: 0.45;
+}
+.exp-guide.faint {
+  stroke-width: 0.5;
+  opacity: 0.5;
+}
+
+/* Recessed track the buffer cells sit in — shows through the cell gaps */
+.exp-track {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: 10;
+}
+
+/* Chronometer minute-track */
+.exp-minute {
+  stroke: var(--gold);
+  stroke-width: 0.5;
+  opacity: 0.28;
+}
+.exp-minute.five {
+  opacity: 0.5;
+}
+
+/* Diamond pips at slot boundaries */
+.exp-tick-pip {
+  fill: var(--gold);
+  opacity: 0.85;
+}
+
+/* Consumer tail — bead on the inner guide chasing the pointer */
+.exp-tail circle {
+  fill: var(--gold);
+  opacity: 0.75;
+}
+
+/* Buffer cells: resting garnet, enqueued gold. The cascade comes from a
+   per-cell inline transition-delay set by the component. */
+.exp-cell {
+  fill: none;
+  stroke: var(--accent-color);
+  stroke-width: 10;
+  opacity: 0.22;
+  transition: stroke 0.45s ease, opacity 0.45s ease;
+}
+.exp-cell.on {
+  stroke: var(--gold);
+  opacity: 1;
+}
+
+/* Slot numerals (I, II, III…) just outside the ring — serif, like a dial face */
+.exp-slot-label {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  fill: var(--text-muted);
+  transition: fill 0.45s ease;
+}
+.exp-slot-label.is-active {
+  fill: var(--gold);
+}
+
+/* Pointer — rotation is spring-driven from the component, not CSS */
+.exp-pointer line {
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.exp-pointer path {
+  fill: var(--gold);
+}
+
+/* Medallion face — dates of the active experience */
+.exp-medallion {
+  fill: var(--bg-secondary);
+  stroke: var(--gold);
+  stroke-width: 1;
+}
+.exp-med-swap {
+  animation: exp-fade 0.45s ease;
+}
+.exp-med-date {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  fill: var(--accent-color);
+}
+.exp-med-divider {
+  stroke: var(--gold);
+  stroke-width: 0.75;
+  opacity: 0.7;
+}
+
+/* Coin-style inscription along the medallion's inner top arc */
+.exp-med-orbit {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.24em;
+  fill: var(--text-muted);
+}
+
+/* Single pip at the medallion's base */
+.exp-med-pip {
+  font-size: 8px;
+  fill: var(--gold);
+  opacity: 0.8;
+}
+
+.exp-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 34;
+  cursor: crosshair;
+  outline: none;
+}
+.exp-hit:focus-visible {
+  stroke: var(--accent-bg);
+}
+
+/* Detail panel — rises in beside the dial */
+.exp-dial-detail {
+  min-height: 230px;
+  padding: 0.5rem 0;
+  animation: exp-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.exp-detail-org {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.35rem;
+  color: var(--text-primary);
+}
+
+.exp-detail-role {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem;
+}
+.exp-detail-role em {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.exp-detail-desc {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.exp-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-top: 1.5em;
+}
+.exp-detail-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+@keyframes exp-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes exp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

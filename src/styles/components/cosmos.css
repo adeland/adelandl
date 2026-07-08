@@ -1,0 +1,391 @@
+/* Cosmos — the parallax sky behind everything. Every body is a swarm of
+   individual particles: scattered by default, converging into shape when
+   the object enters the frame (.is-formed, toggled by the engine in
+   Cosmos.jsx) and dissolving again once you scroll past. The 3D assemblies
+   (tumbling chips, turning card, armillary) keep moving throughout.
+   Sits under the paper grain (z 1) and the content (z 2). */
+
+.bg-cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.5;
+  perspective: 1100px;
+}
+html.dark .bg-cosmos {
+  opacity: 0.75;
+}
+
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+/* ---- Particles ------------------------------------------------------- */
+/* A particle never disappears. Dissolved, it idles as a faint dust mote at
+   its own drift position (--sx/--sy, up to ~420px out). When the owning
+   feature gains .is-formed, every mote travels home on its own clock —
+   its own duration (--pd, 1.6–3.2s) and departure delay (--pdel, 0–0.9s) —
+   so the body condenses granularly out of the dust over ~3 seconds.
+   Dissolution drifts back quicker (--pout) but never below dust. */
+.pdot {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.17;
+  transform: translate3d(var(--sx, 0px), var(--sy, 0px), 0) scale(0.6);
+  animation: mote-float var(--fd, 12s) ease-in-out var(--fdel, 0s) infinite
+    alternate;
+  transition:
+    transform calc(var(--pd, 2s) * 0.55) var(--ease-out) var(--pout, 0s),
+    translate calc(var(--pd, 2s) * 0.5) var(--ease-out) var(--pout, 0s),
+    opacity calc(var(--pd, 2s) * 0.5) ease var(--pout, 0s);
+}
+.is-formed .pdot {
+  opacity: var(--o, 0.5);
+  transform: none;
+  animation: none;
+  translate: 0 0;
+  transition:
+    transform var(--pd, 2s) var(--ease-out) var(--pdel, 0s),
+    translate calc(var(--pd, 2s) * 0.6) var(--ease-out) var(--pdel, 0s),
+    opacity calc(var(--pd, 2s) * 0.8) ease var(--pdel, 0s);
+}
+
+/* The wander — every mote breathes around its resting point */
+@keyframes mote-float {
+  from {
+    translate: calc(-1 * var(--fx, 8px)) calc(-1 * var(--fy, 7px));
+  }
+  to {
+    translate: var(--fx, 8px) var(--fy, 7px);
+  }
+}
+
+/* Glyphs (the suit at a chip's heart) sharpen in last — the final beat */
+.pdot-glyph {
+  background: none;
+  border-radius: 0;
+  left: 50%;
+  top: 50%;
+  width: 1em;
+  height: 1em;
+  margin: -0.5em 0 0 -0.5em;
+  line-height: 1;
+  text-align: center;
+  font-family: var(--font-serif);
+  filter: blur(3px);
+  transition:
+    transform calc(var(--pd, 2s) * 0.55) var(--ease-out) var(--pout, 0s),
+    opacity calc(var(--pd, 2s) * 0.5) ease var(--pout, 0s),
+    filter calc(var(--pd, 2s) * 0.5) ease var(--pout, 0s);
+}
+.is-formed .pdot-glyph {
+  filter: blur(0);
+  transition:
+    transform var(--pd, 2s) var(--ease-out) var(--pdel, 0s),
+    opacity calc(var(--pd, 2s) * 0.8) ease var(--pdel, 0s),
+    filter var(--pd, 2s) ease var(--pdel, 0s);
+}
+
+/* Field stars — dissolve via scale/translate so twinkle keeps opacity */
+.bg-star {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.3;
+  animation: bg-twinkle var(--tw, 6s) ease-in-out infinite;
+}
+.bg-star-sparkle {
+  position: absolute;
+  opacity: 0.35;
+  animation:
+    bg-twinkle var(--tw, 6s) ease-in-out infinite,
+    sparkle-spin 30s linear infinite;
+}
+.bg-star-sparkle path {
+  fill: currentColor;
+}
+.bg-star,
+.bg-star-sparkle {
+  translate: var(--sx, 0px) var(--sy, 0px);
+  scale: 0.35;
+  transition:
+    translate 2s var(--ease-out),
+    scale 2s var(--ease-out);
+}
+.bg-star.is-formed,
+.bg-star-sparkle.is-formed {
+  translate: 0 0;
+  scale: 1;
+}
+
+@keyframes bg-twinkle {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes sparkle-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Slower spin binding — sparkles turn like distant clockwork */
+.bg-star-sparkle {
+  animation:
+    bg-twinkle var(--tw, 9s) ease-in-out infinite,
+    sparkle-spin 70s linear infinite;
+}
+
+/* ---- Floating bodies -------------------------------------------------- */
+.bg-feature {
+  position: absolute;
+}
+
+.bg-float {
+  animation: bg-bob var(--bob, 32s) ease-in-out infinite alternate;
+}
+
+@keyframes bg-bob {
+  from {
+    translate: 0 -10px;
+  }
+  to {
+    translate: 0 14px;
+  }
+}
+
+/* Crescent — dotted silhouette swaying in 3D */
+.bg-crescent {
+  color: var(--gold);
+  aspect-ratio: 1;
+  animation:
+    bg-bob var(--bob, 32s) ease-in-out infinite alternate,
+    crescent-sway 28s ease-in-out infinite alternate;
+}
+.crescent-rot {
+  position: absolute;
+  inset: 0;
+  rotate: -14deg;
+}
+.bg-crescent.flip .crescent-rot {
+  scale: -1 1;
+}
+
+@keyframes crescent-sway {
+  from {
+    transform: perspective(600px) rotateY(-24deg);
+  }
+  to {
+    transform: perspective(600px) rotateY(24deg);
+  }
+}
+
+/* Poker chips — particle faces on a tumbling 3D core */
+.bg-chip3d {
+  perspective: 640px;
+  aspect-ratio: 1;
+  opacity: 0.85;
+}
+.bg-chip3d.garnet {
+  color: var(--accent-color);
+}
+.bg-chip3d.gold {
+  color: var(--gold);
+}
+.bg-chip3d.ink {
+  color: var(--text-muted);
+}
+
+.chip3d {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  animation: chip-tumble var(--spin, 16s) linear infinite;
+}
+
+@keyframes chip-tumble {
+  from {
+    transform: rotateZ(-8deg) rotateX(14deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateZ(-8deg) rotateX(14deg) rotateY(360deg);
+  }
+}
+
+.chip3d-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.chip3d-face.front {
+  transform: translateZ(4.8px);
+}
+.chip3d-face.back {
+  transform: rotateY(180deg) translateZ(4.8px);
+}
+
+/* Rim slabs join the dissolve through individual scale/opacity props so
+   their translateZ stacking is untouched. */
+.chip3d-slab {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    currentColor 0deg 24deg,
+    var(--bg-primary) 24deg 45deg
+  );
+  opacity: 0;
+  scale: 0.4;
+  transition:
+    opacity 1.3s ease,
+    scale 1.7s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 9ms);
+}
+.is-formed .chip3d-slab {
+  opacity: 0.5;
+  scale: 1;
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+
+.chip-pip3 {
+  color: currentColor;
+}
+
+/* Card — particle rim, pip face, dotted pomegranate back */
+.bg-card3d {
+  perspective: 520px;
+  aspect-ratio: 60 / 84;
+  opacity: 0.9;
+  color: var(--gold);
+}
+
+.card3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: card-tumble var(--spin, 24s) linear infinite;
+}
+
+@keyframes card-tumble {
+  from {
+    transform: rotateZ(-9deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateZ(-9deg) rotateY(360deg);
+  }
+}
+
+.card3d-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.card3d-face.front {
+  transform: translateZ(1.6px);
+}
+.card3d-face.back {
+  transform: rotateY(180deg) translateZ(1.6px);
+}
+
+.card-pip3 {
+  color: var(--accent-color);
+  font-size: 15px;
+}
+.card3d .fruit {
+  color: var(--accent-color);
+  background: currentColor;
+}
+
+/* Armillary sphere — three orthogonal dotted rings turning as one */
+.bg-armillary {
+  perspective: 700px;
+  aspect-ratio: 1;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.armillary {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  animation: arm-spin var(--spin, 28s) linear infinite;
+}
+
+@keyframes arm-spin {
+  from {
+    transform: rotateX(58deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(58deg) rotateY(360deg);
+  }
+}
+
+.arm-ring {
+  position: absolute;
+  inset: 0;
+}
+.arm-ring.b {
+  transform: rotateY(90deg);
+}
+.arm-ring.c {
+  transform: rotateX(90deg);
+}
+
+.arm-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  opacity: 0;
+  scale: 0.3;
+  transition:
+    opacity 1.4s ease 1.7s,
+    scale 1.6s var(--ease-out) 1.7s;
+}
+.is-formed .arm-core {
+  opacity: 0.8;
+  scale: 1;
+}
+
+/* Equations — the terms drift apart as they dissolve */
+.bg-eq {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  opacity: 0;
+  letter-spacing: 0.62em;
+  transition:
+    opacity 1.8s ease,
+    letter-spacing 2.6s var(--ease-out);
+}
+.bg-eq.is-formed {
+  opacity: 0.5;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 640px) {
+  .bg-feature {
+    display: none;
+  }
+  .bg-cosmos {
+    opacity: 0.35;
+  }
+}

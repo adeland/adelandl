@@ -1,0 +1,87 @@
+/* Table card — the dealt business card in Contact. */
+
+.contact-grid {
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.table-card {
+  position: relative;
+  width: 296px;
+  height: 178px;
+  background: var(--card-bg);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  transform: rotate(-4deg);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.table-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.table-card-corner {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--text-primary);
+}
+.table-card-corner i {
+  display: block;
+  font-style: normal;
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+.table-card-corner.mirror {
+  top: auto;
+  left: auto;
+  bottom: 12px;
+  right: 14px;
+  transform: rotate(180deg);
+  color: var(--accent-color);
+}
+
+.table-card-name {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.table-card-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.table-card-line:nth-of-type(1) {
+  top: 102px;
+}
+.table-card-line:nth-of-type(2) {
+  top: 120px;
+}
+
+@media (max-width: 859px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .table-card {
+    justify-self: start;
+    margin-top: 0.5rem;
+  }
+}

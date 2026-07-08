@@ -1,116 +1,68 @@
-# Simon Chen - Portfolio Website
+# Portfolio
 
-A modern, responsive portfolio website built with React and Vite, featuring custom animations, dynamic API integrations (GitHub contributions, Goodreads bookshelf, photo gallery, and contact form), hosted and served on **Cloudflare Pages & Workers**.
+A minimal, single-page personal portfolio built with **React + Vite**. Light/dark
+themes, no backend, no external services — deploys to Vercel with zero configuration.
 
-> **Note**: This README documents a migration from GitHub Pages. The site is served directly on **Cloudflare Pages & Workers** (worker logic + static assets).
+Sections: **Hero · About · Experience · Projects · Notes · Contact**.
 
-## 🚀 Live Demo
+## Tech stack
 
-Visit the live website: [https://simon-chen.com](https://simon-chen.com)
+- **React 19** + **Vite** (no router — single page with smooth anchor scrolling)
+- Plain, modular **CSS** with custom properties for theming (light/dark)
+- Content lives in plain data files under [`src/data/`](src/data) — no CMS
+- Contact is a `mailto:` link — no API keys, nothing to run server-side
 
-## 🛠️ Tech Stack
+## Local development
 
-- **Frontend**: React 19.1.0, JavaScript (ES6+), Vite
-- **Styling**: CSS3 with custom animations and dynamic Light/Dark mode themes
-- **APIs & Workers**: Cloudflare Worker (`src/worker.js`) proxying:
-  - `GET /api/github-contributions` for contribution graphs
-  - `GET /api/goodreads` for the currently reading list
-  - `GET /api/gallery` for the photo gallery manifest
-  - `POST /api/contact` for the EmailJS contact form integration
-- **Hosting**: Cloudflare Pages & Workers (`wrangler.jsonc`)
+Requires [Node.js](https://nodejs.org/) 20+.
 
-## 💻 Local Development
-
-Prerequisites: [Node.js](https://nodejs.org/) 20+ (recommended).
-
-### 1. Clone and Install
 ```bash
-git clone https://github.com/shangmin-chen/simon-chen-website
-cd simon-chen-website
 npm install
+npm run dev      # http://localhost:3000
 ```
 
-### 2. Run the Vite Dev Server
-```bash
-npm run dev
-```
-This opens the frontend at [http://localhost:3000](http://localhost:3000) with hot-reloading.
-
-### 3. Run the Cloudflare Worker Locally (Recommended)
-To make sure dynamic features (GitHub contributions graph, Goodreads preview, photo gallery, and contact form submission) function correctly in your local environment, you need to run the worker locally in a second terminal:
-
-1. **Set Up Local Secrets**: Copy `.dev.vars.example` to `.dev.vars` and add your EmailJS API keys:
-   ```bash
-   cp .dev.vars.example .dev.vars
-   ```
-2. **Start the Dev Worker**:
-   ```bash
-   npx wrangler dev
-   ```
-   *Alternatively, run the npm helper script: `npm run dev:worker` (which builds the frontend first and then starts the wrangler dev server).*
-   
-   The local worker runs on `http://127.0.0.1:8787`. The Vite dev server automatically proxies all `/api/*` calls from port `3000` to port `8787`.
-
-## 📸 Image Gallery Optimization
-
-The photo gallery is dynamically fed by `gallery.json` (hosted on Cloudflare R2) and loads assets hosted on Cloudflare R2. Before uploading raw images to R2, optimize them using the custom gallery resize script:
+Other scripts:
 
 ```bash
-npm run gallery:resize -- <inputDir> <outputDir>
+npm run build    # production build → dist/
+npm run preview  # serve the built dist/ locally
 ```
-For example:
-```bash
-node scripts/resize-gallery.mjs ./my-raw-photos ./optimized-photos
-```
-This script uses [sharp](https://sharp.pixelplumbing.com/) to convert full-resolution images into optimized JPEG formats:
-- `-full` images (max-width 1800px) for carousels and lightboxes.
-- `-thumb` images (max-width 700px) for grid thumbnails.
 
-After processing:
-1. Reference the new/optimized image filenames in your local `gallery.json`.
-2. Upload the optimized photos from `<outputDir>` to your Cloudflare R2 bucket.
-3. Upload the updated `gallery.json` manifest to your Cloudflare R2 bucket.
+## Deploy to Vercel
 
-Because the Cloudflare Worker proxies `gallery.json` directly from R2 (`/api/gallery`), uploading these assets to R2 will update the gallery on the live site instantly without requiring a redeployment of the website.
+1. Push this repo to GitHub.
+2. In Vercel, **Add New → Project** and import the repo.
+3. Vercel auto-detects the **Vite** preset (build `vite build`, output `dist/`). Just click **Deploy** — no environment variables, no `vercel.json` needed.
 
-## 📧 EmailJS Setup
+## Make it yours
 
-1. **Create an EmailJS Account** at [EmailJS](https://www.emailjs.com/) and set up an email service + template.
-2. **Worker Environment Secrets**: Set `EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID`, and `EMAILJS_PUBLIC_KEY` as secrets on your Cloudflare Worker:
-   ```bash
-   npx wrangler secret put EMAILJS_SERVICE_ID
-   npx wrangler secret put EMAILJS_TEMPLATE_ID
-   npx wrangler secret put EMAILJS_PUBLIC_KEY
-   ```
-   For local testing, add these variables to `.dev.vars` (see `.dev.vars.example`).
-3. **Origin Allowlist**: In your EmailJS dashboard, restrict allowed origins to your domain(s) for security.
+Everything you need to edit is content + a few tokens:
 
-## 🔧 Configuration
+| What | Where |
+| --- | --- |
+| Name, headline, intro, initials (hole cards), clock city | [`src/data/heroData.js`](src/data/heroData.js) |
+| Bio paragraphs | [`src/data/aboutData.js`](src/data/aboutData.js) |
+| Skills — the GTO range chart (`raise` = expert, `call` = proficient) | [`src/data/skills.js`](src/data/skills.js) |
+| Session stats (the big figures under About) | [`src/data/statsData.js`](src/data/statsData.js) |
+| Work history — the dial / order book | [`src/data/experiences.js`](src/data/experiences.js) |
+| Projects — the hand of cards | [`src/data/projects.js`](src/data/projects.js) |
+| Field notes | [`src/data/notesData.js`](src/data/notesData.js) |
+| Contact email, links, location, résumé URL (⌘K command) | [`src/data/contactData.js`](src/data/contactData.js) |
+| Ticker tape items | [`src/data/tickerData.js`](src/data/tickerData.js) |
+| Footer sign-off | [`src/data/footerData.js`](src/data/footerData.js) |
+| Nav labels / logo (drives navbar, footer, and ⌘K palette) | [`src/data/navbarData.js`](src/data/navbarData.js) |
+| **Colors (palette)** | [`src/styles/base/variables.css`](src/styles/base/variables.css) — edit `--accent-color`, `--gold`, backgrounds, and text tokens for light + dark |
+| Favicon | [`public/favicon.svg`](public/favicon.svg) |
+| Page title / social preview | [`index.html`](index.html) (`<title>`, `og:*`), [`public/manifest.json`](public/manifest.json) |
 
-- **Dev Server Port**: Configured to `3000` in `vite.config.js` (`server.port`).
-- **API Proxy**: During development, `/api` requests target the wrangler dev server on `http://127.0.0.1:8787` (configured in `vite.config.js`).
+The theme also reads two hardcoded browser-chrome colors in
+[`src/contexts/ThemeContext.jsx`](src/contexts/ThemeContext.jsx) (`THEME_COLOR_LIGHT` /
+`THEME_COLOR_DARK`) — update them if you change the background colors.
 
-## 🚀 Deployment
+> PWA icons are served from the single SVG favicon. If you want raster PNG icons
+> (`192×192`, `512×512`) for installability, export them from `favicon.svg` into
+> `public/` and add them back to `manifest.json`.
 
-Build the static files and deploy the Cloudflare Worker + static assets:
+## License
 
-```bash
-npm run deploy
-```
-This runs `vite build` followed by `wrangler deploy`. Ensure all environment secrets are set in your Cloudflare dashboard under the project settings.
-
-## 📚 Additional Resources
-
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
-- [Wrangler CLI Reference](https://developers.cloudflare.com/workers/wrangler/)
-- [Vite Guide](https://vite.dev/)
-- [React Documentation](https://react.dev/)
-- [EmailJS Documentation](https://www.emailjs.com/docs/)
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-**Built with ❤️ by Simon Chen**
+MIT.
