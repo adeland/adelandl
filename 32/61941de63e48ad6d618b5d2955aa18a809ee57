@@ -1,0 +1,67 @@
+src/styles/components/project-hand.css
+  s_3a3436789f0463::t_9e821691c5a576 98-99
+  s_3a3436789f0463::t_6ee0ed892acb05 142,144
+  s_3a3436789f0463::t_3b99e0ff1d33b1 160,162
+src/styles/components/cosmos.css
+  s_3a3436789f0463::t_deba0b9d274557 11
+src/styles/components/live-tag.css
+  s_3a3436789f0463::t_d8b788154c0e64 8,10
+src/styles/components/experience-ring.css
+  s_3a3436789f0463::t_ad844d8afe3873 187,189
+src/styles/layouts/editorial.css
+  s_3a3436789f0463::t_1e230804866640 5-6
+  s_3a3436789f0463::t_cb1260cf27e7c1 148-194
+src/styles/components/navbar.css
+  s_3a3436789f0463::t_8f18e9ab97af28 110-111
+  s_3a3436789f0463::t_deba0b9d274557 5,14,131,192,196,227,233
+  s_3a3436789f0463::t_72f6ce28501312 71,74
+src/styles/components/ticker.css
+  s_3a3436789f0463::t_c534fe501b8045 28-29
+src/components/Hero.jsx
+  s_3a3436789f0463::t_51d8223a46627f 54-61
+src/styles/components/theme-toggle.css
+  s_3a3436789f0463::t_deba0b9d274557 48
+index.html
+  s_3a3436789f0463::t_91a935df101442 10,12,14-21
+src/styles/components/table-card.css
+  s_3a3436789f0463::t_63f35154947557 67
+src/styles/utils/responsive.css
+  s_3a3436789f0463::t_16f5bed9affbc2 6-26
+src/styles/components/cursor-dot.css
+  s_3a3436789f0463::t_33c24e369114a2 11,16-19,25-30
+  s_3a3436789f0463::t_deba0b9d274557 14
+  s_3a3436789f0463::t_ba09021d908b15 31-32
+src/styles/base/reset.css
+  s_3a3436789f0463::t_deba0b9d274557 79,104
+README.md
+  s_3a3436789f0463::t_44c5652ab099ae 55,57
+src/styles/components/command-palette.css
+  s_3a3436789f0463::t_6836047292327b 94
+  s_3a3436789f0463::t_5dee3adb19f1c1 43-44
+  s_3a3436789f0463::t_8f2822930bb2f5 104
+  s_3a3436789f0463::t_deba0b9d274557 6,9
+src/components/CursorDot.jsx
+  s_3a3436789f0463::t_29da2b87f1d057 32-38
+src/styles/base/variables.css
+  s_3a3436789f0463::t_f152ca732b2dfb 19-35
+  s_3a3436789f0463::t_c18c653f9e129e 40-46
+  s_3a3436789f0463::t_311a426e2ce174 71
+src/styles/components/experience-book.css
+  s_3a3436789f0463::t_19c42c8138e933 48-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3261941de63e48ad6d618b5d2955aa18a809ee57",
+  "prompts": {},
+  "sessions": {
+    "s_3a3436789f0463": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0962af6-e458-4881-a2b4-8ae009601f07",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Adeland Luo <adeland@workweave.ai>"
+    }
+  }
+}
