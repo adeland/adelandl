@@ -16,9 +16,33 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-cloud: cubic-bezier(0.45, 0.05, 0.1, 1);
 
+  /* Stage order — every z-index in the codebase draws from this scale */
+  --z-cosmos: 0;
+  --z-grain: 1;
+  --z-content: 2;
+  --z-nav-backdrop: 998;
+  --z-nav-menu: 999;
+  --z-nav: 1000;
+  --z-progress: 1001;
+  --z-cursor: 1500;
+  --z-palette: 2000;
+
+  /* Scrims & shadows */
+  --scrim: rgba(20, 15, 17, 0.25);
+  --scrim-heavy: rgba(20, 15, 17, 0.45);
+  --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-crisp: 0 2px 4px rgba(0, 0, 0, 0.2);
+
   /* Typography */
   --font-serif: 'Fraunces', 'Times New Roman', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Mono-label scale — every uppercase eyebrow/caption uses one of these
+     two sizes so the fine print reads as one machined system. */
+  --label-size: 0.72rem;
+  --label-track: 0.09em;
+  --label-size-sm: 0.62rem;
+  --label-track-sm: 0.14em;
 
   /* Light theme — also the default, so html.light needs no own block */
   --bg-primary: #f7f2ec;
@@ -44,6 +68,7 @@
 
 /* Dark — deep aubergine-charcoal with a soft rose accent (not near-black) */
 :root.dark {
+  --scrim: rgba(0, 0, 0, 0.45);
   --bg-primary: #1e1719;
   --bg-secondary: #261e21;
   --bg-tertiary: #2f262a;

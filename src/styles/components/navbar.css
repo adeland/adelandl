@@ -2,7 +2,7 @@
 
 .navbar-shell {
   position: relative;
-  z-index: 1000;
+  z-index: var(--z-nav);
 }
 
 .navbar {
@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: var(--z-nav);
   background: var(--navbar-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -68,10 +68,10 @@
   background: none;
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--label-size);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--label-track);
   color: var(--text-secondary);
   border-bottom: 1px solid transparent;
   transition: color 0.2s ease, border-color 0.2s ease;
@@ -107,8 +107,8 @@
   background: none;
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  font-size: var(--label-size-sm);
+  letter-spacing: var(--label-track-sm);
   color: var(--text-muted);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
@@ -128,7 +128,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  z-index: 1001;
+  z-index: var(--z-progress);
   pointer-events: none;
 }
 .scroll-progress-bar {
@@ -189,17 +189,13 @@
   margin: 0;
   padding: 0;
   border: none;
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--scrim);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
-  z-index: 998;
+  z-index: var(--z-nav-backdrop);
   cursor: pointer;
   pointer-events: none;
-}
-
-html.dark .nav-backdrop {
-  background: rgba(0, 0, 0, 0.45);
 }
 
 /* Only allow the backdrop to become visible at mobile widths. */
@@ -228,13 +224,13 @@ html.dark .nav-backdrop {
     padding: 0.5rem 0 1rem;
     background-color: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-soft);
     text-align: left;
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
     transition: transform 0.28s ease, opacity 0.2s ease, visibility 0.28s ease;
-    z-index: 999;
+    z-index: var(--z-nav-menu);
     pointer-events: none;
   }
 

@@ -184,9 +184,9 @@
 }
 .exp-detail-tags span {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--label-size);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--label-track);
   color: var(--text-muted);
 }
 

@@ -29,10 +29,13 @@ const CursorDot = () => {
     const onMove = (e) => {
       targetX = e.clientX;
       targetY = e.clientY;
-      const interactive = e.target.closest?.(
-        'a, button, [role="button"], input, .exp-dial'
-      );
-      targetScale = interactive ? 2.4 : 1;
+      // Over the playing surfaces (dial, cards) the dot opens into a gold
+      // chip-ring; over ordinary interactives it simply dilates.
+      const felt = e.target.closest?.('.exp-dial, .hand-card, .table-card');
+      const interactive =
+        felt || e.target.closest?.('a, button, [role="button"], input');
+      targetScale = felt ? 3.2 : interactive ? 2.4 : 1;
+      dot.classList.toggle('on-felt', Boolean(felt));
       if (!seen) {
         seen = true;
         x = targetX;

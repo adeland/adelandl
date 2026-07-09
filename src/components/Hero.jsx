@@ -51,6 +51,14 @@ const Hero = () => {
         </div>
         <HeroMonogram initials={heroData.initials} />
       </div>
+      <button
+        type="button"
+        className="hero-cue"
+        aria-label="Scroll to the first section"
+        onClick={() => handleScrollToSection('about')}
+      >
+        ♦
+      </button>
     </section>
   );
 };

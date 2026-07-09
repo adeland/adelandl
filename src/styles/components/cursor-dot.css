@@ -8,13 +8,26 @@
   height: 7px;
   border-radius: 50%;
   background: var(--gold);
+  border: 0.5px solid transparent;
   opacity: 0.75;
   pointer-events: none;
-  z-index: 1500;
+  z-index: var(--z-cursor);
   mix-blend-mode: multiply;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
 }
 html.dark .cursor-dot {
   mix-blend-mode: screen;
+}
+
+/* Over the felt (dial, cards) the dot opens into a hollow gold chip-ring;
+   the hairline border reads ~1.6px at the felt scale. */
+.cursor-dot.on-felt {
+  background: transparent;
+  border-color: var(--gold);
+  opacity: 0.9;
 }
 
 @media (pointer: coarse) {

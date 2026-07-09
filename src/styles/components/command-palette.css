@@ -3,10 +3,10 @@
 .palette-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(20, 15, 17, 0.45);
+  background: var(--scrim-heavy);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  z-index: 2000;
+  z-index: var(--z-palette);
 }
 
 .palette {
@@ -40,8 +40,8 @@
 
 .palette-glyph {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-size: var(--label-size);
+  letter-spacing: var(--label-track);
   color: var(--gold);
 }
 
@@ -91,7 +91,7 @@
   border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 1px 7px;
-  font-size: 0.6rem;
+  font-size: var(--label-size-sm);
   color: var(--text-muted);
 }
 
@@ -101,7 +101,7 @@
   padding: 10px 16px;
   border-top: 1px solid var(--border-color);
   color: var(--text-muted);
-  font-size: 0.6rem;
+  font-size: var(--label-size-sm);
 }
 
 @media (max-width: 600px) {

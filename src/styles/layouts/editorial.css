@@ -2,8 +2,8 @@
 
 .mono-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  font-size: var(--label-size);
+  letter-spacing: var(--label-track);
   text-transform: uppercase;
   color: var(--text-secondary);
 }
@@ -143,6 +143,53 @@
   line-height: 1.4;
   margin-top: 1.5em;
   font-weight: 400;
+}
+
+/* Scroll cue — a lone pip at the table's edge, breathing an invitation.
+   Enters after the hero has finished dealing itself in. */
+.hero-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.25rem, 4vh, 2.5rem);
+  translate: -50% 0;
+  margin: 0;
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0;
+  animation:
+    hero-cue-in 1.2s ease 2.4s forwards,
+    hero-cue-breathe 4.5s ease-in-out 3.6s infinite;
+  transition: color 0.2s ease;
+}
+.hero-cue:hover {
+  color: var(--accent-color);
+}
+.hero-cue:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+@keyframes hero-cue-in {
+  to {
+    opacity: 0.85;
+  }
+}
+
+@keyframes hero-cue-breathe {
+  0%,
+  100% {
+    translate: -50% 0;
+    opacity: 0.85;
+  }
+  50% {
+    translate: -50% 7px;
+    opacity: 0.4;
+  }
 }
 
 @media (max-width: 768px) {

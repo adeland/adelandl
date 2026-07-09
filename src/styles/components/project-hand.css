@@ -95,8 +95,8 @@
   right: 0;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.16em;
+  font-size: var(--label-size-sm);
+  letter-spacing: var(--label-track-sm);
   color: var(--text-muted);
 }
 
@@ -139,9 +139,9 @@
 }
 .hand-detail-meta dt {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--label-size);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--label-track);
   color: var(--text-muted);
   padding-top: 3px;
 }
@@ -157,9 +157,9 @@
 }
 .hand-link {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--label-size);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--label-track);
   color: var(--text-primary);
   text-decoration: none;
   border-bottom: 1px solid var(--text-primary);

@@ -45,8 +45,8 @@
 
 .exp-level-yr {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  font-size: var(--label-size);
+  letter-spacing: var(--label-track);
   color: var(--text-muted);
   transition: color 0.45s ease;
 }

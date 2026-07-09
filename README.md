@@ -52,8 +52,9 @@ Everything you need to edit is content + a few tokens:
 | Footer sign-off | [`src/data/footerData.js`](src/data/footerData.js) |
 | Nav labels / logo (drives navbar, footer, and ⌘K palette) | [`src/data/navbarData.js`](src/data/navbarData.js) |
 | **Colors (palette)** | [`src/styles/base/variables.css`](src/styles/base/variables.css) — edit `--accent-color`, `--gold`, backgrounds, and text tokens for light + dark |
-| Favicon | [`public/favicon.svg`](public/favicon.svg) |
+| Favicon / touch icon | [`public/favicon.svg`](public/favicon.svg), [`public/apple-touch-icon.png`](public/apple-touch-icon.png) |
 | Page title / social preview | [`index.html`](index.html) (`<title>`, `og:*`), [`public/manifest.json`](public/manifest.json) |
+| Share card (link previews) | [`public/og-image.png`](public/og-image.png) — once your domain is live, change `og:image` in `index.html` to the absolute URL (`https://yourdomain.com/og-image.png`) so every scraper resolves it |
 
 The theme also reads two hardcoded browser-chrome colors in
 [`src/contexts/ThemeContext.jsx`](src/contexts/ThemeContext.jsx) (`THEME_COLOR_LIGHT` /

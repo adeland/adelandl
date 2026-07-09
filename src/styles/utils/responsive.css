@@ -3,6 +3,27 @@
    layouts/container.css) — no breakpoint overrides needed here. This file
    only scales controls that change proportion on small screens. */
 
+/* On high-density screens the long horizontal rules sharpen to true
+   hairlines — the quiet crispness of a printed ledger. */
+@media (min-resolution: 2dppx) {
+  .section::before {
+    height: 0.5px;
+  }
+
+  .section-head {
+    border-bottom-width: 0.5px;
+  }
+
+  .ticker {
+    border-top-width: 0.5px;
+    border-bottom-width: 0.5px;
+  }
+
+  .footer-base {
+    border-top-width: 0.5px;
+  }
+}
+
 @media (max-width: 768px) {
   /* Mobile nav layout lives in components/navbar.css (slide-down + backdrop). */
 
