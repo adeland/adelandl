@@ -16,7 +16,7 @@
   border: 1px solid var(--gold-line);
   border-radius: 10px;
   overflow: hidden;
-  animation: palette-pop 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: palette-pop 0.28s var(--ease-out);
 }
 
 @keyframes palette-pop {
@@ -76,6 +76,11 @@
   background: var(--hover-bg);
   color: var(--text-primary);
   border-left-color: var(--gold);
+}
+/* Mouse hover mirrors the selection wash; the gold rail stays keyboard's */
+.palette-row:not(.muted):hover {
+  background: var(--hover-bg);
+  color: var(--text-primary);
 }
 .palette-row.muted {
   color: var(--text-muted);

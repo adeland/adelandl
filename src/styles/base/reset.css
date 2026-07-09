@@ -8,11 +8,31 @@
 html {
   scroll-behavior: auto;
   scroll-padding-top: 5.5rem;
+  /* Reserve the scrollbar's lane so centered content never shifts */
+  scrollbar-gutter: stable;
+}
+
+/* Kinder rag on prose; headings avoid orphaned last words */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 ::selection {
   background: var(--accent-color);
   color: var(--bg-primary);
+}
+
+/* Theme flips cross-fade as one image — dusk settling, not a light switch */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
 }
 
 /* Thin, quiet scrollbar that gilds under the cursor */

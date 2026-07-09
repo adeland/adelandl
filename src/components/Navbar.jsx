@@ -122,7 +122,7 @@ const Navbar = ({ onOpenPalette }) => {
               aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               <span className={`toggle-icon ${isDarkMode ? 'moon' : 'sun'}`}>
-                {isDarkMode ? '🌙' : '☀️'}
+                {isDarkMode ? '☾' : '☀︎'}
               </span>
               <span
                 className={`toggle-slider ${isDarkMode ? 'active' : ''}`}

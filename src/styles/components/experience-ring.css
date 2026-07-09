@@ -136,14 +136,15 @@
   outline: none;
 }
 .exp-hit:focus-visible {
-  stroke: var(--accent-bg);
+  stroke: var(--gold);
+  stroke-opacity: 0.3;
 }
 
 /* Detail panel — rises in beside the dial */
 .exp-dial-detail {
   min-height: 230px;
   padding: 0.5rem 0;
-  animation: exp-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: exp-rise 0.55s var(--ease-out);
 }
 
 .exp-detail-org {

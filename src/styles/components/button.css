@@ -12,6 +12,12 @@
   text-decoration: none;
   display: inline-block;
   letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
 }
 
 .btn-primary {

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Portfolio">
-  <rect width="32" height="32" rx="7" fill="#f4ede3" />
-  <!-- calyx / crown -->
-  <polygon points="13,9.2 13.6,5.4 15,7.2 16,4.4 17,7.2 18.4,5.4 19,9.2" fill="#7c2d3a" />
+  <rect width="32" height="32" rx="7" fill="#f7f2ec" />
+  <!-- calyx / crown — gilded, Persephone's mark -->
+  <polygon points="13,9.2 13.6,5.4 15,7.2 16,4.4 17,7.2 18.4,5.4 19,9.2" fill="#b0894f" />
   <!-- pomegranate body -->
   <ellipse cx="16" cy="17" rx="7.2" ry="8" fill="#7c2d3a" />
   <!-- seeds -->

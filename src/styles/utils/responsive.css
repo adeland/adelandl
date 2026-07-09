@@ -1,12 +1,10 @@
-/* Responsive Design */
+/* Responsive Design.
+   Page gutters and section rhythm are fluid clamps (see variables.css and
+   layouts/container.css) — no breakpoint overrides needed here. This file
+   only scales controls that change proportion on small screens. */
 
 @media (max-width: 768px) {
   /* Mobile nav layout lives in components/navbar.css (slide-down + backdrop). */
-
-  /* Tighter section rhythm on small screens */
-  .section {
-    padding: 72px 0;
-  }
 
   .theme-toggle {
     padding: 0.3rem;
@@ -30,18 +28,6 @@
     font-size: 0.9rem;
   }
 
-  .nav-container {
-    padding: 0 20px;
-  }
-
-  .hero {
-    padding: 88px 24px 40px;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
-  }
-
   .hero-buttons {
     flex-direction: column;
     align-items: flex-start;
@@ -50,29 +36,9 @@
   .btn {
     width: 200px;
   }
-
-  .container {
-    padding: 0 24px;
-  }
 }
 
 @media (max-width: 480px) {
-  .section {
-    padding: 64px 0;
-  }
-
-  .container {
-    padding: 0 16px;
-  }
-
-  .nav-container {
-    padding: 0 15px;
-  }
-
-  .hero {
-    padding: 80px 16px 32px;
-  }
-
   .nav-controls {
     gap: 0.3rem;
   }

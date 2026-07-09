@@ -13,6 +13,14 @@
   pointer-events: none;
   opacity: 0.5;
   perspective: 1100px;
+  /* The sky breathes in on arrival rather than popping into existence */
+  animation: cosmos-breathe-in 2.6s ease;
+}
+
+@keyframes cosmos-breathe-in {
+  from {
+    opacity: 0;
+  }
 }
 html.dark .bg-cosmos {
   opacity: 0.75;
@@ -123,12 +131,13 @@ html.dark .bg-cosmos {
   opacity: 0.3;
   animation: bg-twinkle var(--tw, 6s) ease-in-out infinite;
 }
+/* Sparkles twinkle and turn like distant clockwork */
 .bg-star-sparkle {
   position: absolute;
   opacity: 0.35;
   animation:
-    bg-twinkle var(--tw, 6s) ease-in-out infinite,
-    sparkle-spin 30s linear infinite;
+    bg-twinkle var(--tw, 9s) ease-in-out infinite,
+    sparkle-spin 70s linear infinite;
 }
 .bg-star-sparkle path {
   fill: currentColor;
@@ -161,13 +170,6 @@ html.dark .bg-cosmos {
   to {
     transform: rotate(360deg);
   }
-}
-
-/* Slower spin binding — sparkles turn like distant clockwork */
-.bg-star-sparkle {
-  animation:
-    bg-twinkle var(--tw, 9s) ease-in-out infinite,
-    sparkle-spin 70s linear infinite;
 }
 
 /* ---- Floating bodies -------------------------------------------------- */

@@ -4,8 +4,11 @@
    in the codebase hardcodes a palette color. Edit here to reskin the site. */
 
 :root {
-  /* Layout */
+  /* Layout. --gutter is the single horizontal page margin — navbar, hero,
+     and every section share it so the leading edge is one unbroken line
+     at every viewport width. */
   --nav-height: 4.5rem;
+  --gutter: clamp(1rem, 4vw, 3rem);
 
   /* Motion — the house easings. --ease-out for UI entrances and settles;
      --ease-cloud for the cosmos: a slow gathering start and a long feathered
@@ -17,14 +20,13 @@
   --font-serif: 'Fraunces', 'Times New Roman', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Light theme (default / :root.light) */
+  /* Light theme — also the default, so html.light needs no own block */
   --bg-primary: #f7f2ec;
   --bg-secondary: #efe8df;
   --bg-tertiary: #e8dfd3;
   --text-primary: #2b1d22;
   --text-secondary: #574349;
   --text-muted: #756269; /* ≥4.5:1 on #f7f2ec (WCAG AA) */
-  --text-tertiary: #6e5c61; /* ≥4.5:1 on #f7f2ec (WCAG AA) */
   --border-color: #e0d6cb;
   --border-light: #eae2d7;
   --accent-color: #7c2d3a; /* garnet / pomegranate */
@@ -34,31 +36,7 @@
   --accent-bg: rgba(124, 45, 58, 0.1);
   --stripe-bg: rgba(43, 29, 34, 0.04);
 
-  /* Gilt accent (regal) */
-  --gold: #b0894f;
-  --gold-soft: #cbb287;
-  --gold-line: rgba(176, 137, 79, 0.4);
-}
-
-/* Light Theme Variables */
-:root.light {
-  --bg-primary: #f7f2ec;
-  --bg-secondary: #efe8df;
-  --bg-tertiary: #e8dfd3;
-  --text-primary: #2b1d22;
-  --text-secondary: #574349;
-  --text-muted: #756269;
-  --text-tertiary: #6e5c61;
-  --border-color: #e0d6cb;
-  --border-light: #eae2d7;
-  --accent-color: #7c2d3a;
-  --hover-bg: rgba(43, 29, 34, 0.06);
-  --navbar-bg: rgba(247, 242, 236, 0.88);
-  --card-bg: #efe8df;
-  --accent-bg: rgba(124, 45, 58, 0.1);
-  --stripe-bg: rgba(43, 29, 34, 0.04);
-
-  /* Gilt accent (regal) */
+  /* Gilt accent (regal). --gold-soft feeds the footer-mark SVG seeds. */
   --gold: #b0894f;
   --gold-soft: #cbb287;
   --gold-line: rgba(176, 137, 79, 0.4);
@@ -72,7 +50,6 @@
   --text-primary: #ece1de;
   --text-secondary: #c0aeb1;
   --text-muted: #9c8b8f; /* ≥4.5:1 on #1e1719 (WCAG AA) */
-  --text-tertiary: #8f7e82; /* ≥4.5:1 on #1e1719 (WCAG AA) */
   --border-color: #3a2f33;
   --border-light: #2f2529;
   --accent-color: #ce7e88; /* soft rose — legible on dark */

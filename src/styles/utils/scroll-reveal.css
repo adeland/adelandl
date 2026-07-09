@@ -49,7 +49,7 @@
 }
 
 .hero-meta {
-  animation: hero-rise 0.7s ease both;
+  animation: hero-rise 0.7s var(--ease-out) both;
   animation-delay: 0.62s;
 }
 

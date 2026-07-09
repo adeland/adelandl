@@ -19,7 +19,7 @@
   margin-bottom: 1.5rem;
   color: var(--text-primary);
   font-weight: 300;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.01em;
 }
 
 .contact-info p {
@@ -46,12 +46,22 @@
   font-weight: 300;
 }
 
+/* Same hairline-underline language as links in the About prose */
 .contact-item a {
+  width: fit-content;
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 300;
+  border-bottom: 1px solid var(--text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .contact-item a:hover {
   color: var(--gold);
+  border-color: var(--gold);
+}
+
+.contact-item a:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
 }

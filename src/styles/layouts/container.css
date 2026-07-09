@@ -3,19 +3,14 @@
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 0 48px;
-  }
+  padding: 0 var(--gutter);
 }
 
 /* Sections are translucent so the cosmos parallax shows through;
-   the body carries the base page color. */
+   the body carries the base page color. Vertical rhythm is fluid —
+   one clamp instead of breakpoint steps. */
 .section {
-  padding: 100px 0;
+  padding: clamp(4rem, 9vw, 6.25rem) 0;
   background-color: transparent;
   position: relative;
 }
@@ -43,13 +38,7 @@
   background: transparent;
   color: var(--text-primary);
   text-align: left;
-  padding: 88px 24px 48px;
-}
-
-@media (min-width: 768px) {
-  .hero {
-    padding: 100px 48px 64px;
-  }
+  padding: clamp(5.5rem, 12vh, 6.25rem) var(--gutter) clamp(3rem, 7vh, 4rem);
 }
 
 .hero-content {

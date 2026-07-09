@@ -19,12 +19,12 @@
   border-radius: 7px;
   backface-visibility: hidden;
   transform: rotate(-7deg);
-  animation: holecard-deal-a 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.95s both;
+  animation: holecard-deal-a 0.9s var(--ease-out) 0.95s both;
 }
 .holecard + .holecard {
   margin-left: -14px;
   transform: rotate(6deg) translateY(4px);
-  animation: holecard-deal-b 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.12s both;
+  animation: holecard-deal-b 0.9s var(--ease-out) 1.12s both;
 }
 
 @keyframes holecard-deal-a {

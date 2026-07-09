@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 
 const THEME_COLOR_LIGHT = '#f7f2ec';
 const THEME_COLOR_DARK = '#1e1719';
@@ -29,23 +29,30 @@ export const ThemeProvider = ({ children }) => {
     setIsDarkMode((prev) => !prev);
   };
 
+  const isFirstPaint = useRef(true);
+
   useEffect(() => {
     // Save theme preference to localStorage
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
 
-    // Apply theme class to document
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
-    }
+    const applyTheme = () => {
+      document.documentElement.classList.toggle('dark', isDarkMode);
+      document.documentElement.classList.toggle('light', !isDarkMode);
+      // Both media-gated metas get the active color so browser chrome
+      // follows a manual toggle regardless of the OS scheme.
+      document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+        meta.setAttribute('content', isDarkMode ? THEME_COLOR_DARK : THEME_COLOR_LIGHT);
+      });
+    };
 
-    const themeMeta = document.querySelector('meta[name="theme-color"]');
-    if (themeMeta) {
-      themeMeta.setAttribute('content', isDarkMode ? THEME_COLOR_DARK : THEME_COLOR_LIGHT);
+    // Later flips cross-fade the whole page via a View Transition —
+    // dusk settling rather than a light switch. First paint is instant.
+    if (!isFirstPaint.current && document.startViewTransition) {
+      document.startViewTransition(applyTheme);
+    } else {
+      applyTheme();
     }
+    isFirstPaint.current = false;
   }, [isDarkMode]);
 
   useEffect(() => {
