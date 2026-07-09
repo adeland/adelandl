@@ -26,33 +26,53 @@ html.dark .bg-cosmos {
 
 /* ---- Particles ------------------------------------------------------- */
 /* A particle never disappears. Dissolved, it idles as a faint dust mote at
-   its own drift position (--sx/--sy, up to ~420px out). When the owning
-   feature gains .is-formed, every mote travels home on its own clock —
-   its own duration (--pd, 1.6–3.2s) and departure delay (--pdel, 0–0.9s) —
-   so the body condenses granularly out of the dust over ~3 seconds.
-   Dissolution drifts back quicker (--pout) but never below dust. */
+   the far end of its own flight arc (--flight, up to ~420px out), wandering
+   there forever. When the owning feature gains .is-formed the weather turns:
+   every mote stills, waits out its distance-based delay (--pdel — the core
+   gathers first, the halo folds in last), then sails home along its bowed
+   arc over --pd (~3–5.5s) on the cloud easing, brightening only as it
+   arrives. Dissolution retraces the same arc at roughly half the time.
+   All of it is compositor-side transition — no per-frame JS. */
 .pdot {
   position: absolute;
   border-radius: 50%;
   background: currentColor;
   opacity: 0.17;
-  transform: translate3d(var(--sx, 0px), var(--sy, 0px), 0) scale(0.6);
-  animation: mote-float var(--fd, 12s) ease-in-out var(--fdel, 0s) infinite
+  offset-path: var(--flight);
+  offset-rotate: 0deg;
+  offset-anchor: 0 0;
+  offset-distance: 0%;
+  transform: scale(0.55);
+  animation: mote-float var(--fd, 20s) ease-in-out var(--fdel, 0s) infinite
     alternate;
   transition:
-    transform calc(var(--pd, 2s) * 0.55) var(--ease-out) var(--pout, 0s),
-    translate calc(var(--pd, 2s) * 0.5) var(--ease-out) var(--pout, 0s),
-    opacity calc(var(--pd, 2s) * 0.5) ease var(--pout, 0s);
+    offset-distance calc(var(--pd, 4s) * 0.45) var(--ease-cloud) var(--pout, 0s),
+    transform calc(var(--pd, 4s) * 0.45) var(--ease-cloud) var(--pout, 0s),
+    translate calc(var(--pd, 4s) * 0.4) var(--ease-cloud) var(--pout, 0s),
+    opacity calc(var(--pd, 4s) * 0.4) ease var(--pout, 0s);
 }
 .is-formed .pdot {
   opacity: var(--o, 0.5);
+  offset-distance: 100%;
   transform: none;
   animation: none;
   translate: 0 0;
   transition:
-    transform var(--pd, 2s) var(--ease-out) var(--pdel, 0s),
-    translate calc(var(--pd, 2s) * 0.6) var(--ease-out) var(--pdel, 0s),
-    opacity calc(var(--pd, 2s) * 0.8) ease var(--pdel, 0s);
+    offset-distance var(--pd, 4s) var(--ease-cloud) var(--pdel, 0s),
+    transform var(--pd, 4s) var(--ease-cloud) var(--pdel, 0s),
+    translate calc(var(--pd, 4s) * 0.5) var(--ease-cloud) var(--pdel, 0s),
+    opacity calc(var(--pd, 4s) * 0.9) ease
+      calc(var(--pdel, 0s) + var(--pd, 4s) * 0.3);
+}
+
+/* No motion-path support → same weather along straight chords. */
+@supports not (offset-path: path('M 0 0 L 1 1')) {
+  .pdot {
+    transform: translate3d(var(--sx, 0px), var(--sy, 0px), 0) scale(0.55);
+  }
+  .is-formed .pdot {
+    transform: none;
+  }
 }
 
 /* The wander — every mote breathes around its resting point */
@@ -79,16 +99,20 @@ html.dark .bg-cosmos {
   font-family: var(--font-serif);
   filter: blur(3px);
   transition:
-    transform calc(var(--pd, 2s) * 0.55) var(--ease-out) var(--pout, 0s),
-    opacity calc(var(--pd, 2s) * 0.5) ease var(--pout, 0s),
-    filter calc(var(--pd, 2s) * 0.5) ease var(--pout, 0s);
+    offset-distance calc(var(--pd, 4s) * 0.45) var(--ease-cloud) var(--pout, 0s),
+    transform calc(var(--pd, 4s) * 0.45) var(--ease-cloud) var(--pout, 0s),
+    translate calc(var(--pd, 4s) * 0.4) var(--ease-cloud) var(--pout, 0s),
+    opacity calc(var(--pd, 4s) * 0.4) ease var(--pout, 0s),
+    filter calc(var(--pd, 4s) * 0.4) ease var(--pout, 0s);
 }
 .is-formed .pdot-glyph {
   filter: blur(0);
   transition:
-    transform var(--pd, 2s) var(--ease-out) var(--pdel, 0s),
-    opacity calc(var(--pd, 2s) * 0.8) ease var(--pdel, 0s),
-    filter var(--pd, 2s) ease var(--pdel, 0s);
+    offset-distance var(--pd, 4s) var(--ease-cloud) var(--pdel, 0s),
+    transform var(--pd, 4s) var(--ease-cloud) var(--pdel, 0s),
+    translate calc(var(--pd, 4s) * 0.5) var(--ease-cloud) var(--pdel, 0s),
+    opacity calc(var(--pd, 4s) * 0.9) ease var(--pdel, 0s),
+    filter var(--pd, 4s) ease var(--pdel, 0s);
 }
 
 /* Field stars — dissolve via scale/translate so twinkle keeps opacity */
@@ -114,8 +138,8 @@ html.dark .bg-cosmos {
   translate: var(--sx, 0px) var(--sy, 0px);
   scale: 0.35;
   transition:
-    translate 2s var(--ease-out),
-    scale 2s var(--ease-out);
+    translate 3.4s var(--ease-cloud),
+    scale 3.4s var(--ease-cloud);
 }
 .bg-star.is-formed,
 .bg-star-sparkle.is-formed {
@@ -162,6 +186,32 @@ html.dark .bg-cosmos {
   to {
     translate: 0 14px;
   }
+}
+
+/* A breath of atmosphere blooms beneath a gathered body — wide, dim, in the
+   body's own color — and exhales away first when it dissolves. */
+.bg-crescent::before,
+.bg-chip3d::before,
+.bg-card3d::before,
+.bg-armillary::before {
+  content: '';
+  position: absolute;
+  inset: -45%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, currentColor 50%, transparent),
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+.bg-crescent.is-formed::before,
+.bg-chip3d.is-formed::before,
+.bg-card3d.is-formed::before,
+.bg-armillary.is-formed::before {
+  opacity: 0.13;
+  transition: opacity 4.5s ease 1.2s;
 }
 
 /* Crescent — dotted silhouette swaying in 3D */
@@ -236,7 +286,8 @@ html.dark .bg-cosmos {
 }
 
 /* Rim slabs join the dissolve through individual scale/opacity props so
-   their translateZ stacking is untouched. */
+   their translateZ stacking is untouched. They surface slowly, mid-cloud,
+   and are whole by the time the last motes land. */
 .chip3d-slab {
   position: absolute;
   inset: 4%;
@@ -248,14 +299,17 @@ html.dark .bg-cosmos {
   opacity: 0;
   scale: 0.4;
   transition:
-    opacity 1.3s ease,
-    scale 1.7s var(--ease-out);
-  transition-delay: calc(var(--i, 0) * 9ms);
+    opacity 1.7s ease,
+    scale 2s var(--ease-cloud);
+  transition-delay: calc(var(--i, 0) * 12ms);
 }
 .is-formed .chip3d-slab {
   opacity: 0.5;
   scale: 1;
-  transition-delay: calc(var(--i, 0) * 55ms);
+  transition:
+    opacity 2.8s ease,
+    scale 3.4s var(--ease-cloud);
+  transition-delay: calc(var(--i, 0) * 90ms);
 }
 
 .chip-pip3 {
@@ -356,12 +410,15 @@ html.dark .bg-cosmos {
   opacity: 0;
   scale: 0.3;
   transition:
-    opacity 1.4s ease 1.7s,
-    scale 1.6s var(--ease-out) 1.7s;
+    opacity 1.4s ease 0.2s,
+    scale 1.6s var(--ease-cloud) 0.2s;
 }
 .is-formed .arm-core {
   opacity: 0.8;
   scale: 1;
+  transition:
+    opacity 2.6s ease 2.4s,
+    scale 3s var(--ease-cloud) 2.4s;
 }
 
 /* Equations — the terms drift apart as they dissolve */
@@ -373,12 +430,15 @@ html.dark .bg-cosmos {
   opacity: 0;
   letter-spacing: 0.62em;
   transition:
-    opacity 1.8s ease,
-    letter-spacing 2.6s var(--ease-out);
+    opacity 2s ease,
+    letter-spacing 2.8s var(--ease-cloud);
 }
 .bg-eq.is-formed {
   opacity: 0.5;
   letter-spacing: 0.2em;
+  transition:
+    opacity 3.2s ease 0.3s,
+    letter-spacing 4.6s var(--ease-cloud);
 }
 
 @media (max-width: 640px) {

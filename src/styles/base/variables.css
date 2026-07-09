@@ -7,8 +7,11 @@
   /* Layout */
   --nav-height: 4.5rem;
 
-  /* Motion — the house easing; use for all entrances and settles */
+  /* Motion — the house easings. --ease-out for UI entrances and settles;
+     --ease-cloud for the cosmos: a slow gathering start and a long feathered
+     landing, nothing abrupt at either end. */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-cloud: cubic-bezier(0.45, 0.05, 0.1, 1);
 
   /* Typography */
   --font-serif: 'Fraunces', 'Times New Roman', Georgia, serif;

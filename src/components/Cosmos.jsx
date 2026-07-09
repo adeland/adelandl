@@ -36,24 +36,39 @@ const cardPerimeter = () => {
   return pts;
 };
 
-/* Per-particle drift plan: a resting position out in the field (random
-   direction, long radius), its own travel time and departure delay for the
-   convergence, and a perpetual wander (amplitude, period, negative delay so
-   every mote is already mid-drift at page load). Motes are citizens of the
-   page from the first frame; forming a body only summons them home. */
+/* Per-particle drift plan. Each mote rests out in the field (random
+   direction, long radius) and wanders there perpetually — negative delay so
+   it is already mid-drift at page load. Summoning is a weather system, not
+   a mechanism:
+   — flight follows a bowed quadratic arc (--flight), never a straight line;
+   — travel time grows with distance (--pd, ~3–5.5s) so the cloud drifts in
+     at wind speed instead of snapping;
+   — departure delay grows with distance (--pdel) so the body condenses from
+     its core outward, the far halo folding in last;
+   — dissolution retraces the same arc, quicker but still unhurried.
+   --sx/--sy back the straight-line fallback where offset-path is missing. */
 const driftVars = (rand, reach = 1) => {
   const angle = rand() * Math.PI * 2;
   const radius = (160 + rand() * 260) * reach;
+  const far = (radius / reach - 160) / 260; /* 0 = inner field, 1 = outer */
+  const sx = Math.cos(angle) * radius;
+  const sy = Math.sin(angle) * radius;
+  /* Control point: the chord's midpoint pushed perpendicular, a different
+     bow for every mote, so the swarm sweeps home along interleaved arcs. */
+  const bow = radius * (0.2 + rand() * 0.35) * (rand() < 0.5 ? -1 : 1);
+  const qx = sx / 2 - (sy / radius) * bow;
+  const qy = sy / 2 + (sx / radius) * bow;
   return {
-    '--sx': `${Math.round(Math.cos(angle) * radius)}px`,
-    '--sy': `${Math.round(Math.sin(angle) * radius)}px`,
-    '--pd': `${(1.6 + rand() * 1.6).toFixed(2)}s`,
-    '--pdel': `${(rand() * 0.9).toFixed(2)}s`,
-    '--pout': `${(rand() * 0.35).toFixed(2)}s`,
+    '--sx': `${Math.round(sx)}px`,
+    '--sy': `${Math.round(sy)}px`,
+    '--flight': `path('M ${Math.round(sx)} ${Math.round(sy)} Q ${Math.round(qx)} ${Math.round(qy)} 0 0')`,
+    '--pd': `${(3 + far * 1.6 + rand() * 0.7).toFixed(2)}s`,
+    '--pdel': `${(rand() * 0.35 + far * 1.15).toFixed(2)}s`,
+    '--pout': `${(rand() * 0.55).toFixed(2)}s`,
     '--fx': `${((5 + rand() * 11) * (rand() < 0.5 ? -1 : 1)).toFixed(1)}px`,
     '--fy': `${((5 + rand() * 11) * (rand() < 0.5 ? -1 : 1)).toFixed(1)}px`,
-    '--fd': `${(9 + rand() * 13).toFixed(1)}s`,
-    '--fdel': `-${(rand() * 14).toFixed(1)}s`,
+    '--fd': `${(14 + rand() * 16).toFixed(1)}s`,
+    '--fdel': `-${(rand() * 30).toFixed(1)}s`,
   };
 };
 
@@ -78,9 +93,9 @@ const Glyph = ({ children, className = '', i, rand, style }) => (
   <span
     className={`pdot pdot-glyph ${className}`.trim()}
     style={{
-      /* Glyphs arrive last — the finishing beat of the assembly. */
+      /* Glyphs arrive last — the seal pressed once the body has gathered. */
       ...driftVars(rand, 1.2),
-      '--pdel': `${(1.3 + rand() * 0.5).toFixed(2)}s`,
+      '--pdel': `${(2.6 + rand() * 0.6).toFixed(2)}s`,
       ...style,
     }}
   >
@@ -254,10 +269,8 @@ const Card3D = ({ topVh, side, width, bob, seed }) => {
                 top: `${y.toFixed(1)}%`,
                 width: 2.4,
                 height: 2.4,
-                '--i': 26 + i,
                 '--o': 0.55,
-                '--sx': `${Math.round((randB() * 2 - 1) * 110)}px`,
-                '--sy': `${Math.round((randB() * 2 - 1) * 110)}px`,
+                ...driftVars(randB, 0.45),
               }}
             />
           ))}
@@ -368,13 +381,15 @@ const Cosmos = () => {
       /* Formation pass. A body is formed only while its center is near the
          middle of the stage; the band width scales with the layer's
          parallax factor so every depth stays "alive" for a similar scroll
-         distance (~two sections) before dissolving. Hysteresis pads the
-         release so edges don't flicker. */
+         distance (~two sections) before dissolving. The band is generous —
+         condensation takes ~5 unhurried seconds, so it must begin while the
+         body is still approaching. Hysteresis pads the release so edges
+         don't flicker. */
       const vh = window.innerHeight;
       for (const item of items) {
         const center = (item.topVh * vh) / 100 + item.half + layers[item.layer].y;
-        const spread = (0.2 + layers[item.layer].f * 0.55) * vh;
-        const pad = item.formed ? 0.06 * vh : 0;
+        const spread = (0.26 + layers[item.layer].f * 0.6) * vh;
+        const pad = item.formed ? 0.08 * vh : 0;
         const formed =
           center > 0.5 * vh - spread - pad && center < 0.5 * vh + spread + pad;
         if (formed !== item.formed) {
