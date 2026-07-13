@@ -1,0 +1,68 @@
+src/components/Navbar.jsx
+  s_3a3436789f0463::t_630dd144291969 152
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/components/CommandPalette.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/components/Cosmos.jsx
+  s_3a3436789f0463::t_0aff2604a86315 458,474,498
+  s_3a3436789f0463::t_ee7e6af8e75528 92
+  s_3a3436789f0463::t_afa930cc849231 179,182,195,198,201,203,253,255,261,282
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+  s_3a3436789f0463::t_c56eec2f36bf5a 326-328,337-339
+  s_3a3436789f0463::t_0f817614255469 78
+src/components/ProjectHand.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/components/ExperienceBook.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/components/SkillRange.jsx
+  s_3a3436789f0463::t_d796ead8c86796 38-55
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+LICENSE
+  s_3a3436789f0463::t_4cc6bd988dc29b 1-21
+src/components/TickerTape.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/components/ExperienceRing.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/components/ui/Tilt.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+public/manifest.json
+  s_3a3436789f0463::t_da3f8ff6288c0b 9-13
+package.json
+  s_3a3436789f0463::t_7ad8b85a200951 9-10
+  s_3a3436789f0463::t_97e79015902813 5
+  s_3a3436789f0463::t_b2afdd53d19212 17,19-23
+src/components/ScrollProgress.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/components/SessionStats.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/contexts/ThemeContext.jsx
+  s_3a3436789f0463::t_ef4489cd0ec053 8-9
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+src/components/Experience.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+eslint.config.js
+  s_3a3436789f0463::t_3b557a90fa857b 1-35
+src/components/CursorDot.jsx
+  s_3a3436789f0463::t_0e3afb0b54781c 1
+README.md
+  s_3a3436789f0463::t_d9b2e2b31eea2a 29
+  s_3a3436789f0463::t_a8ba4f82972cde 70
+package-lock.json
+  s_3a3436789f0463::t_8900c2dc44b630 15,17-21,307-529,989-995,1017-1250,1264-1274,1309-1312,1314-1326,1328-1434,1441-1509,1528-1598,1606-1609,1612-1667,1669-1672,1675-1678,1681-1685,1687-1688,1690-1691,1694-1697,1701,1704-1707,1711,1714-1717,1719-1740,1742-1745,1748-1749,1752,1755-1758,1761-1765,1768,1771-1774,1776,1778-1781,1784-1787,1789-1803,1805-3926,3929-3948,3951-3954,3957-3960,3963-3968,3970-3973,3976-3979,3981-3992,3994-3997,4001,4004,4007-4010,4014,4017,4020-4024,4027-4030,4033-4037,4040-4041,4043-4047,4050-4053,4056-4058,4060,4063-4066,4070-4072,4074-4089,4092,4094-4095,4098-4101,4103-4117,4120-4123,4125-4133,4135-4138,4141-4144,4148-4151,4154,4157,4191-4200,4760-4874,4899-4934
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "a250244c3412547edb7a34a7d4e322ce6dfd78bc",
+  "prompts": {},
+  "sessions": {
+    "s_3a3436789f0463": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0962af6-e458-4881-a2b4-8ae009601f07",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Adeland Luo <adeland@workweave.ai>"
+    }
+  }
+}
