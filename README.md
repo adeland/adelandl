@@ -29,6 +29,9 @@ npm run preview  # serve the built dist/ locally
 npm run lint     # ESLint (react, react-hooks) — keep it at zero
 ```
 
+CI runs `lint` + `build` on every push and pull request
+([`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
+
 ## Deploy to Vercel
 
 1. Push this repo to GitHub.
