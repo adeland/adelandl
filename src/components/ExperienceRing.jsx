@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useSpring } from '../hooks/useSpring';
 import LiveTag from './ui/LiveTag';
 

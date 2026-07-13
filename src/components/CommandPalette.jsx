@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { navbarData } from '../data/navbarData';
 import { contactData } from '../data/contactData';
 import { scrollToSection } from '../utils/scrollUtils';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { contactData } from '../data/contactData';
 import Button from './ui/Button';
 import TableCard from './TableCard';

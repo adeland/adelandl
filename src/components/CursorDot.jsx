@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 /* A small gold dot trailing the cursor on a soft spring, growing over
    interactive elements. Fine-pointer devices only; the native cursor stays. */

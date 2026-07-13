@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 /* Cursor-following 3D tilt. The outer div owns the hover bounds and
    perspective; the inner plane eases toward the cursor's angle each frame

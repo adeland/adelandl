@@ -1,10 +1,12 @@
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import { createContext, useContext, useState, useEffect, useRef } from 'react';
 
 const THEME_COLOR_LIGHT = '#f7f2ec';
 const THEME_COLOR_DARK = '#1e1719';
 
 const ThemeContext = createContext();
 
+// The hook belongs beside its provider; losing HMR granularity here is fine.
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (!context) {

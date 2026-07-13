@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { skillRange } from '../data/skills';
 
 const RANKS = 'AKQJT98765432'.split('');
@@ -30,30 +30,29 @@ const comboAt = (r, c) => {
 /* Skills as a 13×13 GTO range chart. Hover a cell to read the combo and the
    skill it carries; the diagonal pulses gently through your core stack. */
 const SkillRange = () => {
-  const raise = skillRange.raise ?? [];
-  const call = skillRange.call ?? [];
   const [label, setLabel] = useState(null);
   const [pulse, setPulse] = useState(0);
   const [onStage, setOnStage] = useState(false);
   const boardRef = useRef(null);
 
-  const cells = useMemo(
-    () =>
-      RANKS.flatMap((_, r) =>
-        RANKS.map((__, c) => {
-          const action = actionAt(r, c);
-          const pool = action === 'raise' ? raise : action === 'call' ? call : null;
-          return {
-            r,
-            c,
-            action,
-            combo: comboAt(r, c),
-            skill: pool?.length ? pool[(r + c) % pool.length] : 'FOLD',
-          };
-        })
-      ),
-    [raise, call]
-  );
+  /* skillRange is module-static, so the board is computed exactly once. */
+  const cells = useMemo(() => {
+    const raise = skillRange.raise ?? [];
+    const call = skillRange.call ?? [];
+    return RANKS.flatMap((_, r) =>
+      RANKS.map((__, c) => {
+        const action = actionAt(r, c);
+        const pool = action === 'raise' ? raise : action === 'call' ? call : null;
+        return {
+          r,
+          c,
+          action,
+          combo: comboAt(r, c),
+          skill: pool?.length ? pool[(r + c) % pool.length] : 'FOLD',
+        };
+      })
+    );
+  }, []);
 
   // The idle pulse only riffles while the board is actually on screen —
   // no point re-rendering 169 cells every 900ms for a chart below the fold.

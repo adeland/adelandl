@@ -1,4 +1,3 @@
-import React from 'react';
 import { notesData } from '../data/notesData';
 
 /* Field notes — marginalia in three columns. Short thoughts, no blog. */

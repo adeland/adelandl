@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 /* Hairline gold progress line under the navbar — how deep into the stack
    the reader is. Writes transform directly (rAF-throttled), no re-renders. */

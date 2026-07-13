@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { tickerData } from '../data/tickerData';
 
 /* Real, measured performance readouts appended to the tape shortly after

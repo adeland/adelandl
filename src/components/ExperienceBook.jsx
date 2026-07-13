@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDeskClock } from '../hooks/useDeskClock';
 import LiveTag from './ui/LiveTag';
 

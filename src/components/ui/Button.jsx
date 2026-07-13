@@ -1,4 +1,3 @@
-import React from 'react';
 
 const VARIANT_CLASSES = {
   primary: 'btn-primary',

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDeskClock } from '../hooks/useDeskClock';
 
 /* Exchange-desk clock line for the hero meta block: "[CITY] 09:30:00.000241".

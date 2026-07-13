@@ -1,4 +1,3 @@
-import React from 'react';
 import { contactData } from '../data/contactData';
 import { heroData } from '../data/heroData';
 import { navbarData } from '../data/navbarData';

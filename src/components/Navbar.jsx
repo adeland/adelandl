@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { scrollToSection, scrollToTop } from '../utils/scrollUtils';
 import { useTheme } from '../contexts/ThemeContext';
 import { navbarData } from '../data/navbarData';
@@ -149,6 +149,7 @@ const Navbar = ({ onOpenPalette }) => {
         type="button"
         className={`nav-backdrop ${isMenuOpen ? 'nav-backdrop--visible' : ''}`}
         aria-hidden={!isMenuOpen}
+        aria-label="Close menu"
         tabIndex={isMenuOpen ? 0 : -1}
         onClick={() => setIsMenuOpen(false)}
       />

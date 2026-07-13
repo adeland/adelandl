@@ -1,4 +1,3 @@
-import React from 'react';
 import { scrollToSection } from '../utils/scrollUtils';
 import { heroData } from '../data/heroData';
 import Button from './ui/Button';

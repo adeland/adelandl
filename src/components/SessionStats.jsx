@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { statsData } from '../data/statsData';
 
 /* Split "40k" / "3.1ms" / "5×" into prefix + number + suffix. Values with no

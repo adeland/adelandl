@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 /* Deterministic PRNG — the sky is dealt the same way every visit. */
 const mulberry32 = (seed) => {
@@ -75,7 +75,7 @@ const driftVars = (rand, reach = 1) => {
 /* One particle. Idles as faint stardust at its drift position; condenses
    into place when the feature gains .is-formed — all transition, no
    per-frame JS. */
-const Dot = ({ x, y, s, i, rand, o = 0.5 }) => (
+const Dot = ({ x, y, s, rand, o = 0.5 }) => (
   <span
     className="pdot"
     style={{
@@ -89,7 +89,7 @@ const Dot = ({ x, y, s, i, rand, o = 0.5 }) => (
   />
 );
 
-const Glyph = ({ children, className = '', i, rand, style }) => (
+const Glyph = ({ children, className = '', rand, style }) => (
   <span
     className={`pdot pdot-glyph ${className}`.trim()}
     style={{
@@ -176,10 +176,10 @@ const Crescent = ({ topVh, side, width, bob, flip = false, seed }) => {
     >
       <div className="crescent-rot">
         {outer.map(([x, y], i) => (
-          <Dot key={`o${i}`} x={x} y={y} s={2.8} i={i} rand={rand} o={0.5} />
+          <Dot key={`o${i}`} x={x} y={y} s={2.8} rand={rand} o={0.5} />
         ))}
         {inner.map(([x, y], i) => (
-          <Dot key={`n${i}`} x={x} y={y} s={2.2} i={16 + i} rand={rand} o={0.38} />
+          <Dot key={`n${i}`} x={x} y={y} s={2.2} rand={rand} o={0.38} />
         ))}
       </div>
     </div>
@@ -192,15 +192,15 @@ const ChipFace = ({ pip, seed, pipPx }) => {
   return (
     <>
       {ringPts(24, 46).map(([x, y], i) => (
-        <Dot key={`o${i}`} x={x} y={y} s={2.2} i={i} rand={rand} o={0.55} />
+        <Dot key={`o${i}`} x={x} y={y} s={2.2} rand={rand} o={0.55} />
       ))}
       {ringPts(8, 42, 50, 50, -Math.PI / 8).map(([x, y], i) => (
-        <Dot key={`s${i}`} x={x} y={y} s={5.5} i={24 + i} rand={rand} o={0.35} />
+        <Dot key={`s${i}`} x={x} y={y} s={5.5} rand={rand} o={0.35} />
       ))}
       {ringPts(12, 29).map(([x, y], i) => (
-        <Dot key={`n${i}`} x={x} y={y} s={1.7} i={32 + i} rand={rand} o={0.6} />
+        <Dot key={`n${i}`} x={x} y={y} s={1.7} rand={rand} o={0.6} />
       ))}
-      <Glyph className="chip-pip3" i={45} rand={rand} style={{ fontSize: pipPx }}>
+      <Glyph className="chip-pip3" rand={rand} style={{ fontSize: pipPx }}>
         {pip}
       </Glyph>
     </>
@@ -250,15 +250,15 @@ const Card3D = ({ topVh, side, width, bob, seed }) => {
       <div className="card3d" style={{ '--spin': '40s' }}>
         <div className="card3d-face front">
           {rim.map(([x, y], i) => (
-            <Dot key={i} x={x} y={y} s={2} i={i} rand={randA} o={0.45} />
+            <Dot key={i} x={x} y={y} s={2} rand={randA} o={0.45} />
           ))}
-          <Glyph className="card-pip3" i={26} rand={randA}>
+          <Glyph className="card-pip3" rand={randA}>
             ♦
           </Glyph>
         </div>
         <div className="card3d-face back">
           {rim.map(([x, y], i) => (
-            <Dot key={i} x={x} y={y} s={2} i={i} rand={randB} o={0.45} />
+            <Dot key={i} x={x} y={y} s={2} rand={randB} o={0.45} />
           ))}
           {ringPts(8, 9, 50, 55).map(([x, y], i) => (
             <span
@@ -279,7 +279,7 @@ const Card3D = ({ topVh, side, width, bob, seed }) => {
             [50, 36.5],
             [54, 40],
           ].map(([x, y], i) => (
-            <Dot key={`c${i}`} x={x} y={y} s={2} i={34 + i} rand={randB} o={0.6} />
+            <Dot key={`c${i}`} x={x} y={y} s={2} rand={randB} o={0.6} />
           ))}
         </div>
       </div>
@@ -306,7 +306,6 @@ const Armillary = ({ topVh, side, width, bob, seed }) => {
                 x={x}
                 y={y}
                 s={2}
-                i={p * 5 + i}
                 rand={rand}
                 o={0.5 - p * 0.1}
               />
@@ -324,7 +323,9 @@ const Armillary = ({ topVh, side, width, bob, seed }) => {
    scrolling past dissolves them. */
 const Cosmos = () => {
   const rootRef = useRef(null);
-  const layerRefs = [useRef(null), useRef(null), useRef(null)];
+  const farRef = useRef(null);
+  const midRef = useRef(null);
+  const nearRef = useRef(null);
 
   useEffect(() => {
     /* Low stiffness + near-critical damping: the sky is heavy. It trails a
@@ -333,9 +334,9 @@ const Cosmos = () => {
     const K = 9;
     const DAMP = 2 * Math.sqrt(K) * 0.86;
     const layers = [
-      { el: layerRefs[0], f: 0.06, mouse: 0, y: -window.scrollY * 0.06, v: 0 },
-      { el: layerRefs[1], f: 0.12, mouse: 0.4, y: -window.scrollY * 0.12, v: 0 },
-      { el: layerRefs[2], f: 0.22, mouse: 1, y: -window.scrollY * 0.22, v: 0 },
+      { el: farRef, f: 0.06, mouse: 0, y: -window.scrollY * 0.06, v: 0 },
+      { el: midRef, f: 0.12, mouse: 0.4, y: -window.scrollY * 0.12, v: 0 },
+      { el: nearRef, f: 0.22, mouse: 1, y: -window.scrollY * 0.22, v: 0 },
     ];
 
     /* Everything with a data-top participates in converge/dissolve. */
@@ -454,7 +455,7 @@ const Cosmos = () => {
 
   return (
     <div ref={rootRef} className="bg-cosmos" aria-hidden="true">
-      <div ref={layerRefs[0]} className="bg-layer" data-layer="0">
+      <div ref={farRef} className="bg-layer" data-layer="0">
         {FAR_STARS.map((star) => (
           <Star key={star.id} star={star} />
         ))}
@@ -470,7 +471,7 @@ const Cosmos = () => {
           seed={5}
         />
       </div>
-      <div ref={layerRefs[1]} className="bg-layer" data-layer="1">
+      <div ref={midRef} className="bg-layer" data-layer="1">
         {MID_STARS.map((star) => (
           <Star key={star.id} star={star} />
         ))}
@@ -494,7 +495,7 @@ const Cosmos = () => {
           seed={21}
         />
       </div>
-      <div ref={layerRefs[2]} className="bg-layer" data-layer="2">
+      <div ref={nearRef} className="bg-layer" data-layer="2">
         {NEAR_STARS.map((star) => (
           <Star key={star.id} star={star} />
         ))}

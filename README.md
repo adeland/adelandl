@@ -26,6 +26,7 @@ Other scripts:
 ```bash
 npm run build    # production build → dist/
 npm run preview  # serve the built dist/ locally
+npm run lint     # ESLint (react, react-hooks) — keep it at zero
 ```
 
 ## Deploy to Vercel
@@ -66,4 +67,4 @@ The theme also reads two hardcoded browser-chrome colors in
 
 ## License
 
-MIT.
+[MIT](LICENSE).

@@ -1,4 +1,3 @@
-import React from 'react';
 import Tilt from './ui/Tilt';
 
 const SUITS = ['♠', '♦'];

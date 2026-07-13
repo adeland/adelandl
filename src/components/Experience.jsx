@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { experiences } from '../data/experiences';
 import ExperienceRing from './ExperienceRing';
 import ExperienceBook from './ExperienceBook';

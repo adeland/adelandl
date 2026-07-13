@@ -1,4 +1,3 @@
-import React from 'react';
 import { aboutData } from '../data/aboutData';
 import SkillRange from './SkillRange';
 import SessionStats from './SessionStats';

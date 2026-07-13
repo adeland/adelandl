@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import Tilt from './ui/Tilt';
 
 /* Ranks and suits are dealt in order unless a project pins its own via

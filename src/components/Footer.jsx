@@ -1,4 +1,3 @@
-import React from 'react';
 import { navbarData } from '../data/navbarData';
 import { contactData } from '../data/contactData';
 import { footerData } from '../data/footerData';
