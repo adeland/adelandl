@@ -1,0 +1,21 @@
+README.md
+  s_3a3436789f0463::t_bb06fe51e20cb4 32-34
+.github/workflows/ci.yml
+  s_3a3436789f0463::t_ebf03076102969 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "70fde414f4ef75477ad9f08b0168863b6160699f",
+  "prompts": {},
+  "sessions": {
+    "s_3a3436789f0463": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0962af6-e458-4881-a2b4-8ae009601f07",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Adeland Luo <adeland@workweave.ai>"
+    }
+  }
+}
