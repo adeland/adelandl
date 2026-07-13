@@ -1,0 +1,50 @@
+src/components/CursorDot.jsx
+  s_3a3436789f0463::t_22f6d69f68d8d7 50
+  s_3a3436789f0463::t_61b28c97ceab59 26-31
+src/components/SessionStats.jsx
+  s_3a3436789f0463::t_f67af77f2f01be 40
+  s_3a3436789f0463::t_598debcd2e8e3c 1,4-32,36-39,41-53,57,64
+src/styles/components/navbar.css
+  s_3a3436789f0463::t_522f30ddb34551 16-19
+src/components/SkillRange.jsx
+  s_3a3436789f0463::t_d3ab3e2e5d9fb0 1
+  s_3a3436789f0463::t_4a98e49496d84b 86
+  s_3a3436789f0463::t_2b6db0c1045f36 58-68,71,74
+  s_3a3436789f0463::t_39e96f2cde597f 37-38
+src/styles/base/reset.css
+  s_3a3436789f0463::t_1ab2a7a62c2b1b 73-76,83,86,90,95
+src/components/ui/Button.jsx
+  s_3a3436789f0463::t_32712552fabbfe 8-34,56,68
+src/styles/utils/responsive.css
+  s_3a3436789f0463::t_c4cc3deef951ae 13-14
+src/styles/components/ticker.css
+  s_3a3436789f0463::t_fa3db1e1782b15 11-19
+src/styles/components/button.css
+  s_3a3436789f0463::t_327b8c94319663 11-16
+src/styles/components/cosmos.css
+  s_3a3436789f0463::t_4730f2bbed8efc 35-45
+  s_3a3436789f0463::t_836fcbc2dd9021 120,126-127,131-132,138-139
+src/components/Cosmos.jsx
+  s_3a3436789f0463::t_88916a8b957982 407-410
+  s_3a3436789f0463::t_1e205c9db3fdcd 348,354,367-370,373-375,391-395,411-415,418-424,428-441,444-445,450-451
+src/styles/utils/scroll-reveal.css
+  s_3a3436789f0463::t_4a5795ff4d5c0d 5-8
+src/styles/layouts/editorial.css
+  s_3a3436789f0463::t_34bd524ac19a18 21-38,46-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "a06d7ff5d4f3039834597dd96e2e68bdb68dbf70",
+  "prompts": {},
+  "sessions": {
+    "s_3a3436789f0463": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0962af6-e458-4881-a2b4-8ae009601f07",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Adeland Luo <adeland@workweave.ai>"
+    }
+  }
+}
