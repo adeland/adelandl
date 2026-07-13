@@ -10,8 +10,8 @@
     height: 0.5px;
   }
 
-  .section-head {
-    border-bottom-width: 0.5px;
+  .section-head::before {
+    height: 0.5px;
   }
 
   .ticker {

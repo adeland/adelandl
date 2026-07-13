@@ -345,20 +345,17 @@ const Cosmos = () => {
       half: el.offsetHeight / 2,
       layer: +el.closest('.bg-layer').dataset.layer,
       formed: false,
+      off: false,
     }));
 
     let raf = 0;
     let running = true;
     let last = performance.now();
+    let idleFrames = 0;
     let mouseX = 0;
     let mouseY = 0;
     let targetMouseX = 0;
     let targetMouseY = 0;
-
-    const onMouseMove = (e) => {
-      targetMouseX = (e.clientX / window.innerWidth - 0.5) * 26;
-      targetMouseY = (e.clientY / window.innerHeight - 0.5) * 18;
-    };
 
     const tick = (now) => {
       if (!running) return;
@@ -367,8 +364,15 @@ const Cosmos = () => {
       mouseX += (targetMouseX - mouseX) * 0.028;
       mouseY += (targetMouseY - mouseY) * 0.028;
 
+      let busy =
+        Math.abs(targetMouseX - mouseX) > 0.05 ||
+        Math.abs(targetMouseY - mouseY) > 0.05;
+
       for (const layer of layers) {
         const target = -window.scrollY * layer.f;
+        if (Math.abs(layer.v) > 0.02 || Math.abs(layer.y - target) > 0.05) {
+          busy = true;
+        }
         const accel = -K * (layer.y - target) - DAMP * layer.v;
         layer.v += accel * dt;
         layer.y += layer.v * dt;
@@ -384,7 +388,11 @@ const Cosmos = () => {
          distance (~two sections) before dissolving. The band is generous —
          condensation takes ~5 unhurried seconds, so it must begin while the
          body is still approaching. Hysteresis pads the release so edges
-         don't flicker. */
+         don't flicker.
+
+         The same pass puts far-offstage bodies to sleep (.is-off): their
+         wander/tumble/twinkle animations and compositor layers cost real
+         frame time, and there can be hundreds of motes below the fold. */
       const vh = window.innerHeight;
       for (const item of items) {
         const center = (item.topVh * vh) / 100 + item.half + layers[item.layer].y;
@@ -396,17 +404,51 @@ const Cosmos = () => {
           item.formed = formed;
           item.el.classList.toggle('is-formed', formed);
         }
+        /* Honest sleep distance: half a viewport puts the body's anchor at
+           the screen edge, and its dust wanders up to ~440px beyond that.
+           Past anchor + dust reach + margin, nothing of it can be seen. */
+        const sleepAt = 0.5 * vh + (item.off ? 540 : 640);
+        const off = Math.abs(center - 0.5 * vh) > sleepAt;
+        if (off !== item.off) {
+          item.off = off;
+          item.el.classList.toggle('is-off', off);
+        }
       }
 
+      /* The sky sleeps when nothing moves — no scroll momentum, no mouse
+         drift — and wakes on the next scroll or pointer event. */
+      idleFrames = busy ? 0 : idleFrames + 1;
+      if (idleFrames > 40) {
+        raf = 0;
+        return;
+      }
       raf = requestAnimationFrame(tick);
+    };
+
+    const wake = () => {
+      if (running && !raf) {
+        last = performance.now();
+        idleFrames = 0;
+        raf = requestAnimationFrame(tick);
+      }
+    };
+
+    const onMouseMove = (e) => {
+      targetMouseX = (e.clientX / window.innerWidth - 0.5) * 26;
+      targetMouseY = (e.clientY / window.innerHeight - 0.5) * 18;
+      wake();
     };
 
     raf = requestAnimationFrame(tick);
     window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('scroll', wake, { passive: true });
+    window.addEventListener('resize', wake);
     return () => {
       running = false;
       cancelAnimationFrame(raf);
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('scroll', wake);
+      window.removeEventListener('resize', wake);
     };
   }, []);
 

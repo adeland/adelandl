@@ -23,7 +23,12 @@ const CursorDot = () => {
       y += (targetY - y) * 0.16;
       scale += (targetScale - scale) * 0.14;
       dot.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
-      raf = requestAnimationFrame(loop);
+      // Rest when caught up; the next mousemove restarts the chase.
+      const settled =
+        Math.abs(targetX - x) < 0.1 &&
+        Math.abs(targetY - y) < 0.1 &&
+        Math.abs(targetScale - scale) < 0.002;
+      raf = settled ? 0 : requestAnimationFrame(loop);
     };
 
     const onMove = (e) => {
@@ -41,8 +46,8 @@ const CursorDot = () => {
         x = targetX;
         y = targetY;
         dot.style.opacity = '';
-        raf = requestAnimationFrame(loop);
       }
+      if (!raf) raf = requestAnimationFrame(loop);
     };
 
     dot.style.opacity = '0';

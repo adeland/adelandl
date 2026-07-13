@@ -32,6 +32,17 @@ html.dark .bg-cosmos {
   will-change: transform;
 }
 
+/* Asleep — far offstage (toggled by the engine). visibility drops the
+   subtree's paint and compositor layers; pausing the animations stops the
+   per-frame bookkeeping for hundreds of wandering motes below the fold. */
+.bg-cosmos .is-off {
+  visibility: hidden;
+}
+.bg-cosmos .is-off,
+.bg-cosmos .is-off * {
+  animation-play-state: paused !important;
+}
+
 /* ---- Particles ------------------------------------------------------- */
 /* A particle never disappears. Dissolved, it idles as a faint dust mote at
    the far end of its own flight arc (--flight, up to ~420px out), wandering
@@ -106,21 +117,26 @@ html.dark .bg-cosmos {
   text-align: center;
   font-family: var(--font-serif);
   filter: blur(3px);
+  text-shadow: 0 0 0 transparent;
   transition:
     offset-distance calc(var(--pd, 4s) * 0.45) var(--ease-cloud) var(--pout, 0s),
     transform calc(var(--pd, 4s) * 0.45) var(--ease-cloud) var(--pout, 0s),
     translate calc(var(--pd, 4s) * 0.4) var(--ease-cloud) var(--pout, 0s),
     opacity calc(var(--pd, 4s) * 0.4) ease var(--pout, 0s),
-    filter calc(var(--pd, 4s) * 0.4) ease var(--pout, 0s);
+    filter calc(var(--pd, 4s) * 0.4) ease var(--pout, 0s),
+    text-shadow calc(var(--pd, 4s) * 0.4) ease var(--pout, 0s);
 }
 .is-formed .pdot-glyph {
   filter: blur(0);
+  /* Once seated, the seal takes the light — a faint halo in its own color */
+  text-shadow: 0 0 14px currentColor;
   transition:
     offset-distance var(--pd, 4s) var(--ease-cloud) var(--pdel, 0s),
     transform var(--pd, 4s) var(--ease-cloud) var(--pdel, 0s),
     translate calc(var(--pd, 4s) * 0.5) var(--ease-cloud) var(--pdel, 0s),
     opacity calc(var(--pd, 4s) * 0.9) ease var(--pdel, 0s),
-    filter var(--pd, 4s) ease var(--pdel, 0s);
+    filter var(--pd, 4s) ease var(--pdel, 0s),
+    text-shadow 2s ease calc(var(--pdel, 0s) + var(--pd, 4s) * 0.7);
 }
 
 /* Field stars — dissolve via scale/translate so twinkle keeps opacity */

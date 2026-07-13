@@ -2,8 +2,10 @@
 
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.95s var(--ease-out);
   transition-delay: var(--delay, 0ms);
 }
 

@@ -8,6 +8,15 @@
   border-bottom: 1px solid var(--gold-line);
   padding: 0.6rem 0;
   overflow: hidden;
+  /* Items surface from and dissolve into the page edges */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 
 .ticker-reel {

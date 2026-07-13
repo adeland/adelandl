@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { skillRange } from '../data/skills';
 
 const RANKS = 'AKQJT98765432'.split('');
@@ -34,6 +34,8 @@ const SkillRange = () => {
   const call = skillRange.call ?? [];
   const [label, setLabel] = useState(null);
   const [pulse, setPulse] = useState(0);
+  const [onStage, setOnStage] = useState(false);
+  const boardRef = useRef(null);
 
   const cells = useMemo(
     () =>
@@ -53,11 +55,23 @@ const SkillRange = () => {
     [raise, call]
   );
 
+  // The idle pulse only riffles while the board is actually on screen —
+  // no point re-rendering 169 cells every 900ms for a chart below the fold.
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([entry]) => setOnStage(entry.isIntersecting),
+      { rootMargin: '60px' }
+    );
+    io.observe(boardRef.current);
+    return () => io.disconnect();
+  }, []);
+
   // Idle pulse walking the diagonal — the ambient "dealer riffling" motion.
   useEffect(() => {
+    if (!onStage) return undefined;
     const id = setInterval(() => setPulse((p) => (p + 1) % RANKS.length), 900);
     return () => clearInterval(id);
-  }, []);
+  }, [onStage]);
 
   const shown =
     label ?? cells[pulse * RANKS.length + pulse];
@@ -69,7 +83,7 @@ const SkillRange = () => {
 
   return (
     <div className="skill-range">
-      <div className="range-board" onMouseLeave={() => setLabel(null)}>
+      <div ref={boardRef} className="range-board" onMouseLeave={() => setLabel(null)}>
         <div className="range-grid">
           {cells.map((cell) => (
             <div
